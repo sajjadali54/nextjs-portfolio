@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,11 +9,35 @@ import Container from "react-bootstrap/Container";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
 import { routes, navLinks } from "@data/routes";
 
 const NavBar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme") as
+      | "light"
+      | "dark"
+      | null;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    const initialTheme = savedTheme ?? (prefersDark ? "dark" : "light");
+
+    setTheme(initialTheme);
+    document.documentElement.dataset.theme = initialTheme;
+    document.documentElement.style.colorScheme = initialTheme;
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.style.colorScheme = nextTheme;
+    localStorage.setItem("portfolio-theme", nextTheme);
+  };
 
   const navVariants = {
     hidden: { opacity: 0, y: -20 },
@@ -34,7 +58,6 @@ const NavBar = () => {
     >
       <Navbar expand="lg">
         <Container>
-          {/* Logo */}
           <Link href={routes.home} passHref legacyBehavior>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Navbar.Brand className="d-flex align-items-center logo-container">
@@ -50,17 +73,25 @@ const NavBar = () => {
           </Link>
 
           <div className="d-flex align-items-center gap-3">
-            {/* Mobile Menu Button */}
+            <Button
+              variant="outline-secondary"
+              className="theme-toggle d-flex align-items-center justify-content-center"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              title="Toggle theme"
+            >
+              {theme === "light" ? <FiMoon size={18} /> : <FiSun size={18} />}
+            </Button>
+
             <Button
               variant="link"
-              className="d-lg-none p-0"
+              className="d-lg-none p-0 menu-toggle"
               onClick={() => setShowDrawer(true)}
             >
               <FiMenu size={24} />
             </Button>
           </div>
 
-          {/* Desktop Navigation */}
           <Navbar.Collapse id="basic-navbar-nav" className="d-none d-lg-flex">
             <Nav className="ms-auto align-items-center gap-4">
               {navLinks.map(({ href, label, onClick }) => (
@@ -82,7 +113,6 @@ const NavBar = () => {
         </Container>
       </Navbar>
 
-      {/* Mobile Offcanvas Menu */}
       <Offcanvas
         show={showDrawer}
         onHide={() => setShowDrawer(false)}
@@ -96,7 +126,7 @@ const NavBar = () => {
           <Button
             variant="link"
             onClick={() => setShowDrawer(false)}
-            className="p-0"
+            className="p-0 menu-close"
           >
             <FiX size={24} />
           </Button>
@@ -123,20 +153,36 @@ const NavBar = () => {
                 </Link>
               </motion.div>
             ))}
+            <Button
+              variant="outline-secondary"
+              className="theme-toggle mobile-theme-toggle mt-3"
+              onClick={toggleTheme}
+            >
+              {theme === "light" ? "Switch to dark" : "Switch to light"}
+            </Button>
           </Nav>
         </Offcanvas.Body>
       </Offcanvas>
 
       <style jsx global>{`
         .glass-navbar {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(10px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+          position: sticky;
+          top: 0;
+          z-index: 1030;
+          background: rgba(255, 255, 255, 0.72);
+          backdrop-filter: blur(14px);
+          border-bottom: 1px solid var(--border);
+          box-shadow: 0 8px 30px var(--shadow);
+        }
+
+        html[data-theme="dark"] .glass-navbar,
+        :root:not([data-theme="light"]) .glass-navbar {
+          background: rgba(15, 23, 42, 0.72);
         }
 
         .glass-offcanvas {
-          background: rgba(255, 255, 255, 0.9);
+          background: var(--surface-strong);
+          color: var(--foreground);
           backdrop-filter: blur(10px);
         }
 
@@ -149,13 +195,14 @@ const NavBar = () => {
           border-radius: 50%;
           border: 2px solid transparent;
           transition: all 0.3s ease;
+          box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
         }
 
         .logo-container::before {
           content: "";
           position: absolute;
           inset: -2px;
-          background: linear-gradient(45deg, #6366f1, #a855f7);
+          background: var(--gradient);
           border-radius: 50%;
           z-index: -1;
           opacity: 0;
@@ -167,8 +214,8 @@ const NavBar = () => {
         }
 
         .nav-link {
-          color: #1f2937 !important;
-          font-weight: 500;
+          color: var(--foreground-soft) !important;
+          font-weight: 600;
           position: relative;
           padding: 0.5rem 0 !important;
         }
@@ -180,7 +227,7 @@ const NavBar = () => {
           left: 0;
           width: 0;
           height: 2px;
-          background: linear-gradient(90deg, #6366f1, #a855f7);
+          background: var(--gradient);
           transition: width 0.3s ease;
         }
 
@@ -188,18 +235,33 @@ const NavBar = () => {
           width: 100%;
         }
 
-        .theme-toggle {
-          border: none;
-          background: none;
-          color: #1f2937;
-          padding: 0.5rem;
-          border-radius: 50%;
+        .theme-toggle,
+        .menu-toggle,
+        .menu-close {
+          border: 1px solid var(--border);
+          color: var(--foreground-soft);
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 999px;
           transition: all 0.3s ease;
         }
 
+        .theme-toggle:hover,
+        .menu-toggle:hover,
+        .menu-close:hover {
+          border-color: var(--primary);
+          color: var(--primary);
+          transform: translateY(-1px);
+        }
+
+        .mobile-theme-toggle {
+          width: 100%;
+          justify-content: center;
+        }
+
         .text-gradient {
-          background: linear-gradient(45deg, #6366f1, #a855f7);
+          background: var(--gradient);
           -webkit-background-clip: text;
+          background-clip: text;
           -webkit-text-fill-color: transparent;
         }
       `}</style>

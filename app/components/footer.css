@@ -1,13 +1,19 @@
 .glass-footer {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.04);
+}
+
+html[data-theme="dark"] .glass-footer,
+:root:not([data-theme="light"]) .glass-footer {
+  background: rgba(15, 23, 42, 0.72);
 }
 
 .text-gradient {
-  background: linear-gradient(45deg, #6366f1, #a855f7);
+  background: var(--gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -18,20 +24,21 @@
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: rgba(99, 102, 241, 0.1);
+  background: var(--primary-soft);
+  color: var(--foreground);
   transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-  background: linear-gradient(45deg, #6366f1, #a855f7);
+  background: var(--gradient);
   color: white !important;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.22);
 }
 
 .quote-box {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(99, 102, 241, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px var(--shadow);
 }
 
 .icon {

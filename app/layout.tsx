@@ -41,8 +41,8 @@ export default function RootLayout({
       >
         <Providers>
           <NavBar />
-          <main className="p-5">
-            <Container>{children}</Container>
+          <main className="page-shell">
+            <Container className="content-panel">{children}</Container>
           </main>
           <Footer badges={badges} />
         </Providers>

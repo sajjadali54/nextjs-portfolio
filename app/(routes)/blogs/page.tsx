@@ -51,7 +51,7 @@ const Blogs = () => {
       (post: Blog) =>
         post.title.toLowerCase().includes(field) ||
         post.description.toLowerCase().includes(field) ||
-        post.tag_list.some((tag) => tag.toLowerCase().includes(field))
+        post.tag_list.some((tag) => tag.toLowerCase().includes(field)),
     );
     setFilteredPosts(filtered);
     setCurrentPage(1);
@@ -73,7 +73,7 @@ const Blogs = () => {
   };
 
   return (
-    <Container className="glass-container p-4 rounded-4 my-5">
+    <Container className="glass-container section-panel p-4 rounded-4 my-4">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <SearchBox
           searchField={searchQuery}
@@ -131,10 +131,10 @@ const Blogs = () => {
 
       <style jsx global>{`
         .glass-container {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          background: var(--card);
+          border: 1px solid var(--border);
+          box-shadow: 0 16px 40px var(--shadow);
+          backdrop-filter: blur(12px);
         }
 
         .grid-layout {

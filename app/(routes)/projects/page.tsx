@@ -41,7 +41,7 @@ const Projects = () => {
         fetchedProjects.reduce((acc: Tag, project: Project) => {
           acc[project.language.toLowerCase()] = false;
           return acc;
-        }, {})
+        }, {}),
       );
     };
     getProjects();
@@ -59,8 +59,8 @@ const Projects = () => {
         project.description.toLowerCase().includes(field) ||
         project.language.toLowerCase().includes(field) ||
         project.topics!.some((topic: string) =>
-          topic.toLowerCase().includes(field)
-        )
+          topic.toLowerCase().includes(field),
+        ),
     );
     setProjects(filteredProjects);
     setCurrentPage(1);
@@ -73,7 +73,7 @@ const Projects = () => {
       return;
     }
     const filteredProjects = ref.current.filter(
-      (project: Project) => tags[project.language.toLowerCase()]
+      (project: Project) => tags[project.language.toLowerCase()],
     );
     setProjects(filteredProjects);
   }, [tags]);
@@ -105,7 +105,7 @@ const Projects = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="glass-container p-4 rounded-4"
+      className="glass-container section-panel p-4 rounded-4"
     >
       <SearchBox
         searchField={searchField}
@@ -167,10 +167,10 @@ const Projects = () => {
 
       <style jsx global>{`
         .glass-container {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          background: var(--card);
+          border: 1px solid var(--border);
+          box-shadow: 0 16px 40px var(--shadow);
+          backdrop-filter: blur(12px);
         }
 
         .grid-layout {

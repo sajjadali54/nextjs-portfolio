@@ -3,36 +3,12 @@
   width: 100%;
 }
 
-.search-input {
-  height: 50px;
-  border-radius: 30px;
-  padding-left: 50px; /* Ensure enough space for the icon */
-  border: none;
-  width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.search-icon {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  color: #888;
-  font-size: 18px; /* Adjust icon size if needed */
-  pointer-events: none; /* Ensures the icon doesn't block input clicks */
-}
-
-.search-container {
-  position: relative;
-  width: 100%;
-}
-
 .search-icon {
   position: absolute;
   left: 1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #6b7280;
+  color: var(--muted);
   font-size: 1.2rem;
   transition: all 0.3s ease;
   z-index: 2;
@@ -42,19 +18,25 @@
   width: 100%;
   padding: 1.2rem 1.5rem 1.2rem 3.5rem;
   font-size: 1rem;
-  border: none;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  background: var(--card-elevated);
+  color: var(--foreground);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 24px var(--shadow);
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
 }
 
+.search-input::placeholder {
+  color: var(--muted);
+}
+
 .search-input:focus {
   outline: none;
-  box-shadow: 0 4px 25px rgba(99, 102, 241, 0.2);
+  border-color: rgba(14, 165, 233, 0.45);
+  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.12);
 }
 
 .search-input:focus + .input-highlight {
@@ -62,15 +44,15 @@
 }
 
 .search-input:focus ~ .search-icon {
-  color: #4f46e5;
+  color: var(--primary);
   transform: translateY(-50%) scale(1.1);
 }
 
 .input-highlight {
   position: absolute;
   inset: 0;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, #6366f155, #a855f755);
+  border-radius: 1.2rem;
+  background: var(--gradient-soft);
   filter: blur(12px);
   opacity: 0;
   transition: opacity 0.3s ease;
