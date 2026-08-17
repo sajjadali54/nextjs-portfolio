@@ -4,6 +4,8 @@ body {
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
 
   /* background-image: url("./assets/bg.jpg");
   background-size: cover; 
@@ -23,14 +25,18 @@ body {
 }
 
 .container {
-  padding: 20px;
-  margin: 0 auto;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  background: transparent !important;
 }
 
 .card {
   transition: transform 0.2s;
   padding: 2em;
   height: 100%;
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--foreground) !important;
 }
 
 .card:hover {
@@ -39,15 +45,18 @@ body {
 
 .card-header {
   text-align: center;
+  background: transparent !important;
+  border: none !important;
 }
 
 .card-body {
   text-align: left;
+  background: transparent !important;
 }
 
 .card {
   border: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow);
   transition: transform 0.3s ease;
   border-radius: 12px;
   padding: 20px;
@@ -55,7 +64,7 @@ body {
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 25px var(--shadow);
 }
 
 .card img {
@@ -70,11 +79,11 @@ body {
 
 .card-title {
   font-weight: bold;
-  color: #007bff;
+  color: var(--primary) !important;
 }
 
 .card-subtitle {
-  color: #888;
+  color: var(--muted) !important;
   font-size: 0.9rem;
 }
 
@@ -83,8 +92,8 @@ body {
 }
 
 .navbar {
-  background: var(--card);
-  border-bottom: 1px solid var(--border);
+  background: var(--card) !important;
+  border-bottom: 1px solid var(--border) !important;
   backdrop-filter: blur(12px);
   box-shadow: 0 4px 16px var(--shadow);
   transition: all 0.3s ease;

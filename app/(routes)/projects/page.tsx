@@ -14,8 +14,8 @@ import Loader from "@/app/components/Loader";
 import { FiAlertTriangle } from "react-icons/fi";
 
 const Projects = () => {
-  const MOBILE_PAGE_SIZE = 4;
-  const DESKTOP_PAGE_SIZE = 8;
+  const MOBILE_PAGE_SIZE = 3;
+  const DESKTOP_PAGE_SIZE = 6;
 
   const ref = useRef<Project[]>([]);
   const [loading, setLoading] = useState(false);
@@ -175,7 +175,7 @@ const Projects = () => {
 
         .grid-layout {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
           gap: 2rem;
           padding: 1rem;
         }
