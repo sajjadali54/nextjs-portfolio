@@ -142,6 +142,10 @@ html[data-theme="dark"] .text-muted,
   color: var(--muted) !important;
 }
 
+.text-muted {
+  color: var(--muted) !important;
+}
+
 html[data-theme="dark"] .bg-white,
 :root:not([data-theme="light"]) .bg-white {
   background-color: var(--surface-strong) !important;
@@ -212,19 +216,29 @@ html[data-theme="dark"] .border-bottom,
   padding-right: 0 !important;
 }
 
-main .text-muted,
+main .text-muted {
+  color: var(--muted) !important;
+}
+
 main .text-secondary,
+main .text-dark {
+  color: var(--foreground) !important;
+}
+
 main p,
 main li,
 main span,
-main div,
+main div {
+  color: var(--foreground);
+}
+
 main h1,
 main h2,
 main h3,
 main h4,
 main h5,
 main h6 {
-  color: inherit;
+  color: var(--foreground);
 }
 
 /* Full-Height Container */

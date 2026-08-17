@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import CertificationCard from "@/app/components/cards/CertificationCard";
 import { certifications } from "@data/certifications";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 export const Certifications = () => {
   const containerVariants = {
@@ -21,15 +21,24 @@ export const Certifications = () => {
   };
 
   return (
-    <Container className="py-5 glass-container rounded-4">
-      <motion.h2
-        className="text-gradient text-center mb-5 display-5 fw-bold"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+    <motion.div
+      className="certifications-container py-5"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        className="mb-5 text-center"
       >
-        Certifications & Credentials
-      </motion.h2>
+        <h2 className="text-gradient display-5 fw-bold mb-2">
+          Certifications & Credentials
+        </h2>
+        <p className="text-muted lead">
+          Professional credentials and certifications that showcase my expertise
+        </p>
+      </motion.div>
 
       <motion.div
         variants={containerVariants}
@@ -55,32 +64,17 @@ export const Certifications = () => {
       </motion.div>
 
       <style jsx global>{`
-        .glass-container {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .certifications-container {
+          padding: 0 1rem;
         }
 
         .text-gradient {
-          background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+          background: var(--gradient);
           -webkit-background-clip: text;
+          background-clip: text;
           -webkit-text-fill-color: transparent;
         }
-
-        .certifications-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          padding: 1rem;
-        }
-
-        @media (max-width: 768px) {
-          .certifications-grid {
-            grid-template-columns: 1fr;
-          }
-        }
       `}</style>
-    </Container>
+    </motion.div>
   );
 };

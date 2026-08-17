@@ -22,7 +22,7 @@ function EducationContainer() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="glass-container p-4 rounded-4"
+      className="glass-container section-panel p-4 rounded-4"
     >
       <Tab.Container
         activeKey={activeTab}
@@ -96,17 +96,18 @@ function EducationContainer() {
       </Tab.Container>
 
       <style jsx global>{`
-        .glass-container {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .glass-container.section-panel {
+          background: var(--card);
+          border: 1px solid var(--border);
+          box-shadow: 0 16px 40px var(--shadow);
+          backdrop-filter: blur(12px);
+          color: var(--foreground);
         }
 
         .tab-button {
           background: transparent !important;
           border: none !important;
-          color: #6c757d !important;
+          color: var(--muted) !important;
           font-weight: 500;
           padding: 1rem 2rem !important;
           position: relative;
@@ -115,13 +116,13 @@ function EducationContainer() {
         }
 
         .tab-button:hover {
-          color: #4f46e5 !important;
-          background: rgba(99, 102, 241, 0.1) !important;
+          color: var(--primary) !important;
+          background: var(--primary-soft) !important;
         }
 
         .tab-button.active {
-          color: #4f46e5 !important;
-          background: rgba(99, 102, 241, 0.1) !important;
+          color: var(--primary) !important;
+          background: var(--primary-soft) !important;
         }
 
         .active-indicator {
@@ -130,7 +131,7 @@ function EducationContainer() {
           left: 0;
           right: 0;
           height: 3px;
-          background: linear-gradient(90deg, #6366f1, #a855f7);
+          background: var(--gradient);
           border-radius: 2px;
         }
 

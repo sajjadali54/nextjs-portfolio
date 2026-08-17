@@ -27,15 +27,14 @@ body {
   margin: 0 auto;
 }
 
-
 .card {
   transition: transform 0.2s;
   padding: 2em;
   height: 100%;
 }
 
-.card:hover{
-  transform: scale(1.05); 
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-header {
@@ -79,28 +78,96 @@ body {
   font-size: 0.9rem;
 }
 
-
 #myBadges img:hover {
   transform: scale(1.1);
 }
 
 .navbar {
-  background-color: #ffffff; /* White background */
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+  color: var(--foreground) !important;
 }
 
 .navbar-nav .nav-link {
   font-size: 1.1rem;
   padding: 10px 20px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  color: var(--foreground) !important;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #007bff; /* Highlight on hover */
+  color: var(--primary) !important;
+  filter: brightness(1.1);
 }
 
-.navbar-nav .active {
+.navbar-nav .active .nav-link {
   font-weight: bold;
-  color: #007bff !important; /* Active link color */
+  color: var(--primary) !important;
+}
+
+.theme-toggle {
+  background: var(--surface) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-strong) !important;
+  transform: scale(1.08);
+}
+
+.menu-toggle {
+  color: var(--foreground) !important;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  color: var(--primary) !important;
+}
+
+.glass-navbar {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.glass-offcanvas {
+  background: var(--card) !important;
+  border-left: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.glass-offcanvas .offcanvas-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.glass-offcanvas .offcanvas-body {
+  color: var(--foreground);
+}
+
+.glass-offcanvas .nav-link {
+  color: var(--foreground) !important;
+  transition: all 0.3s ease;
+}
+
+.glass-offcanvas .nav-link:hover {
+  color: var(--primary) !important;
+  padding-left: 2rem;
 }
 
 input:-webkit-autofill,
@@ -129,4 +196,3 @@ textarea:-webkit-autofill::first-line {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.02);
 }
-

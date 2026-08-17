@@ -1,61 +1,71 @@
+"use client";
+
 import Link from "next/link";
-import { Row, Col, Card, Button } from "react-bootstrap";
-import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { Row, Col, Button } from "react-bootstrap";
+import { FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const ContactSection = () => {
   return (
-    <div
-      className="py-2 my-2"
-      style={{ backgroundColor: "#f8f9fa", minHeight: "60vh" }}
+    <motion.div
+      className="section-panel py-5 my-4 text-center contact-section"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
     >
-      <Row className="justify-content-center text-center">
-        <Col md={8}>
-          <h2 className="fw-bold mb-4">{"Let's Connect!"}</h2>
-          <p className="lead mb-4">
-            {
-              "I'm always open to collaborations, discussions, projects, or just a friendly chat!"
-            }{" "}
-          </p>
+      <div className="contact-content">
+        <motion.h2
+          className="display-5 fw-bold mb-3 text-gradient"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          Let&apos;s Connect!
+        </motion.h2>
 
-          <Row className="g-4 justify-content-center">
-            <Col xs={12} md={5}>
-              <Card className="shadow-sm border-0 h-100">
-                <Card.Body>
-                  <FaEnvelope size={32} className="text-primary mb-3" />
-                  <Card.Title>Email</Card.Title>
-                  <Card.Text>
-                    <a
-                      href="mailto:imsajjadali54@gmail.com"
-                      className="text-decoration-none"
-                    >
-                      imsajjadali54@gmail.com
-                    </a>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
+        <motion.p
+          className="lead mb-5 text-muted"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          I&apos;m always open to collaborations, discussions, projects, or just
+          a friendly chat!
+        </motion.p>
 
-            <Col xs={12} md={5}>
-              <Card className="shadow-sm border-0 h-100">
-                <Card.Body>
-                  <FaMapMarkerAlt size={32} className="text-danger mb-3" />
-                  <Card.Title>Location</Card.Title>
-                  <Card.Text>Karachi, Pakistan</Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+        <Row className="g-4 justify-content-center mb-5">
+          <Col xs={12} md={5}>
+            <motion.div
+              className="contact-card"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="contact-icon-wrapper">
+                <FaEnvelope size={32} />
+              </div>
+              <h4 className="mb-2">Email</h4>
+              <a href="mailto:imsajjadali54@gmail.com" className="contact-link">
+                imsajjadali54@gmail.com
+              </a>
+            </motion.div>
+          </Col>
+        </Row>
 
-          <div className="mt-4">
-            <Link href="/contact" passHref legacyBehavior>
-              <Button variant="primary" size="lg">
-                Get in Touch
-              </Button>
-            </Link>
-          </div>
-        </Col>
-      </Row>
-    </div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          <Link href="/contact" passHref legacyBehavior>
+            <Button className="btn-gradient px-5 py-3 rounded-pill fw-bold">
+              Get in Touch
+            </Button>
+          </Link>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

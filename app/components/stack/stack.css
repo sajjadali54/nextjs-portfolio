@@ -1,3 +1,7 @@
+.tech-stack-container {
+  padding: 0;
+}
+
 #tech-stack .card {
   transition:
     transform 0.3s ease,
@@ -18,41 +22,104 @@
 }
 
 .tech-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 1.4rem;
-  box-shadow: 0 16px 38px var(--shadow);
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 32px var(--shadow) !important;
+  backdrop-filter: blur(12px) !important;
+  transition:
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card.card {
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+.tech-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-soft);
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+.tech-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 48px var(--shadow);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+.tech-card:hover::before {
+  left: 0;
 }
 
 .tech-card .card-body {
   background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .card-text {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--foreground-soft);
 }
 
 .icon-wrapper {
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   display: grid;
   place-items: center;
-  border-radius: 1.1rem;
-  background: var(--gradient-soft);
-  border: 1px solid rgba(14, 165, 233, 0.12);
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-soft),
+    rgba(245, 158, 11, 0.12)
+  );
+  border: 1.5px solid rgba(14, 165, 233, 0.2);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 20px var(--primary-soft);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.tech-card:hover .icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.25);
 }
 
 .tech-icon {
-  color: var(--primary-strong);
+  color: var(--primary);
+  transition: transform 0.3s ease;
+  font-size: 2.4rem;
+}
+
+.tech-card:hover .tech-icon {
+  transform: scale(1.15);
 }
 
 .tech-item {
-  color: var(--foreground-soft);
+  color: var(--foreground);
+  font-weight: 500;
 }
