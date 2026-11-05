@@ -20,11 +20,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## Contact form
 
-The contact form uses a Formspree endpoint. Create a form with Formspree, then set
-`NEXT_PUBLIC_FORMSPREE_ENDPOINT` to its public form endpoint in `.env.local` and
-in the deployment environment. Do not put an API key or password in this
-variable. Until the endpoint is configured, the contact page shows a direct
-email option instead of presenting a nonfunctional form.
+The contact form uses a Formspree endpoint. Create a form with Formspree, then
+paste its public form endpoint after `NEXT_PUBLIC_FORMSPREE_ENDPOINT=` in the
+ignored local `.env` file and in the deployment environment. The endpoint is
+designed to be public; never put a private API key or password in a
+`NEXT_PUBLIC_` variable. Restart the dev server after changing `.env`. Until the
+endpoint is configured, the contact page shows a direct email option instead
+of presenting a nonfunctional form.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

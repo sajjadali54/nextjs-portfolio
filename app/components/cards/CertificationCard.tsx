@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Card from "react-bootstrap/Card";
-import { FiExternalLink } from "react-icons/fi";
-
+import Image from "react-bootstrap/Image";
+import { FiExternalLink, FiFileText } from "react-icons/fi";
 import "./certificationCard.css";
 
 interface Certification {
   src?: string;
   alt: string;
+  provider: string;
   url?: string;
 }
 
@@ -16,61 +16,45 @@ const CertificationCard: React.FC<{
   certification: Certification;
   className?: string;
 }> = ({ certification, className = "" }) => {
-  const isPdf = certification.url?.endsWith(".pdf");
+  const isPdf = certification.url?.split("?")[0].endsWith(".pdf");
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-      whileHover={{ scale: 1.02 }}
-      className={className}
-    >
-      <Card className="glass-card h-100 border-0 overflow-hidden shadow-lg">
-        {/* PDF/Image Preview */}
-        <div className="preview-container position-relative">
-          {isPdf ? (
-            <iframe
-              src={certification.url}
-              className="pdf-iframe"
-              title={certification.alt}
-            />
-          ) : (
-            <Card.Img
-              src={certification.src || "/placeholder.png"}
-              alt={certification.alt}
-              className="certification-image"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "/placeholder.png";
-              }}
-            />
-          )}
-          <div className="preview-overlay" />
-        </div>
+    <Card className={`certification-card h-100 ${className}`}>
+      <div className="certification-preview">
+        {isPdf ? (
+          <div className="certification-pdf-preview" aria-label="PDF certificate">
+            <FiFileText aria-hidden="true" />
+            <span>PDF certificate</span>
+          </div>
+        ) : (
+          <Image
+            src={certification.src || "/placeholder.png"}
+            alt={`Preview of ${certification.alt}`}
+            className="certification-image"
+            onError={(event) => {
+              event.currentTarget.src = "/placeholder.png";
+            }}
+          />
+        )}
+      </div>
 
-        {/* Card Content */}
-        <Card.Body className="d-flex flex-column align-items-center p-4">
-          <h3 className="text-gradient text-center mb-3">
-            {certification.alt}
-          </h3>
-
-          {certification.url && (
-            <motion.div whileHover={{ scale: 1.05 }} className="w-100">
-              <a
-                href={certification.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-gradient w-100 d-flex align-items-center justify-content-center gap-2"
-              >
-                <FiExternalLink />
-                View Certification
-              </a>
-            </motion.div>
-          )}
-        </Card.Body>
-      </Card>
-
-    </motion.div>
+      <Card.Body className="d-flex flex-column align-items-start p-4">
+        <span className="credential-provider">{certification.provider}</span>
+        <h3 className="certification-title h5 fw-bold mt-3 mb-4">
+          {certification.alt}
+        </h3>
+        {certification.url && (
+          <a
+            href={certification.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-primary mt-auto"
+          >
+            View credential <FiExternalLink aria-hidden="true" />
+          </a>
+        )}
+      </Card.Body>
+    </Card>
   );
 };
 

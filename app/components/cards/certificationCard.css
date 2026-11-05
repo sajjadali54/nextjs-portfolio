@@ -1,95 +1,79 @@
-.glass-card {
-  background: var(--card) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border) !important;
-  border-radius: 1.5rem !important;
-  box-shadow: 0 16px 40px var(--shadow) !important;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
+.certification-card {
   overflow: hidden;
+  color: var(--foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
-.glass-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--gradient-soft);
-  transition: left 0.3s ease;
-  z-index: 0;
+.certification-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 30px var(--shadow);
 }
 
-.glass-card:hover::before {
-  left: 0;
-}
-
-.glass-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(14, 165, 233, 0.3) !important;
-}
-
-.preview-container {
-  height: 250px;
+.certification-preview {
+  display: grid;
+  aspect-ratio: 16 / 10;
+  place-items: center;
   overflow: hidden;
-  position: relative;
+  padding: 0.75rem;
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--border);
 }
 
 .certification-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  filter: brightness(0.95);
+  object-fit: contain;
 }
 
-.glass-card:hover .certification-image {
-  transform: scale(1.05);
-  filter: brightness(1);
+.certification-pdf-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.pdf-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: var(--background);
+.certification-pdf-preview svg {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
-.preview-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.08));
+.credential-provider {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.7rem;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--foreground-soft);
+  background: var(--surface-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-.text-gradient {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.certification-title {
+  color: var(--foreground);
+  line-height: 1.4;
 }
 
-.btn-gradient {
-  background: var(--gradient) !important;
-  border: none !important;
-  color: white !important;
-  padding: 0.75rem 1.5rem !important;
-  border-radius: 0.75rem !important;
-  font-weight: 600 !important;
-  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.25) !important;
-  transition: all 0.3s ease !important;
+.certification-card .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
-.btn-gradient:hover {
-  filter: brightness(1.08) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.35) !important;
-  color: white !important;
-}
-
-.glass-card:hover .certification-image {
-  transform: scale(1.05);
+@media (prefers-reduced-motion: reduce) {
+  .certification-card {
+    transition: none;
+  }
 }

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import CertificationCard from "@/app/components/cards/CertificationCard";
 import { certifications } from "@data/certifications";
 import { Row, Col } from "react-bootstrap";
+import "./certifications.css";
 
 export const Certifications = () => {
   const containerVariants = {
@@ -21,24 +22,27 @@ export const Certifications = () => {
   };
 
   return (
-    <motion.div
-      className="certifications-container py-5"
+    <motion.section
+      className="certifications-container py-4"
+      aria-labelledby="certifications-heading"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <motion.div
+      <motion.header
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-5 text-center"
+        className="page-heading mb-4"
       >
-        <h2 className="text-gradient display-5 fw-bold mb-2">
-          Certifications & Credentials
+        <p className="about-eyebrow mb-2">Professional learning</p>
+        <h2 id="certifications-heading" className="h3 fw-bold mb-2">
+          Certificates and credentials
         </h2>
-        <p className="text-muted lead">
-          Professional credentials and certifications that showcase my expertise
+        <p className="text-muted mb-0">
+          Selected courses and verified credentials related to software
+          engineering, data, and computer science.
         </p>
-      </motion.div>
+      </motion.header>
 
       <motion.div
         variants={containerVariants}
@@ -46,35 +50,22 @@ export const Certifications = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "0px 0px -100px 0px" }}
       >
-        <Row className="g-4 justify-content-center">
-          {certifications.map((cert, index) => (
+        <Row className="g-3 g-lg-4">
+          {certifications.map((cert) => (
             <Col
-              key={index}
-              xl={3}
+              key={cert.url}
+              xl={4}
               lg={4}
               md={6}
               className="d-flex align-items-stretch"
             >
-              <motion.div variants={itemVariants} className="w-100 h-100">
+              <motion.div variants={itemVariants} className="w-100">
                 <CertificationCard certification={cert} className="h-100" />
               </motion.div>
             </Col>
           ))}
         </Row>
       </motion.div>
-
-      <style jsx global>{`
-        .certifications-container {
-          padding: 0 1rem;
-        }
-
-        .text-gradient {
-          background: var(--gradient);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      `}</style>
-    </motion.div>
+    </motion.section>
   );
 };
