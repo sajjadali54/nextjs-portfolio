@@ -21,7 +21,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 ## Contact form
 
 The contact form uses a Formspree endpoint. Create a form with Formspree, then
-paste its public form endpoint after `NEXT_PUBLIC_FORMSPREE_ENDPOINT=` in the
+paste its public form endpoint after `NEXT_FORMSPREE_ENDPOINT=` in the
 ignored local `.env` file and in the deployment environment. The endpoint is
 designed to be public; never put a private API key or password in a
 `NEXT_PUBLIC_` variable. Restart the dev server after changing `.env`. Until the

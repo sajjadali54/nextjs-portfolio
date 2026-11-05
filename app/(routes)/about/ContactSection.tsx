@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Row, Col } from "react-bootstrap";
-import { FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const ContactSection = () => {
@@ -24,33 +22,15 @@ const ContactSection = () => {
         </motion.h2>
 
         <motion.p
-          className="lead mb-5 text-muted"
+          className="lead mb-4 text-muted"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
           For software roles, project discussions, or technical collaboration,
-          send me a message or email.
+          send me a message.
         </motion.p>
-
-        <Row className="g-4 justify-content-center mb-5">
-          <Col xs={12} md={5}>
-            <motion.div
-              className="contact-card"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="contact-icon-wrapper">
-                <FaEnvelope size={32} />
-              </div>
-              <h4 className="mb-2">Email</h4>
-              <a href="mailto:imsajjadali54@gmail.com" className="contact-link">
-                imsajjadali54@gmail.com
-              </a>
-            </motion.div>
-          </Col>
-        </Row>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}

@@ -5,16 +5,9 @@ import {
   FaLinkedin,
   FaYoutube,
   FaDev,
-  FaEnvelope,
 } from "react-icons/fa";
 
 export const badges = [
-  {
-    href: "mailto:imsajjadali54@gmail.com",
-    icon: FaEnvelope,
-    label: "Email",
-    className: "text-dark text-decoration-none me-2",
-  },
   {
     href: "https://github.com/sajjadali54/",
     src: "https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white",

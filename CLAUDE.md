@@ -24,7 +24,7 @@
 - The confirmed portfolio positioning is senior software development for data-intensive financial and business workflows. Current public role facts are Senior Software Developer at Badri Solutions, Karachi, Pakistan; do not silently change these without Sajjad's confirmation.
 - Keep personal interests secondary to professional evidence. Add resume claims, especially numerical outcomes or employer-specific project details, only when they are accurate and appropriate to publish.
 - Resume files belong outside `public/` unless Sajjad explicitly selects a version for public download. The local `private-resumes/` directory is gitignored and must remain untracked.
-- The contact form uses Formspree only when `NEXT_PUBLIC_FORMSPREE_ENDPOINT` is configured. Do not report messages as sent if the endpoint is absent or the request fails.
+- The contact form uses Formspree only when `NEXT_FORMSPREE_ENDPOINT` is configured. Do not report messages as sent if the endpoint is absent or the request fails.
 - Avoid decorative purple/neon gradients, glassmorphism, oversized glow effects, excessive animation, and center-aligning long-form text. Prefer clear hierarchy, comfortable line lengths, concise copy, and consistent spacing.
 - Use the theme variables (`--background`, `--surface`, `--foreground`, `--muted`, `--border`, and `--primary`) instead of hard-coded colors.
 - Cards should prioritize readable titles and concise descriptions. Keep repeated cards landscape-oriented on wider screens and stack media/content naturally on small screens; avoid fixed-width layouts that cause horizontal scrolling.

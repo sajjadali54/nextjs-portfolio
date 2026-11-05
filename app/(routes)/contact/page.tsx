@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Container } from "react-bootstrap";
 import { FaEnvelope, FaPaperPlane, FaRegUser } from "react-icons/fa";
 
-const formEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+const formEndpoint = process.env.NEXT_FORMSPREE_ENDPOINT;
 
 const validationSchema = Yup.object({
   name: Yup.string().trim().required("Name is required").max(100),
@@ -32,7 +32,7 @@ export default function ContactPage() {
   ) => {
     if (!formEndpoint) {
       setStatus({
-        error: "The contact form is not configured yet. Please email me directly.",
+        error: "The contact form is temporarily unavailable. Please try again later.",
       });
       return;
     }
@@ -57,7 +57,7 @@ export default function ContactPage() {
       console.error("Unable to submit contact form:", error);
       setStatus({
         error:
-          "Your message could not be sent. Please try again or email me directly.",
+          "Your message could not be sent. Please try again later.",
       });
     }
   };
@@ -169,8 +169,7 @@ export default function ContactPage() {
 
                 {status?.error && (
                   <p className="text-danger" role="alert">
-                    {status.error}{" "}
-                    <a href="mailto:imsajjadali54@gmail.com">Email me</a>
+                    {status.error}
                   </p>
                 )}
                 {status?.success && (
@@ -191,18 +190,8 @@ export default function ContactPage() {
             )}
           </Formik>
         ) : (
-          <div role="status">
-            <p className="mb-2">
-              The contact form is being set up. You can still reach me by
-              email:
-            </p>
-            <a
-              href="mailto:imsajjadali54@gmail.com"
-              className="d-inline-flex align-items-center gap-2 fw-semibold"
-            >
-              <FaEnvelope aria-hidden="true" />
-              Email Sajjad
-            </a>
+          <div className="text-muted" role="status">
+            The contact form is temporarily unavailable. Please try again later.
           </div>
         )}
       </div>
