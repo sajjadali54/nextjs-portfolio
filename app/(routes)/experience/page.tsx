@@ -1,108 +1,88 @@
 "use client";
 
+import Link from "next/link";
+import { Container } from "react-bootstrap";
+import { motion } from "framer-motion";
+import Tags from "@components/Tags";
 import { jobs } from "@data/jobs";
 import styles from "./Experience.module.css";
-import MyCard from "@/app/components/Card";
-import { useMediaQuery } from "@/app/hooks";
-import { motion } from "framer-motion";
-import { FiBriefcase } from "react-icons/fi";
 
-function Experience() {
-  const isMobile = useMediaQuery();
+const formatDate = (date: string) =>
+  new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(date));
 
-  type JobType = (typeof jobs)[number];
-
-  const renderCard = (job: JobType, index: number) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-    >
-      <MyCard
-        key={index}
-        url={`/experience/${index}`}
-        image={job.image}
-        title={job.title}
-        subtitle={job.companyName}
-        description={job.subtitle}
-        tags={job.tags}
-        companyUrl={job.companyUrl}
-      />
-    </motion.div>
-  );
-
-  if (isMobile) {
-    return (
-      <div className="container py-5">
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-gradient text-center mb-4 fw-bold display-6"
-        >
-          Professional Journey
-        </motion.h3>
-        <div className="d-flex flex-column gap-4">
-          {jobs.map((job, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              {renderCard(job, index)}
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
+export default function Experience() {
   return (
-    <div className={`container py-5 ${styles.timelineContainer}`}>
-      <motion.h3
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="text-gradient text-center mb-5 fw-bold display-4 position-relative"
-      >
-        <div className={styles.titleLine}></div>
-        Professional Journey
-        <div className={styles.titleLine}></div>
-      </motion.h3>
+    <Container className="py-4 py-lg-5">
+      <header className="page-heading mb-5">
+        <p className="about-eyebrow mb-2">Experience</p>
+        <h1 className="display-5 fw-bold mb-3">Work and research</h1>
+        <p className="lead text-muted mb-0">
+          A chronological overview of the teams, products, and research I have
+          contributed to.
+        </p>
+      </header>
 
-      <div className={styles.timeline}>
-        <div className={styles.timelineLine}></div>
-
+      <ol className={styles.experienceList}>
         {jobs.map((job, index) => (
-          <motion.div
-            key={index}
-            className={`${styles.timelineItem} ${
-              index % 2 === 0 ? styles.left : styles.right
-            }`}
-            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            transition={{ duration: 0.5 }}
+          <motion.li
+            key={`${job.companyName}-${job.startDate}`}
+            className={styles.experienceItem}
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.06 }}
           >
-            <div className={styles.dateWrapper}>
-              <motion.div className={styles.date} whileHover={{ scale: 1.05 }}>
-                <FiBriefcase className={styles.dateIcon} />
-                {new Date(job.startDate).toDateString()} — {job.endDate ? new Date(job.endDate!).toDateString() : "Present"}
-              </motion.div>
-              <div className={styles.connector}></div>
-            </div>
+            <article className={`section-panel ${styles.experienceCard}`}>
+              <header className={styles.cardHeader}>
+                <div>
+                  <h2 className="h4 fw-bold mb-1">{job.title}</h2>
+                  {job.companyUrl ? (
+                    <a
+                      href={job.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.company}
+                    >
+                      {job.companyName}
+                    </a>
+                  ) : (
+                    <p className={`${styles.company} mb-0`}>
+                      {job.companyName}
+                    </p>
+                  )}
+                </div>
+                <p className={styles.date}>
+                  <time dateTime={job.startDate}>{formatDate(job.startDate)}</time>
+                  {" — "}
+                  {job.endDate ? (
+                    <time dateTime={job.endDate}>{formatDate(job.endDate)}</time>
+                  ) : (
+                    "Present"
+                  )}
+                </p>
+              </header>
 
-            <motion.div
-              className={styles.cardWrapper}
-              whileHover={{ scale: 1.02 }}
-            >
-              {renderCard(job, index)}
-              <div className={styles.timelineDot}></div>
-            </motion.div>
-          </motion.div>
+              <p className="text-muted mt-3 mb-3">{job.subtitle}</p>
+              <ul className={styles.contributions}>
+                {job.duties.slice(0, 2).map((duty) => (
+                  <li key={duty}>{duty}</li>
+                ))}
+              </ul>
+
+              {job.tags.length > 0 && (
+                <Tags tags={job.tags.slice(0, 5)} className="mt-3" />
+              )}
+              <Link href={`/experience/${index}`} className={styles.detailsLink}>
+                Role details <span aria-hidden="true">→</span>
+              </Link>
+            </article>
+          </motion.li>
         ))}
-      </div>
-    </div>
+      </ol>
+    </Container>
   );
 }
-
-export default Experience;

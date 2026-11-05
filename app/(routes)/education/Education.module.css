@@ -1,0 +1,51 @@
+.educationList {
+  display: grid;
+  gap: 1rem;
+}
+
+.educationEntry {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.28fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.date {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding-top: 0.2rem;
+}
+
+.institution {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.institution:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
+}
+
+.detailsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.detailsLink:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
+}
+
+@media (max-width: 575.98px) {
+  .educationEntry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.55rem;
+  }
+}

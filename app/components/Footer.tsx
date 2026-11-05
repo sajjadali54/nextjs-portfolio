@@ -12,6 +12,7 @@ interface BadgeProps {
   href: string;
   icon: IconType;
   className: string;
+  label: string;
 }
 
 const MyFooter = ({ badges }: { badges: BadgeProps[] }) => {
@@ -37,59 +38,41 @@ const MyFooter = ({ badges }: { badges: BadgeProps[] }) => {
       className="glass-footer py-5"
     >
       <Container>
-        <Row className="align-items-center text-center g-5">
-          {/* Social Links */}
-          <Col className="order-md-1 order-2">
+        <Row className="align-items-center text-center g-3">
+          <Col>
             <motion.div variants={itemVariants}>
-              <h5 className="text-gradient mb-4">{"Let's Connect"}</h5>
+              <h2 className="h5 mb-4">Let&apos;s connect</h2>
               <div className="d-flex justify-content-center gap-3">
-                {badges.map((badge, index) => (
+                {badges.map((badge) => (
                   <motion.a
-                    key={index}
+                    key={badge.href}
                     href={badge.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={
+                      badge.href.startsWith("mailto:") ? undefined : "_blank"
+                    }
+                    rel={
+                      badge.href.startsWith("mailto:")
+                        ? undefined
+                        : "noopener noreferrer"
+                    }
                     className="social-icon"
+                    aria-label={badge.label}
+                    title={badge.label}
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.9 }}
                     variants={itemVariants}
                   >
-                    {<badge.icon size={28} />}
+                    <badge.icon size={22} aria-hidden="true" />
                   </motion.a>
                 ))}
               </div>
             </motion.div>
           </Col>
-
-          {/* Inspiration Quote */}
-          {/* <Col md={6} className="order-md-2 order-1">
-            <motion.div variants={itemVariants}>
-              <h5 className="text-gradient mb-4">Stay Inspired</h5>
-              <motion.div
-                className="quote-box p-4 rounded-4"
-                whileHover={{ scale: 1.02 }}
-              >
-                <p className="mb-0 fst-italic">
-                  {"Code is like humor. When you have to explain it, it's bad."}
-                </p>
-              </motion.div>
-            </motion.div>
-          </Col> */}
         </Row>
 
-        {/* Copyright */}
-        {/* <Row className="mt-5">
-          <Col>
-            <motion.div
-              variants={itemVariants}
-              className="text-center text-muted small"
-            >
-              © {new Date().getFullYear()} Sajjad Ali. Made with
-              <FiHeart className="mx-1 text-danger" />
-              All Rights Reserved.
-            </motion.div>
-          </Col>
-        </Row> */}
+        <div className="text-center text-muted small mt-4">
+          © {new Date().getFullYear()} Sajjad Ali
+        </div>
       </Container>
     </motion.footer>
   );

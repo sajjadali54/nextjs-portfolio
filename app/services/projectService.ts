@@ -1,69 +1,23 @@
-// import { Project } from "@prisma/client";
-
 import { projects } from "@data/projects";
-
 import { Project } from "@types";
 
-// import axios from "axios";
+export const fetchProjects = async () => projects;
 
-// const url = "/api/projects";
+export const fetchProjectById = async (id: string) =>
+  projects.find((project) => project.id === id);
 
-export const fetchProjects = async () => {
-  // try {
-  //   const response = await axios.get(url);
-  //   if (!response!.data!.data) return [];
-  //   return response.data.data;
-  // } catch (error) {
-  //   console.error("Error fetching projects:", error);
-  //   return [];
-  // }
-
-  return projects;
+export const createProject = async (_project: Project): Promise<boolean> => {
+  void _project;
+  throw new Error("Project creation is unavailable: no project API is configured.");
 };
 
-export const fetchProjectById = async (id: string) => {
-  // try {
-  //   const response = await axios.get(`${url}/${id}`);
-  //   return response.data.data;
-  // } catch (error) {
-  //   console.error("Error fetching project:", error);
-  //   return null;
-  // }
-  return projects.find((project) => project.id === id);
+export const updateProject = async (_id: string, _updatedProject: Project) => {
+  void _id;
+  void _updatedProject;
+  throw new Error("Project updates are unavailable: no project API is configured.");
 };
 
-export const createProject = async (project: Project): Promise<boolean> => {
-  console.log("New project data:", project);
-  // try {
-  //   await axios.post(url, project);
-  //   return true;
-  // } catch (error) {
-  //   console.error("Error creating project:", error);
-  //   return false;
-  // }
-
-  return true;
-};
-
-export const updateProject = async (id: string, updatedProject: object) => {
-  console.log("Updated project data:", id, updatedProject);
-  // try {
-  //   await axios.put(`/api/projects/${id}`, updatedProject);
-  //   return true;
-  // } catch (error) {
-  //   console.error("Error updating project:", error);
-  //   return false;
-  // }
-
-  return true;
-};
-
-export const deleteProjectById = async (id: string) => {
-  console.log("Deleting project:", id);
-  // try {
-  //   await axios.delete(url, { data: { id } });
-  // } catch (error) {
-  //   console.error("Error deleting project:", error);
-  // }
-  return true;
+export const deleteProjectById = async (_id: string) => {
+  void _id;
+  throw new Error("Project deletion is unavailable: no project API is configured.");
 };

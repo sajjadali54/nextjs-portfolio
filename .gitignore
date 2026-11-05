@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# local resume documents
+/private-resumes/
+
 # production
 .env
 /build

@@ -1,22 +1,15 @@
 import slice from "lodash/slice";
 
 
-export const getDiffMonths = (startDate: string, endDate?: string, organization: string = "") => {
+export const getDiffMonths = (startDate: string, endDate?: string) => {
   const start = new Date(startDate);
   const end = endDate ? new Date(endDate) : new Date();
   
-  let months = (end.getFullYear() - start.getFullYear()) * 12; 
-  months -= start.getMonth();  
-  months += end.getMonth(); 
+  let months = (end.getUTCFullYear() - start.getUTCFullYear()) * 12;
+  months -= start.getUTCMonth();
+  months += end.getUTCMonth();
 
-  months += 1
-
-  console.log("Organization:", organization);
-  console.log("Start Date:", start);
-  console.log("End Date:", end);
-  console.log("Months:", months);
-
-  console.log()
+  months += 1;
   return months;
 };
 
@@ -36,21 +29,12 @@ export function formatExperience(years: number, months: number) {
   }
 }
 
-export function calculateExperience(startDate: string, endDate: string) {
-  const start = new Date(startDate);
-  const end = endDate ? new Date(endDate) : new Date(); // If no end date, use the current date
-  const diffInMs = end.getTime() - start.getTime();
-  const diffInMonths = Math.ceil(diffInMs / (1000 * 60 * 60 * 24 * 30)); // Approximate months
-  const years = Math.floor(diffInMonths / 12);
-  const months = diffInMonths % 12;
-
-  if (years > 0) {
-    return `${years} year${years > 1 ? "s" : ""}${
-      months > 0 ? ` and ${months} month${months > 1 ? "s" : ""}` : ""
-    }`;
-  } else {
-    return `${months} month${months > 1 ? "s" : ""}`;
-  }
+export function calculateExperience(startDate: string, endDate?: string) {
+  const totalMonths = getDiffMonths(startDate, endDate);
+  return formatExperience(
+    Math.floor(totalMonths / 12),
+    totalMonths % 12,
+  );
 }
 
 /**
@@ -72,9 +56,7 @@ export function paginate<T>(
 
   const startIndex = (pageNumber - 1) * pageSize;
 
-  if (startIndex >= items.length) {
-    return items;
-  }
+  if (startIndex >= items.length) return [];
 
   return slice(items, startIndex, startIndex + pageSize);
 }

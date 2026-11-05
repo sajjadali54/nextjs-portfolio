@@ -13,8 +13,6 @@ import projects from "./data/projects";
 
 import { useMediaQuery } from "./hooks";
 
-import "./globals.css";
-
 import HeroSection from "./components/home/hero";
 
 export default function Home() {
@@ -31,16 +29,23 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="section-panel tech-stack-section text-center mb-4">
+          <div className="section-panel projects-section text-center mb-4">
             <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
-              <GoStack className="tech-stack-icon" />
-              <h2 className="text-gradient mb-0">Tech Stack</h2>
+              <GoPackage className="projects-icon" />
+              <h2 className="text-gradient mb-0">Selected projects</h2>
             </div>
 
-            <Row className="g-4 align-items-center">
-              <Col>
-                <TechStack techItems={techItems} isMobile={isMobile} />
-              </Col>
+            <p className="lead text-muted mb-4">
+              A few projects that show how I approach product development and
+              data-intensive workflows.
+            </p>
+
+            <Row className="g-4 justify-content-center">
+              {firstThreeProjects.map((project, index) => (
+                <Col key={project.id || index} className="mb-3">
+                  <ProjectCard project={project} />
+                </Col>
+              ))}
             </Row>
           </div>
         </motion.div>
@@ -52,23 +57,16 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <div className="section-panel projects-section text-center mb-4">
+          <div className="section-panel tech-stack-section text-center mb-4">
             <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
-              <GoPackage className="projects-icon" />
-              <h2 className="text-gradient mb-0">Some of my projects</h2>
+              <GoStack className="tech-stack-icon" />
+              <h2 className="text-gradient mb-0">Tools I use</h2>
             </div>
 
-            <p className="lead text-muted mb-4">
-              Here are some of the projects {"I've"} worked on. You can find
-              more on my GitHub page.
-            </p>
-
-            <Row className="g-4 justify-content-center">
-              {firstThreeProjects.map((project, index) => (
-                <Col key={index} className="mb-3">
-                  <ProjectCard project={project} />
-                </Col>
-              ))}
+            <Row className="g-4 align-items-center">
+              <Col>
+                <TechStack techItems={techItems} isMobile={isMobile} />
+              </Col>
             </Row>
           </div>
         </motion.div>

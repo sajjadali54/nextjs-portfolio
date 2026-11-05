@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -15,12 +16,12 @@ import { routes, navLinks } from "@data/routes";
 const NavBar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const pathname = usePathname();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("portfolio-theme") as
-      | "light"
-      | "dark"
-      | null;
+    const storedTheme = localStorage.getItem("portfolio-theme");
+    const savedTheme =
+      storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)",
     ).matches;
@@ -86,6 +87,8 @@ const NavBar = () => {
             <Button
               variant="link"
               className="d-lg-none p-0 menu-toggle"
+              aria-label="Open navigation menu"
+              aria-expanded={showDrawer}
               onClick={() => setShowDrawer(true)}
             >
               <FiMenu size={24} />
@@ -102,7 +105,12 @@ const NavBar = () => {
                   variants={linkVariants}
                 >
                   <Link href={href} passHref legacyBehavior>
-                    <Nav.Link className="nav-link" onClick={onClick}>
+                    <Nav.Link
+                      className="nav-link"
+                      active={pathname === href}
+                      aria-current={pathname === href ? "page" : undefined}
+                      onClick={onClick}
+                    >
                       {label}
                     </Nav.Link>
                   </Link>
@@ -127,6 +135,7 @@ const NavBar = () => {
             variant="link"
             onClick={() => setShowDrawer(false)}
             className="p-0 menu-close"
+            aria-label="Close navigation menu"
           >
             <FiX size={24} />
           </Button>
@@ -143,6 +152,8 @@ const NavBar = () => {
                 <Link href={href} passHref legacyBehavior>
                   <Nav.Link
                     className="nav-link"
+                    active={pathname === href}
+                    aria-current={pathname === href ? "page" : undefined}
                     onClick={() => {
                       setShowDrawer(false);
                       if (onClick) onClick();
@@ -166,24 +177,16 @@ const NavBar = () => {
 
       <style jsx global>{`
         .glass-navbar {
-          position: sticky;
-          top: 0;
-          z-index: 1030;
-          background: rgba(255, 255, 255, 0.72);
-          backdrop-filter: blur(14px);
-          border-bottom: 1px solid var(--border);
-          box-shadow: 0 8px 30px var(--shadow);
-        }
-
-        html[data-theme="dark"] .glass-navbar,
-        :root:not([data-theme="light"]) .glass-navbar {
-          background: rgba(15, 23, 42, 0.72);
+          background: color-mix(in srgb, var(--surface-strong) 94%, transparent);
         }
 
         .glass-offcanvas {
           background: var(--surface-strong);
           color: var(--foreground);
-          backdrop-filter: blur(10px);
+        }
+
+        .mobile-theme-toggle {
+          width: 100%;
         }
 
         .logo-container {
@@ -194,15 +197,14 @@ const NavBar = () => {
         .logo-img {
           border-radius: 50%;
           border: 2px solid transparent;
-          transition: all 0.3s ease;
-          box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
+          box-shadow: 0 0 0 2px var(--primary-soft);
         }
 
         .logo-container::before {
           content: "";
           position: absolute;
           inset: -2px;
-          background: var(--gradient);
+          background: var(--primary);
           border-radius: 50%;
           z-index: -1;
           opacity: 0;
@@ -227,11 +229,12 @@ const NavBar = () => {
           left: 0;
           width: 0;
           height: 2px;
-          background: var(--gradient);
+          background: var(--primary);
           transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after {
+        .nav-link:hover::after,
+        .nav-link.active::after {
           width: 100%;
         }
 
@@ -240,9 +243,8 @@ const NavBar = () => {
         .menu-close {
           border: 1px solid var(--border);
           color: var(--foreground-soft);
-          background: rgba(255, 255, 255, 0.08);
+          background: var(--surface);
           border-radius: 999px;
-          transition: all 0.3s ease;
         }
 
         .theme-toggle:hover,
@@ -258,12 +260,6 @@ const NavBar = () => {
           justify-content: center;
         }
 
-        .text-gradient {
-          background: var(--gradient);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
       `}</style>
     </motion.nav>
   );

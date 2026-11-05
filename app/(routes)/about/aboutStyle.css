@@ -7,10 +7,53 @@
 }
 
 .text-gradient {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--primary);
+}
+
+.about-title {
+  max-width: 46rem;
+  color: var(--foreground);
+  font-size: clamp(2.2rem, 5vw, 3.7rem);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.about-intro {
+  max-width: 43rem;
+  color: var(--foreground-soft);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.about-portrait {
+  border: 5px solid var(--surface-strong);
+  object-fit: cover;
+  box-shadow: 0 16px 36px var(--shadow);
+}
+
+.about-focus-card {
+  padding: 1.35rem;
+}
+
+.about-focus-icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--primary);
+  background: var(--primary-soft);
+  font-size: 1.25rem;
+}
+
+.about-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .profile-image-wrapper {
@@ -26,15 +69,7 @@
 }
 
 .profile-glow {
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  right: -12px;
-  bottom: -12px;
-  background: var(--gradient-soft);
-  border-radius: 50%;
-  filter: blur(26px);
-  z-index: 0;
+  display: none;
 }
 
 .about-card {
@@ -47,23 +82,11 @@
 }
 
 .about-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--gradient-soft);
-  transition: left 0.3s ease;
-  z-index: 0;
+  content: none;
 }
 
 .about-card:hover {
-  transform: translateY(-8px);
-}
-
-.about-card:hover::before {
-  left: 0;
+  transform: translateY(-2px);
 }
 
 .about-card .card-body {
@@ -73,52 +96,27 @@
 
 .glass-card {
   background: var(--card);
-  backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-  border-radius: 1.25rem;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 18px 40px var(--shadow);
-}
-
-.glass-card:hover {
-  transform: translateY(-5px);
+  border-radius: 0.85rem;
+  box-shadow: 0 8px 22px var(--shadow);
 }
 
 .icon-wrapper {
   width: 56px;
   height: 56px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-soft),
-    rgba(245, 158, 11, 0.12)
-  );
-  border: 1.5px solid rgba(14, 165, 233, 0.2);
-  border-radius: 14px;
+  background: var(--primary-soft);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  box-shadow: 0 8px 20px var(--primary-soft);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.about-card:hover .icon-wrapper {
-  transform: scale(1.1) rotate(-5deg);
-  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.3);
+  box-shadow: none;
 }
 
 .section-icon {
   color: var(--primary);
   font-size: 1.5rem;
-  transition: transform 0.3s ease;
-}
-
-.about-card:hover .section-icon {
-  transform: scale(1.15);
 }
 
 .tech-tags {
@@ -132,17 +130,9 @@
   color: var(--primary);
   padding: 0.4rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid rgba(14, 165, 233, 0.2);
+  border: 1px solid var(--border);
   font-size: 0.85em;
   font-weight: 600;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.tech-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
 }
 
 .travel-badges {
@@ -199,27 +189,13 @@
 
 .creative-item {
   padding: 0.7rem;
-  background: linear-gradient(
-    135deg,
-    var(--primary-soft),
-    rgba(245, 158, 11, 0.08)
-  );
+  background: var(--surface-soft);
   color: var(--primary);
-  border: 1.5px solid rgba(14, 165, 233, 0.2);
-  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
   text-align: center;
   font-weight: 600;
   font-size: 0.9rem;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.creative-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.15);
-  border-color: rgba(14, 165, 233, 0.4);
 }
 
 .contact-section {
@@ -246,29 +222,24 @@
 
 .contact-card:hover {
   background: var(--surface-soft);
-  border-color: rgba(14, 165, 233, 0.3);
+  border-color: var(--primary);
   box-shadow: 0 12px 32px var(--shadow);
 }
 
 .contact-icon-wrapper {
   width: 70px;
   height: 70px;
-  background: var(--gradient);
-  border-radius: 14px;
+  background: var(--primary);
+  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
+  box-shadow: none;
   color: white;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-}
-
-.contact-card:hover .contact-icon-wrapper {
-  transform: scale(1.12);
-  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.35);
 }
 
 .contact-link {
@@ -286,19 +257,20 @@
 }
 
 .btn-gradient {
-  background: var(--gradient) !important;
-  border: none !important;
+  background: var(--primary) !important;
+  border: 1px solid var(--primary) !important;
   color: #fff !important;
-  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.25);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    filter 0.3s ease;
+  box-shadow: none;
   font-size: 1.05rem;
 }
 
 .btn-gradient:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(14, 165, 233, 0.35);
+  background: var(--primary-strong) !important;
+  border-color: var(--primary-strong) !important;
+}
+
+@media (max-width: 767.98px) {
+  .about-title {
+    letter-spacing: -0.035em;
+  }
 }

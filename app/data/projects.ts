@@ -3,7 +3,7 @@ export const projects = [
     id: "19",
     title: "Portfolio Website",
     description:
-      "A responsive and interactive portfolio website showcasing my skills, projects, and experiences.",
+      "A personal portfolio built with Next.js to present selected projects, experience, education, and writing.",
     live: "https://imsajjadali.netlify.app/",
     clone_url: "https://github.com/SajjadAli54/sajjadali",
     image: "https://sajjadali.netlify.app/assets/logo-D6i5nxaC.png",
@@ -26,7 +26,7 @@ export const projects = [
     id: "18",
     title: "Benchmarking Tool",
     description:
-      "A cutting-edge benchmarking tool for insurance companies, providing a user-friendly interface and advanced features such as Business Mix Analysis and Tarrif Rates for efficient comparison and decision-making.",
+      "A benchmarking tool for insurance companies, with business-mix analysis and tariff-rate comparisons.",
     language: "Python",
     topics: [
       "Fast API",
@@ -48,7 +48,7 @@ export const projects = [
     id: "17",
     title: "IFRS 17 Models: GMM and VFA",
     description:
-      "Python desktop application for IFRS 17 insurance models with GMM and VFA calculations, built with Excel Wings and PySide6 for efficient performance with large datasets.",
+      "A Python desktop application for IFRS 17 GMM and VFA calculations, built with PySide6 and Excel Wings for large datasets.",
     language: "Python",
     topics: ["PyQt", "PyQt Designer", "IFRS 17", "GMM", "VFA", "Excel Wings"],
     clone_url: "",
@@ -62,7 +62,7 @@ export const projects = [
     id: "16",
     title: "Flash Driving App",
     description:
-      "A Kotlin-based ride-hailing app featuring driver and customer interfaces, Google Maps integration, and secure Google Pay transactions",
+      "A Kotlin ride-hailing app with driver and customer interfaces, Google Maps integration, and Google Pay.",
     language: "Kotlin",
     topics: ["Android", "Android Studio", "EDrive", "Firebase", "Google Maps"],
     clone_url: "https://github.com/SajjadAli54/flash-app",
@@ -76,7 +76,7 @@ export const projects = [
     id: "15",
     title: "Email Sender",
     description:
-      "A Python-based desktop email sender, developed using PyQt with SMTP integration for efficient email delivery.",
+      "A PyQt desktop email client that sends messages through SMTP.",
     language: "Python",
     topics: ["PyQt", "PyQT Designer", "SMTP", "Python GUI", "CSS"],
     clone_url:
@@ -91,7 +91,7 @@ export const projects = [
     id: "14",
     title: "Currency Converter",
     description:
-      "A powerful desktop app built with Python and PyQt, featuring real-time currency conversion using an exchange rates API.",
+      "A Python and PyQt desktop app for currency conversion using an exchange-rates API.",
     language: "Python",
     topics: ["PyQT", "PyQt Designer", "Currency Exchange"],
     clone_url:
@@ -106,7 +106,7 @@ export const projects = [
     id: "13",
     title: "Android Weather App",
     description:
-      "A Flutter-based Android Weather App leveraging the OpenWeather API for real-time weather updates",
+      "A Flutter weather app for Android that retrieves current conditions from the OpenWeather API.",
     language: "Dart",
     topics: [
       "Flutter",
@@ -127,7 +127,7 @@ export const projects = [
     id: "12",
     title: "Android Chatbot",
     description:
-      "An AI-powered chatbot built with Kotlin and BrainShop API, delivering a seamless conversational experience.",
+      "A Kotlin Android chatbot that connects to the BrainShop API.",
     language: "Kotlin",
     topics: ["Android", "Android Studio", "Brainshop API", "AI Chatbot"],
     clone_url: "https://github.com/SajjadAli54/chatbot",
@@ -141,7 +141,7 @@ export const projects = [
     id: "11",
     title: "Issue Tracker",
     description:
-      "A Next.js-based full-stack issue tracking system with a MySQL database powered by Prisma ORM",
+      "A Next.js issue tracker backed by MySQL and Prisma.",
     language: "JavaScript",
     topics: [
       "nextjs",
@@ -164,7 +164,7 @@ export const projects = [
     id: "10",
     title: "Mini PayPal",
     description:
-      "A Django-based secure payment platform that enables users to make, request, and receive payments",
+      "A Django payment app for sending, requesting, and receiving payments.",
     language: "Python",
     topics: ["Django", "sqlite", "Django orm", "bootstrap", "Payment"],
     clone_url: "https://github.com/SajjadAli54/django-mini-paypal",
@@ -178,7 +178,7 @@ export const projects = [
     id: "9",
     title: "QRCode Generator API",
     description:
-      "A RESTful API built with Node.js and Express.js for generating and managing QR codes",
+      "A Node.js and Express API for generating and managing QR codes.",
     language: "JavaScript",
     topics: ["NodeJs", "qrcode", "express", "RESTFul API"],
     clone_url: "https://github.com/SajjadAli54/QRCode",

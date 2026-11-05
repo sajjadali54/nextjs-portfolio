@@ -38,7 +38,7 @@ function ExperienceCard({
   icon = <FiBriefcase />,
 }: Props) {
   const isJob = type === "job";
-  const experience = isJob ? calculateExperience(startDate, endDate!) : null;
+  const experience = isJob ? calculateExperience(startDate, endDate) : null;
 
   return (
     <motion.div
@@ -62,7 +62,19 @@ function ExperienceCard({
                   className="date-badge d-flex align-items-center gap-2"
                 >
                   <FiCalendar />
-                  {new Date(startDate).toString()} — {new Date(endDate!).toString() || "Present"}
+                  {new Date(startDate).toLocaleDateString("en-US", {
+                    month: "short",
+                    year: "numeric",
+                    timeZone: "UTC",
+                  })}{" "}
+                  —{" "}
+                  {endDate
+                    ? new Date(endDate).toLocaleDateString("en-US", {
+                        month: "short",
+                        year: "numeric",
+                        timeZone: "UTC",
+                      })
+                    : "Present"}
                 </motion.div>
               </div>
 

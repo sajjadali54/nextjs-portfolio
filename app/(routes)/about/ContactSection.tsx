@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -20,7 +20,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Let&apos;s Connect!
+          Get in touch
         </motion.h2>
 
         <motion.p
@@ -30,8 +30,8 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          I&apos;m always open to collaborations, discussions, projects, or just
-          a friendly chat!
+          For software roles, project discussions, or technical collaboration,
+          send me a message or email.
         </motion.p>
 
         <Row className="g-4 justify-content-center mb-5">
@@ -58,10 +58,11 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <Link href="/contact" passHref legacyBehavior>
-            <Button className="btn-gradient px-5 py-3 rounded-pill fw-bold">
-              Get in Touch
-            </Button>
+          <Link
+            href="/contact"
+            className="btn btn-primary px-4 py-3 fw-semibold"
+          >
+            Send a message
           </Link>
         </motion.div>
       </div>

@@ -20,24 +20,60 @@ const SyntaxHighlighter = dynamic(
 
 const BlogPost = () => {
   const [blog, setBlog] = useState<Post | null>(null);
-  const params = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const params = useParams<{ id: string }>();
   const postId = params.id;
   const url = "https://dev.to/api/articles/";
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchBlogPost = async () => {
+      setLoading(true);
+      setError("");
       try {
-        const response = await fetch(`${url}${postId}`);
-        const data = await response.json();
+        const response = await fetch(`${url}${postId}`, {
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`DEV returned ${response.status}`);
+        const data: Post = await response.json();
+        if (
+          !data ||
+          typeof data.title !== "string" ||
+          typeof data.body_markdown !== "string"
+        ) {
+          throw new Error("DEV returned an invalid article.");
+        }
         setBlog(data);
-      } catch (error) {
-        console.error("Error fetching blog post:", error);
+      } catch (requestError) {
+        if (
+          requestError instanceof Error &&
+          requestError.name === "AbortError"
+        ) {
+          return;
+        }
+        console.error("Error fetching blog post:", requestError);
+        setError("This article could not be loaded. It may have been removed.");
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
     };
     fetchBlogPost();
+    return () => controller.abort();
   }, [postId]);
 
-  if (!blog) return <Loader />;
+  if (loading) return <Loader />;
+
+  if (error || !blog) {
+    return (
+      <div className="empty-state text-center" role="alert">
+        <FiGlobe className="empty-icon mb-3" />
+        <h1 className="h4">Article unavailable</h1>
+        <p className="text-muted">{error || "This article could not be found."}</p>
+        <BackLink link="/blogs" page="Blogs" />
+      </div>
+    );
+  }
 
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },

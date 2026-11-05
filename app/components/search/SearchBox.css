@@ -5,28 +5,26 @@
 
 .search-icon {
   position: absolute;
-  left: 1.5rem;
+  left: 1.1rem;
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted);
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   z-index: 2;
 }
 
 .search-input {
-  width: 100%;
-  padding: 1.2rem 1.5rem 1.2rem 3.5rem;
-  font-size: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 1.2rem;
-  background: var(--card-elevated);
-  color: var(--foreground);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 24px var(--shadow);
-  transition: all 0.3s ease;
   position: relative;
   z-index: 1;
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 3rem;
+  color: var(--foreground);
+  background: var(--card-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .search-input::placeholder {
@@ -35,8 +33,8 @@
 
 .search-input:focus {
   outline: none;
-  border-color: rgba(14, 165, 233, 0.45);
-  box-shadow: 0 12px 28px rgba(14, 165, 233, 0.12);
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
 }
 
 .search-input:focus + .input-highlight {
@@ -45,16 +43,9 @@
 
 .search-input:focus ~ .search-icon {
   color: var(--primary);
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .input-highlight {
-  position: absolute;
-  inset: 0;
-  border-radius: 1.2rem;
-  background: var(--gradient-soft);
-  filter: blur(12px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 0;
+  display: none;
 }

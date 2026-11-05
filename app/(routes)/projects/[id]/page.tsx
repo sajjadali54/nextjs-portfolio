@@ -112,25 +112,26 @@ export default function EditProjectForm() {
     setErrorMessage("");
     setSuccessMessage("");
 
-    console.log("Updated project data:", id, values);
-    if (!id) return;
-    let valId;
-    if (id instanceof Array) valId = id[0]!;
-    else valId = id;
+    try {
+      if (!id) throw new Error("Project ID is missing.");
+      const projectId = Array.isArray(id) ? id[0] : id;
+      await updateProject(projectId, values);
+      setSuccessMessage("Project updated successfully!");
 
-    const res = await updateProject(valId, values);
-    if (!res) {
+      setTimeout(() => {
+        router.push("/projects");
+        setSelectedTopics([]);
+      }, 2000);
+    } catch (error) {
+      console.error("Error updating project:", error);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Failed to update project. Please try again.",
+      );
+    } finally {
       setLoading(false);
-      setErrorMessage("Failed to update project. Please try again.");
-      return;
     }
-    setLoading(false);
-    setSuccessMessage("Project updated successfully!");
-
-    setTimeout(() => {
-      router.push("/projects");
-      setSelectedTopics([]);
-    }, 2000);
   };
 
   return (

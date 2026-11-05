@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 import Tags from "@components/Tags";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import { FiLink } from "react-icons/fi";
+import { FiArrowUpRight, FiLink } from "react-icons/fi";
 
-import "./card.css"
+import "./card.css";
 
 interface MyCardProps {
   image?: string;
@@ -20,7 +21,7 @@ interface MyCardProps {
 }
 
 const MyCard: React.FC<MyCardProps> = ({
-  image = "/placeholder.png",
+  image = "/logo.png",
   title,
   subtitle,
   url,
@@ -28,92 +29,72 @@ const MyCard: React.FC<MyCardProps> = ({
   description,
   tags = [],
   className,
-}) => {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-    hover: { scale: 1.02 },
-  };
+}) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+    className={className}
+  >
+    <Card className="journey-card h-100">
+      <div className="journey-card-media">
+        <Image
+          src={image}
+          alt=""
+          className="journey-card-image"
+          onError={(event) => {
+            event.currentTarget.src = "/logo.png";
+          }}
+        />
+      </div>
 
-  return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      whileHover="hover"
-      variants={cardVariants}
-      transition={{ duration: 0.3 }}
-      className={className}
-    >
-      <Card
-        className="h-100 border-0 shadow-lg overflow-hidden glass-card"
-        style={{ borderRadius: "1.5rem" }}
-      >
-        <div className="image-container">
-          <Card.Img
-            src={image}
-            alt={title}
-            className="card-image"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = "/placeholder.png";
-            }}
-          />
-          <div className="image-gradient-overlay" />
-          <div className="card-header-content">
-            {companyUrl && (
-              <a
-                href={companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="company-link"
-              >
-                <FiLink className="link-icon" />
-                {subtitle}
-              </a>
-            )}
-            <Card.Title className="text-white mb-0">{title}</Card.Title>
-          </div>
-        </div>
+      <div className="journey-card-content">
+        <Card.Body className="d-flex flex-column p-4">
+          {subtitle && (
+            <Card.Subtitle className="journey-card-subtitle mb-2">
+              {companyUrl ? (
+                <a
+                  href={companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="company-link"
+                >
+                  <FiLink aria-hidden="true" />
+                  {subtitle}
+                </a>
+              ) : (
+                subtitle
+              )}
+            </Card.Subtitle>
+          )}
 
-        <Card.Body className="d-flex flex-column">
+          <Card.Title className="journey-card-title mb-2">
+            {title}
+          </Card.Title>
+
           {description && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Card.Text className="text-muted mb-3">{description}</Card.Text>
-            </motion.div>
+            <Card.Text className="journey-card-description text-muted mb-3">
+              {description}
+            </Card.Text>
           )}
 
           {tags.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Tags tags={tags} />
-            </motion.div>
+            <div className="mt-auto">
+              <Tags tags={tags.slice(0, 5)} />
+            </div>
           )}
         </Card.Body>
 
         {url && (
-          <Card.Footer className="bg-transparent border-0">
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <a
-                href={url}
-                rel="noopener noreferrer"
-                className="btn btn-primary w-100 btn-gradient"
-              >
-                <FaExternalLinkAlt className="me-2" />
-                Read More
-              </a>
-            </motion.div>
+          <Card.Footer className="journey-card-footer">
+            <Link href={url} className="btn btn-outline-secondary">
+              View details <FiArrowUpRight aria-hidden="true" />
+            </Link>
           </Card.Footer>
         )}
-      </Card>
-
-    </motion.div>
-  );
-};
+      </div>
+    </Card>
+  </motion.div>
+);
 
 export default MyCard;

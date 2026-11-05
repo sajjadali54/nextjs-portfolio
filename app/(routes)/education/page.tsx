@@ -22,11 +22,13 @@ function EducationContainer() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="glass-container section-panel p-4 rounded-4"
+      className="container py-4"
     >
       <Tab.Container
         activeKey={activeTab}
-        onSelect={(key) => setActiveTab(key!)}
+        onSelect={(key) => {
+          if (key) setActiveTab(key);
+        }}
       >
         <Nav variant="tabs" className="mb-4 border-0 justify-content-center">
           <Nav.Item className="position-relative mx-2">
@@ -66,44 +68,21 @@ function EducationContainer() {
 
         <Tab.Content>
           <AnimatePresence mode="wait">
-            <Tab.Pane eventKey="education">
-              <motion.div
-                key="education"
-                variants={tabVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ duration: 0.3 }}
-              >
-                <Education />
-              </motion.div>
-            </Tab.Pane>
-
-            <Tab.Pane eventKey="certifications">
-              <motion.div
-                key="certifications"
-                variants={tabVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ duration: 0.3 }}
-              >
-                <Certifications />
-              </motion.div>
-            </Tab.Pane>
+            <motion.div
+              key={activeTab}
+              variants={tabVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.3 }}
+            >
+              {activeTab === "education" ? <Education /> : <Certifications />}
+            </motion.div>
           </AnimatePresence>
         </Tab.Content>
       </Tab.Container>
 
       <style jsx global>{`
-        .glass-container.section-panel {
-          background: var(--card);
-          border: 1px solid var(--border);
-          box-shadow: 0 16px 40px var(--shadow);
-          backdrop-filter: blur(12px);
-          color: var(--foreground);
-        }
-
         .tab-button {
           background: transparent !important;
           border: none !important;

@@ -1,19 +1,18 @@
 export const education = [
   {
-    degree: "Research in AI and Machine Learning",
+    degree: "Funded Research Exchange: AI and Machine Learning",
     institution: "Norwegian University of Science and Technology (NTNU)",
     institutionUrl: "https://www.ntnu.edu/",
     startDate: "Aug 2023",
     endDate: "Feb 2024",
     description:
-      "Focused on advanced research methodologies and practical applications in data science and AI while experiencing international academic culture.",
+      "Completed a NORPART CONNECT-funded exchange focused on machine learning and imaging research.",
     achievements: [
-      "Gained in-depth knowledge in Diffusion Models and Transfer Learning.",
-      "Enhanced global perspective through collaborations with international peers.",
-      "Conducted research on Facial Emotion Recognition using advanced techniques.",
-      "Explored European culture through visits to cities like Oslo, Warsaw, Prague, and Milan.",
+      "Conducted imaging research on facial emotion recognition.",
+      "Worked with diffusion models and transfer-learning methods.",
+      "Collaborated with an international research team.",
     ],
-    tags: ["Diffusion Models", "Transfer Learning", "International Exposure"],
+    tags: ["Funded exchange", "Imaging research", "Machine learning"],
     image:
       "https://www.ntnu.edu/documents/1265708073/1266886158/bygg-5.jpg/0acaaba8-2ac1-4231-af69-85c32e726b3a?t=1501754425569",
   },

@@ -15,26 +15,29 @@ const Tags: React.FC<Props> = ({
   className,
 }) => {
   const isMobile = useMediaQuery();
-  const getColor = (index: number) => {
-    if (status && status[index]) {
-      return "bg-warning text-dark";
-    }
-
-    // purple color
-    return className ? className : "bg-primary";
-  };
   return (
     <div
-      className={`d-flex flex-wrap ${isMobile ? "justify-content-center" : ""}`}
+      className={`tags-list d-flex flex-wrap ${isMobile ? "gap-1" : "gap-2"}`}
+      aria-label="Topics"
     >
       {tags?.map((tag, index) => (
-        <Badge
-          key={index}
-          className={`text-light cursor-pointer ${getColor(index)} me-2 mb-1`}
-          onClick={() => onClick?.(tag)}
-        >
-          {tag.toLowerCase()}
-        </Badge>
+        onClick ? (
+          <button
+            key={tag}
+            type="button"
+            className={`tag-button glass-tag ${className || ""} ${
+              status?.[index] ? "active" : ""
+            }`}
+            aria-pressed={status?.[index] ?? false}
+            onClick={() => onClick(tag)}
+          >
+            {tag.toLowerCase()}
+          </button>
+        ) : (
+          <Badge key={tag} className={`tag-label glass-tag ${className || ""}`}>
+            {tag.toLowerCase()}
+          </Badge>
+        )
       ))}
     </div>
   );

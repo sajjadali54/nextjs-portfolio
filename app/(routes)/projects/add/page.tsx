@@ -75,18 +75,23 @@ export default function ProjectForm() {
     setErrorMessage("");
     setSuccessMessage("");
 
-    const res = await createProject(values);
-    if (!res) {
-      setErrorMessage("Failed to add project. Please try again.");
+    try {
+      await createProject(values);
+      setSuccessMessage("Project added successfully!");
+      setTimeout(() => {
+        router.push(routes.projects);
+        setSelectedTopics([]);
+      }, 1500);
+    } catch (error) {
+      console.error("Error creating project:", error);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Failed to add project. Please try again.",
+      );
+    } finally {
       setLoading(false);
-      return;
     }
-    setSuccessMessage("Project added successfully!");
-
-    setTimeout(() => {
-      router.push(routes.projects);
-      setSelectedTopics([]);
-    }, 1500);
   };
 
   return (

@@ -24,25 +24,29 @@ const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(CURRENT_PAGE);
   const [error, setError] = useState("");
 
-  const url = `https://dev.to/api/articles?username=sajjadali`;
+  const url = "https://dev.to/api/articles?username=sajjadali";
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchPosts = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(url, { signal: controller.signal });
         if (!response.ok) throw new Error("Failed to fetch posts");
-        const data = await response.json();
+        const data: Blog[] = await response.json();
+        if (!Array.isArray(data)) throw new Error("Unexpected response from DEV");
         setPosts(data);
         setFilteredPosts(data);
       } catch (err) {
-        setError("Failed to load blog posts. Please try again later.");
-        console.error("Error fetching posts:", err);
+        if (err instanceof Error && err.name === "AbortError") return;
+        setError("Blog posts are temporarily unavailable. Please try again later.");
+        console.error("Error fetching blog posts:", err);
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) setLoading(false);
       }
     };
 
     fetchPosts();
+    return () => controller.abort();
   }, [url]);
 
   useEffect(() => {
@@ -58,6 +62,11 @@ const Blogs = () => {
   }, [searchQuery, posts]);
 
   const items = paginate(filteredPosts, currentPage, PAGE_SIZE);
+  const pageCount = Math.ceil(filteredPosts.length / PAGE_SIZE);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, Math.max(1, pageCount)));
+  }, [pageCount]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,8 +82,15 @@ const Blogs = () => {
   };
 
   return (
-    <Container className="glass-container section-panel p-4 rounded-4 my-4">
+    <Container className="blogs-page p-0">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <header className="page-heading mb-4">
+          <h1 className="h2 mb-2">Writing</h1>
+          <p className="text-muted mb-0">
+            Articles and notes published on DEV.
+          </p>
+        </header>
+
         <SearchBox
           searchField={searchQuery}
           searchChange={(e) => setSearchQuery(e.target.value)}
@@ -82,9 +98,9 @@ const Blogs = () => {
         />
 
         {error ? (
-          <div className="text-center py-5 text-danger">
+          <div className="text-center py-5" role="alert">
             <FiAlertTriangle className="mb-3" size={32} />
-            <p>{error}</p>
+            <p className="mb-0">{error}</p>
           </div>
         ) : loading ? (
           <Loader />
@@ -128,42 +144,6 @@ const Blogs = () => {
           </>
         )}
       </motion.div>
-
-      <style jsx global>{`
-        .glass-container {
-          background: var(--card);
-          border: 1px solid var(--border);
-          box-shadow: 0 16px 40px var(--shadow);
-          backdrop-filter: blur(12px);
-        }
-
-        .grid-layout {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2rem;
-          padding: 2rem 0;
-        }
-
-        .empty-state {
-          min-height: 300px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .empty-icon {
-          font-size: 3rem;
-          color: #6b7280;
-          opacity: 0.5;
-        }
-
-        @media (max-width: 768px) {
-          .grid-layout {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </Container>
   );
 };

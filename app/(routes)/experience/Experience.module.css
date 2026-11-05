@@ -1,117 +1,107 @@
-.timelineContainer {
+.experienceList {
   position: relative;
-  overflow: hidden;
+  display: grid;
+  gap: 1.25rem;
+  max-width: 58rem;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  list-style: none;
 }
 
-.titleLine {
+.experienceList::before {
   position: absolute;
-  top: 50%;
-  width: 25%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.42rem;
+  width: 2px;
+  background: var(--border);
+  content: "";
 }
 
-.timeline {
+.experienceItem {
   position: relative;
-  padding: 50px 0;
 }
 
-.timelineLine {
+.experienceItem::before {
   position: absolute;
-  left: 50%;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    #6366f1 0%,
-    #a855f7 50%,
-    #6366f1 100%
-  );
-  transform: translateX(-50%);
-  border-radius: 2px;
+  top: 1.7rem;
+  left: -1.73rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 3px solid var(--surface-strong);
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+  content: "";
 }
 
-.timelineItem {
-  width: 100%;
-  margin: 40px 0;
+.experienceCard {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.cardHeader {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  position: relative;
+  gap: 1rem;
 }
 
-.timelineItem.left {
-  flex-direction: row-reverse;
+.company {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.dateWrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 0 30px;
+.company:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
 }
 
 .date {
-  background: rgba(99, 102, 241, 0.1);
-  padding: 12px 20px;
-  border-radius: 1rem;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--foreground-soft);
+  background: var(--surface-soft);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.contributions {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--foreground-soft);
+}
+
+.contributions li::marker {
+  color: var(--primary);
+}
+
+.detailsLink {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  color: #4f46e5;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.dateIcon {
-  font-size: 1.2rem;
+.detailsLink:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
 }
 
-.connector {
-  position: absolute;
-  width: 40px;
-  height: 2px;
-  background: #6366f1;
-}
+@media (max-width: 575.98px) {
+  .cardHeader {
+    flex-direction: column;
+  }
 
-.timelineItem:not(.left) .dateWrapper .connector {
-  right: -20px;
-}
-
-.timelineItem.left .dateWrapper .connector {
-  left: -20px;
-}
-
-.cardWrapper {
-  flex: 1;
-  max-width: 600px;
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.timelineDot {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background: #6366f1;
-  border: 4px solid white;
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
-}
-
-.timelineItem:not(.left) .timelineDot {
-  left: -45px;
-}
-
-.timelineItem.left .timelineDot {
-  right: -45px;
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  .date {
+    white-space: normal;
+  }
 }

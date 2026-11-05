@@ -3,7 +3,7 @@
 import { education } from "@/app/data/education";
 import { useParams } from "next/navigation";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import { FaCalendarAlt, FaMapMarkerAlt, FaRocket } from "react-icons/fa";
+import { FaCalendarAlt, FaUniversity, FaRocket } from "react-icons/fa";
 import { motion, useAnimate } from "framer-motion";
 import Tags from "@/app/components/Tags";
 import BackLink from "@/app/components/BackLink";
@@ -20,7 +20,7 @@ function EducationPage() {
   if (!edu) {
     return (
       <Container className="py-5 text-center">
-        <h3 className="text-danger">Job not found</h3>
+        <h3 className="text-danger">Education record not found</h3>
         <BackLink link="/education" page="Education" />
       </Container>
     );
@@ -47,8 +47,8 @@ function EducationPage() {
                     width: "150px",
                     height: "150px",
                     objectFit: "cover",
-                    border: "3px solid #fff",
-                    boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+                    border: "3px solid var(--surface-strong)",
+                    boxShadow: "0 4px 15px var(--shadow)",
                   }}
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "/placeholder.png";
@@ -60,7 +60,7 @@ function EducationPage() {
             <Col>
               <h2 className="fw-bold mb-3 text-gradient">{edu.degree}</h2>
               <p className="text-muted mb-1">
-                <FaMapMarkerAlt className="me-2 text-primary" />
+                <FaUniversity className="me-2 text-primary" />
                 <a
                   href={edu.institutionUrl}
                   target="_blank"
@@ -88,8 +88,8 @@ function EducationPage() {
         >
           <div className="glass-card p-4 mb-4">
             <h5 className="fw-semibold mb-3 section-title">
-              <FaRocket className="me-2 text-purple" />
-              Role Overview
+              <FaRocket className="me-2 text-primary" />
+              Overview
             </h5>
             <p className="text-secondary mb-0 role-description">
               {edu.description}
@@ -106,7 +106,7 @@ function EducationPage() {
         >
           <div className="glass-card p-4 mb-4">
             <h5 className="fw-semibold mb-3 section-title">
-              Key Contributions
+              Academic Highlights
             </h5>
             <ul className="contribution-list">
               {edu.achievements.map((achievement, idx) => (
@@ -137,7 +137,7 @@ function EducationPage() {
             transition={{ delay: 1.2 }}
           >
             <div className="glass-card p-4 mb-4">
-              <h5 className="fw-semibold mb-3 section-title">Tech Stack</h5>
+              <h5 className="fw-semibold mb-3 section-title">Areas of Study</h5>
               <Tags tags={edu.tags} />
             </div>
           </motion.div>
@@ -149,37 +149,25 @@ function EducationPage() {
 
       <style jsx global>{`
         .gradient-background {
-          background: linear-gradient(150deg, #f8f9fa 0%, #e9ecef 100%);
-          min-height: 100vh;
-        }
-
-        .glass-card {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          border-radius: 12px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.3);
+          background: transparent;
         }
 
         .text-gradient {
-          background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: var(--primary);
         }
 
         .company-link {
-          color: #4f46e5 !important;
-          transition: all 0.3s ease;
+          color: var(--primary) !important;
           font-weight: 500;
         }
 
         .company-link:hover {
-          color: #9333ea !important;
+          color: var(--primary-strong) !important;
           text-decoration: underline;
         }
 
         .section-title {
-          color: #1e293b;
+          color: var(--foreground);
           font-size: 1.25rem;
           letter-spacing: -0.02em;
         }
@@ -187,7 +175,7 @@ function EducationPage() {
         .contribution-list .bullet-gradient {
           width: 24px;
           height: 24px;
-          background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+          background: var(--primary);
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -199,33 +187,13 @@ function EducationPage() {
           position: absolute;
           width: 28px;
           height: 28px;
-          background: rgba(99, 102, 241, 0.1);
+          background: var(--primary-soft);
           border-radius: 50%;
         }
 
         .duty-text {
-          color: #475569;
+          color: var(--foreground-soft);
           line-height: 1.6;
-        }
-
-        .back-button::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            120deg,
-            transparent,
-            rgba(255, 255, 255, 0.3),
-            transparent
-          );
-          transition: 0.6s;
-        }
-
-        .back-button:hover::before {
-          left: 100%;
         }
 
         .image-wrapper {
@@ -239,19 +207,9 @@ function EducationPage() {
           left: -3px;
           right: -3px;
           bottom: -3px;
-          background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+          background: var(--primary);
           border-radius: 50%;
           z-index: -1;
-          animation: rotate 6s linear infinite;
-        }
-
-        @keyframes rotate {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
         }
       `}</style>
     </div>

@@ -13,7 +13,7 @@ export default function GlobalError({
           <div className="text-center" style={{ maxWidth: "560px" }}>
             <p
               className="mb-3 fw-semibold"
-              style={{ letterSpacing: "0.2em", color: "#0ea5e9" }}
+              style={{ letterSpacing: "0.2em", color: "var(--primary)" }}
             >
               ERROR
             </p>
@@ -25,11 +25,7 @@ export default function GlobalError({
               type="button"
               onClick={() => reset()}
               className="btn btn-primary px-4 py-3 rounded-pill"
-              style={{
-                background: "linear-gradient(135deg, #0ea5e9 0%, #f59e0b 100%)",
-                border: "none",
-                fontWeight: 600,
-              }}
+              style={{ background: "var(--primary)", border: "none", fontWeight: 600 }}
             >
               Try again
             </button>

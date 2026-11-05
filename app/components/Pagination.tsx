@@ -55,7 +55,8 @@ const MyPagination: FC<MyPaginationProps> = ({
 
   return (
     <Pagination className="justify-content-center mt-4">
-      <Pagination.First
+      <Pagination.Prev
+        aria-label="Previous page"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       />
@@ -66,13 +67,16 @@ const MyPagination: FC<MyPaginationProps> = ({
           <Pagination.Item
             key={index}
             active={page === currentPage}
+            aria-current={page === currentPage ? "page" : undefined}
+            aria-label={`Page ${page}`}
             onClick={() => onPageChange(page as number)}
           >
             {page}
           </Pagination.Item>
         )
       )}
-      <Pagination.Last
+      <Pagination.Next
+        aria-label="Next page"
         disabled={currentPage === pagesCount}
         onClick={() => onPageChange(currentPage + 1)}
       />

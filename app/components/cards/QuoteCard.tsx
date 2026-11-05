@@ -99,17 +99,14 @@ function QuoteCard() {
 
       <style jsx global>{`
         .glass-quote-card {
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-          // min-height: 300px;
+          color: var(--foreground);
+          background: var(--card);
+          border: 1px solid var(--border);
+          box-shadow: 0 8px 22px var(--shadow);
         }
 
         .text-gradient {
-          background: linear-gradient(45deg, #6366f1, #a855f7);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: var(--primary);
         }
 
         .quote-icon {
@@ -131,13 +128,13 @@ function QuoteCard() {
         .refresh-button {
           border: none;
           background: none;
-          color: #6366f1;
+          color: var(--primary);
           margin-top: 0.5rem;
           transition: color 0.3s ease;
         }
 
         .refresh-button:hover {
-          color: #a855f7;
+          color: var(--primary-strong);
         }
 
         .skeleton-loader {

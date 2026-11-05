@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import ProjectCard from "@/app/components/cards/ProjectCard";
 import Tags from "@components/Tags";
@@ -17,66 +17,76 @@ const Projects = () => {
   const MOBILE_PAGE_SIZE = 3;
   const DESKTOP_PAGE_SIZE = 6;
 
-  const ref = useRef<Project[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchField, setSearchField] = useState("");
-  const [projects, setProjects] = useState<Project[]>(ref.current);
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(MOBILE_PAGE_SIZE);
   const [tags, setTags] = useState<Tag>({});
+  const [error, setError] = useState("");
   const isMobile = useMediaQuery();
 
-  // Data fetching and effect hooks remain the same...
-
   useEffect(() => {
+    let active = true;
     const getProjects = async () => {
       setLoading(true);
-      const fetchedProjects = await fetchProjects();
-      ref.current = fetchedProjects;
-      setProjects(fetchedProjects);
-
-      setLoading(false);
-
-      setTags(
-        fetchedProjects.reduce((acc: Tag, project: Project) => {
-          acc[project.language.toLowerCase()] = false;
-          return acc;
-        }, {}),
-      );
+      try {
+        const fetchedProjects = await fetchProjects();
+        if (!active) return;
+        setAllProjects(fetchedProjects);
+        setTags(
+          fetchedProjects.reduce((acc: Tag, project: Project) => {
+            acc[project.language.toLowerCase()] = false;
+            return acc;
+          }, {}),
+        );
+      } catch (requestError) {
+        console.error("Error loading projects:", requestError);
+        if (active) setError("Projects could not be loaded. Please try again later.");
+      } finally {
+        if (active) setLoading(false);
+      }
     };
     getProjects();
+
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
     setPageSize(isMobile ? MOBILE_PAGE_SIZE : DESKTOP_PAGE_SIZE);
   }, [isMobile]);
 
-  useEffect(() => {
+  const projects = useMemo(() => {
     const field = searchField.trim().toLowerCase();
-    const filteredProjects = ref.current.filter(
-      (project: Project) =>
-        project.title!.toLowerCase().includes(field) ||
-        project.description.toLowerCase().includes(field) ||
-        project.language.toLowerCase().includes(field) ||
-        project.topics!.some((topic: string) =>
-          topic.toLowerCase().includes(field),
-        ),
-    );
-    setProjects(filteredProjects);
-    setCurrentPage(1);
-  }, [searchField]);
+    const selectedLanguages = Object.keys(tags).filter((language) => tags[language]);
+
+    return allProjects.filter((project) => {
+      const matchesLanguage =
+        selectedLanguages.length === 0 ||
+        selectedLanguages.includes(project.language.toLowerCase());
+      const matchesSearch =
+        !field ||
+        [
+          project.title ?? "",
+          project.description,
+          project.language,
+          ...project.topics,
+        ].some((value) => value.toLowerCase().includes(field));
+
+      return matchesLanguage && matchesSearch;
+    });
+  }, [allProjects, searchField, tags]);
 
   useEffect(() => {
-    if (new Set(Object.values(tags)).size === 1) {
-      setProjects(ref.current);
-      setCurrentPage(1);
-      return;
-    }
-    const filteredProjects = ref.current.filter(
-      (project: Project) => tags[project.language.toLowerCase()],
-    );
-    setProjects(filteredProjects);
-  }, [tags]);
+    setCurrentPage(1);
+  }, [searchField, tags, pageSize]);
+
+  const pageCount = Math.ceil(projects.length / pageSize);
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, Math.max(1, pageCount)));
+  }, [pageCount]);
 
   const handleBadgeClick = (language: string) => {
     setTags((prev) => ({
@@ -107,22 +117,34 @@ const Projects = () => {
       animate={{ opacity: 1 }}
       className="glass-container section-panel p-4 rounded-4"
     >
+      <header className="page-heading mb-4">
+        <h1 className="h2 mb-2">Selected projects</h1>
+        <p className="text-muted mb-0">
+          Browse projects by name, technology, or topic.
+        </p>
+      </header>
+
       <SearchBox
         searchField={searchField}
         searchChange={(e) => setSearchField(e.target.value)}
         placeholder="Search projects..."
       />
 
-      <motion.div className="mb-4 text-center d-flex flex-wrap justify-content-center">
+      <motion.div className="mb-4">
         <Tags
           tags={Object.keys(tags)}
           status={Object.values(tags)}
-          className="glass-tag px-3 py-2 rounded-pill"
+          className="px-3 py-2"
           onClick={handleBadgeClick}
         />
       </motion.div>
 
-      {loading ? (
+      {error ? (
+        <div className="empty-state text-center" role="alert">
+          <FiAlertTriangle className="empty-icon mb-3" />
+          <p className="text-muted mb-0">{error}</p>
+        </div>
+      ) : loading ? (
         <Loader />
       ) : (
         <>
@@ -165,52 +187,6 @@ const Projects = () => {
         </>
       )}
 
-      <style jsx global>{`
-        .glass-container {
-          background: var(--card);
-          border: 1px solid var(--border);
-          box-shadow: 0 16px 40px var(--shadow);
-          backdrop-filter: blur(12px);
-        }
-
-        .grid-layout {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-          gap: 2rem;
-          padding: 1rem;
-        }
-
-        .glass-tag {
-          background: rgba(99, 102, 241, 0.1);
-          border: 1px solid rgba(99, 102, 241, 0.2);
-          transition: all 0.3s ease;
-        }
-
-        .glass-tag.active {
-          background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-          color: white;
-        }
-
-        .empty-state {
-          min-height: 400px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .empty-icon {
-          font-size: 3rem;
-          color: #6b7280;
-          opacity: 0.5;
-        }
-
-        @media (max-width: 768px) {
-          .grid-layout {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </motion.div>
   );
 };

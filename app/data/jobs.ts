@@ -1,11 +1,11 @@
 export const jobs = [
   {
-    title: "Software Developer",
+    title: "Senior Software Developer",
     image: "/badri.jpg",
-    companyName: "Badri Management Consultancy",
+    companyName: "Badri Solutions",
     companyUrl: "https://badriconsultancy.com/",
     startDate: "2024-11-04",
-    subtitle: "Building Financial & Actuarial Solutions for Global Clients.",
+    subtitle: "Building financial and actuarial software for clients.",
     duties: [
       "Design, develop, and enhance actuarial software tools for financial modelling, IFRS 17 reporting, and benchmarking analysis using modern Python and JavaScript frameworks.",
       "Build scalable data-processing and visualisation systems that automate actuarial workflows and enable interactive analysis through intuitive dashboards and desktop-ready interfaces.",
@@ -46,13 +46,13 @@ export const jobs = [
     image: "/solspro.png",
   },
   {
-    title: "NORPART CONNECT Research",
+    title: "Research Fellow",
     companyName: "Norwegian University of Science and Technology (NTNU)",
     companyUrl: "https://www.ntnu.edu/",
     startDate: "2023-08-08",
     endDate: "2024-02-26",
     subtitle:
-      "Focused on advanced research methodologies and practical applications in data science and AI while experiencing international academic culture.",
+      "Researching machine-learning methods and imaging technologies at NTNU.",
     duties: [
       "Collaborated with global experts on AI-driven educational research, focusing on imaging technologies.",
       "Designed and conducted experiments to improve diffusion and transfer learning models.",

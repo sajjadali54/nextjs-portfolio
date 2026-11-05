@@ -1,184 +1,211 @@
 "use client";
 
-import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Field, Form, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
-import { IoIosContact } from "react-icons/io";
-import { FaEnvelope, FaPhone, FaRegUser, FaPaperPlane } from "react-icons/fa";
+import { Container } from "react-bootstrap";
+import { FaEnvelope, FaPaperPlane, FaRegUser } from "react-icons/fa";
 
-const Contact = () => {
-  const validationSchema = Yup.object({
-    name: Yup.string().trim().required("Name is required"),
-    email: Yup.string()
-      .trim()
-      .email("Invalid email address")
-      .required("Email is required"),
-    phone: Yup.string()
-      .trim()
-      .matches(/^\d{10,15}$/, "Invalid phone number")
-      .optional(),
-    subject: Yup.string().trim().required("Subject is required"),
-    message: Yup.string().trim().required("Message cannot be empty"),
-  });
+const formEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
-  const initialValues = {
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  };
+const validationSchema = Yup.object({
+  name: Yup.string().trim().required("Name is required").max(100),
+  email: Yup.string()
+    .trim()
+    .email("Enter a valid email address")
+    .required("Email is required")
+    .max(254),
+  message: Yup.string()
+    .trim()
+    .required("Message cannot be empty")
+    .min(10, "Please add a little more detail")
+    .max(4000, "Message must be 4,000 characters or fewer"),
+});
 
-  const handleSubmit = (values: typeof initialValues) => {
-    const mailtoLink = `mailto:imsajjadali54@gmail.com?subject=${encodeURIComponent(
-      values.subject
-    )}&body=${encodeURIComponent(
-      `Name: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}\n\nMessage:\n${values.message}`
-    )}`;
-    window.location.href = mailtoLink;
+const initialValues = { name: "", email: "", message: "" };
+
+type ContactFormValues = typeof initialValues;
+
+export default function ContactPage() {
+  const handleSubmit = async (
+    values: ContactFormValues,
+    { setStatus, resetForm }: FormikHelpers<ContactFormValues>,
+  ) => {
+    if (!formEndpoint) {
+      setStatus({
+        error: "The contact form is not configured yet. Please email me directly.",
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Contact service returned ${response.status}`);
+      }
+
+      resetForm();
+      setStatus({ success: "Thanks for your message. I’ll be in touch." });
+    } catch (error) {
+      console.error("Unable to submit contact form:", error);
+      setStatus({
+        error:
+          "Your message could not be sent. Please try again or email me directly.",
+      });
+    }
   };
 
   return (
-    <div className="">
-      <div className="text-center mb-4">
-        <IoIosContact size={60} className="text-primary mb-2" />
-        <h2 className="text-primary fw-bold">Contact Me</h2>
-        <p className="text-muted">
-          Have a question or project? Let&apos;s get in touch!
+    <Container className="py-5">
+      <header className="page-heading mb-4">
+        <p className="about-eyebrow mb-2">Contact</p>
+        <h1 className="display-5 fw-bold mb-3">Let’s start a conversation</h1>
+        <p className="lead text-muted mb-0">
+          For software roles, project discussions, or technical collaboration,
+          send me a message.
         </p>
-      </div>
+      </header>
 
-      <div className="row justify-content-center">
-        <div className="col-lg-6 col-md-8 col-sm-10">
-          <div className="card p-3 p-md-4 border-0 shadow-sm rounded">
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleSubmit}
+      <div
+        className="card section-panel border-0 mx-auto p-3 p-md-4"
+        style={{ maxWidth: "44rem" }}
+      >
+        {formEndpoint ? (
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ touched, errors, isSubmitting, status }) => (
+              <Form noValidate>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label fw-semibold">
+                    <FaRegUser className="me-2" aria-hidden="true" />
+                    Name
+                  </label>
+                  <Field
+                    type="text"
+                    id="name"
+                    name="name"
+                    autoComplete="name"
+                    maxLength={100}
+                    className={`form-control p-3 ${
+                      touched.name && errors.name ? "is-invalid" : ""
+                    }`}
+                    aria-invalid={Boolean(touched.name && errors.name)}
+                    aria-describedby={
+                      touched.name && errors.name ? "name-error" : undefined
+                    }
+                  />
+                  <ErrorMessage
+                    component="div"
+                    id="name-error"
+                    name="name"
+                    className="invalid-feedback"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label fw-semibold">
+                    <FaEnvelope className="me-2" aria-hidden="true" />
+                    Email
+                  </label>
+                  <Field
+                    type="email"
+                    id="email"
+                    name="email"
+                    autoComplete="email"
+                    maxLength={254}
+                    className={`form-control p-3 ${
+                      touched.email && errors.email ? "is-invalid" : ""
+                    }`}
+                    aria-invalid={Boolean(touched.email && errors.email)}
+                    aria-describedby={
+                      touched.email && errors.email ? "email-error" : undefined
+                    }
+                  />
+                  <ErrorMessage
+                    component="div"
+                    id="email-error"
+                    name="email"
+                    className="invalid-feedback"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="message" className="form-label fw-semibold">
+                    Message
+                  </label>
+                  <Field
+                    as="textarea"
+                    id="message"
+                    name="message"
+                    rows={6}
+                    maxLength={4000}
+                    className={`form-control p-3 ${
+                      touched.message && errors.message ? "is-invalid" : ""
+                    }`}
+                    aria-invalid={Boolean(touched.message && errors.message)}
+                    aria-describedby={
+                      touched.message && errors.message
+                        ? "message-error"
+                        : undefined
+                    }
+                  />
+                  <ErrorMessage
+                    component="div"
+                    id="message-error"
+                    name="message"
+                    className="invalid-feedback"
+                  />
+                </div>
+
+                {status?.error && (
+                  <p className="text-danger" role="alert">
+                    {status.error}{" "}
+                    <a href="mailto:imsajjadali54@gmail.com">Email me</a>
+                  </p>
+                )}
+                {status?.success && (
+                  <p className="text-success" role="status">
+                    {status.success}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary px-4 py-2"
+                  disabled={isSubmitting}
+                >
+                  <FaPaperPlane className="me-2" aria-hidden="true" />
+                  {isSubmitting ? "Sending…" : "Send message"}
+                </button>
+              </Form>
+            )}
+          </Formik>
+        ) : (
+          <div role="status">
+            <p className="mb-2">
+              The contact form is being set up. You can still reach me by
+              email:
+            </p>
+            <a
+              href="mailto:imsajjadali54@gmail.com"
+              className="d-inline-flex align-items-center gap-2 fw-semibold"
             >
-              {({ touched, errors }) => (
-                <Form>
-                  {/* Name Field */}
-                  <div className="mb-3">
-                    <label htmlFor="name" className="form-label fw-semibold">
-                      <FaRegUser className="me-2" /> Name
-                    </label>
-                    <Field
-                      type="text"
-                      id="name"
-                      name="name"
-                      className={`form-control w-100 p-3 ${
-                        touched.name && errors.name ? "is-invalid" : ""
-                      }`}
-                      placeholder="Enter your name"
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="name"
-                      className="invalid-feedback"
-                    />
-                  </div>
-
-                  {/* Email Field */}
-                  <div className="mb-3">
-                    <label htmlFor="email" className="form-label fw-semibold">
-                      <FaEnvelope className="me-2" /> Email
-                    </label>
-                    <Field
-                      type="email"
-                      id="email"
-                      name="email"
-                      className={`form-control w-100 p-3 ${
-                        touched.email && errors.email ? "is-invalid" : ""
-                      }`}
-                      placeholder="Enter your email"
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="email"
-                      className="invalid-feedback"
-                    />
-                  </div>
-
-                  {/* Phone Field */}
-                  <div className="mb-3">
-                    <label htmlFor="phone" className="form-label fw-semibold">
-                      <FaPhone className="me-2" /> Phone (Optional)
-                    </label>
-                    <Field
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="form-control w-100 p-3"
-                      placeholder="Enter your phone number"
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="phone"
-                      className="invalid-feedback"
-                    />
-                  </div>
-
-                  {/* Subject Field */}
-                  <div className="mb-3">
-                    <label htmlFor="subject" className="form-label fw-semibold">
-                      📌 Subject
-                    </label>
-                    <Field
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      className={`form-control w-100 p-3 ${
-                        touched.subject && errors.subject ? "is-invalid" : ""
-                      }`}
-                      placeholder="Enter subject"
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="subject"
-                      className="invalid-feedback"
-                    />
-                  </div>
-
-                  {/* Message Field */}
-                  <div className="mb-3">
-                    <label htmlFor="message" className="form-label fw-semibold">
-                      ✏️ Message
-                    </label>
-                    <Field
-                      as="textarea"
-                      id="message"
-                      name="message"
-                      rows={5}
-                      className={`form-control w-100 p-3 ${
-                        touched.message && errors.message ? "is-invalid" : ""
-                      }`}
-                      placeholder="Write your message here..."
-                    />
-                    <ErrorMessage
-                      component="div"
-                      name="message"
-                      className="invalid-feedback"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <div className="text-center">
-                    <button
-                      type="submit"
-                      className="btn btn-primary btn-lg px-4 py-2 w-100"
-                    >
-                      <FaPaperPlane className="me-2" /> Send Message
-                    </button>
-                  </div>
-                </Form>
-              )}
-            </Formik>
+              <FaEnvelope aria-hidden="true" />
+              Email Sajjad
+            </a>
           </div>
-        </div>
+        )}
       </div>
-    </div>
+    </Container>
   );
-};
-
-export default Contact;
+}
