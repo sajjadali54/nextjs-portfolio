@@ -111,6 +111,24 @@ export const projects = [
     createdAt: "1739042993891",
     updatedAt: "1739042993891",
   },
+  // Non-Badri projects follow, strongest first.
+  {
+    id: "10",
+    slug: "mini-paypal",
+    hasCaseStudy: true,
+    context: "Client project · Solspro",
+    title: "Mini PayPal",
+    description:
+      "A Django payments app with peer-to-peer transfers, payment requests, multi-currency conversion, and atomic transactions to keep balances consistent.",
+    language: "Python",
+    topics: ["Django", "Python", "SQLite", "Django ORM", "Bootstrap"],
+    clone_url: "https://github.com/SajjadAli54/django-mini-paypal",
+    live: "",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTraHE6feWakSRBgEvKMpWEPnh6xAOfd3pYRQ&s",
+    createdAt: "1739041876304",
+    updatedAt: "1739041876304",
+  },
   {
     id: "19",
     slug: "portfolio-website",
@@ -121,34 +139,9 @@ export const projects = [
     clone_url: "https://github.com/SajjadAli54/sajjadali",
     image: "https://sajjadali.netlify.app/assets/logo-D6i5nxaC.png",
     language: "JavaScript",
-    topics: [
-      "React",
-      "NextJS",
-      "Bootstrap",
-      "animate.css",
-      "react-icons",
-      "prisma",
-      "tailwind",
-      "react-select",
-      "react-slick",
-    ],
+    topics: ["Next.js", "React", "TypeScript", "Bootstrap", "Framer Motion"],
     createdAt: "1739044060727",
     updatedAt: "1739044060727",
-  },
-  {
-    id: "10",
-    slug: "mini-paypal",
-    title: "Mini PayPal",
-    description:
-      "A Django payment app for sending, requesting, and receiving payments.",
-    language: "Python",
-    topics: ["Django", "sqlite", "Django orm", "bootstrap", "Payment"],
-    clone_url: "https://github.com/SajjadAli54/django-mini-paypal",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTraHE6feWakSRBgEvKMpWEPnh6xAOfd3pYRQ&s",
-    createdAt: "1739041876304",
-    updatedAt: "1739041876304",
   },
   {
     id: "9",

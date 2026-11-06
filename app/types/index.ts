@@ -13,6 +13,8 @@ interface Project {
   clone_url: string;
   live?: string;
   image: string;
+  /** Short provenance label for the project page, e.g. "Client project · Solspro". */
+  context?: string;
   /** Client work whose code and demo cannot be shared publicly. */
   isClientProject?: boolean;
   createdAt: string;
