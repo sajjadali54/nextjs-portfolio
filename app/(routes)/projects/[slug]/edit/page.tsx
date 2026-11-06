@@ -16,10 +16,10 @@ import * as Yup from "yup";
 import { useRouter, useParams } from "next/navigation";
 
 import { Project, TopicOption } from "@types";
-import { fetchProjectById, updateProject } from "@/app/services/projectService";
+import { fetchProjectBySlug, updateProject } from "@/app/services/projectService";
 import { useSelector } from "react-redux";
 import { selectUser } from "@/app/redux/slices/admin";
-import IllegalPage from "../IllegalPage";
+import IllegalPage from "../../IllegalPage";
 import Loader from "@/app/components/Loader";
 
 const ProjectSchema = Yup.object({
@@ -63,9 +63,9 @@ export default function EditProjectForm() {
 
   const user = useSelector(selectUser);
   const router = useRouter();
-  const params = useParams();
+  const params = useParams<{ slug: string }>();
 
-  const id = params.id;
+  const slug = params.slug;
 
   useEffect(() => {
     if (!user) {
@@ -76,11 +76,8 @@ export default function EditProjectForm() {
   useEffect(() => {
     const getProject = async () => {
       try {
-        if (!id) return;
-        let valId;
-        if (id instanceof Array) valId = parseInt(id[0]!);
-        else valId = parseInt(id);
-        const fetchedProject = await fetchProjectById(valId.toString());
+        if (!slug) return;
+        const fetchedProject = await fetchProjectBySlug(slug);
         if (fetchedProject) {
           setProject(fetchedProject);
           setSelectedTopics(
@@ -97,7 +94,7 @@ export default function EditProjectForm() {
       }
     };
     getProject();
-  }, [id]);
+  }, [slug]);
 
   if (!user) {
     return <IllegalPage />;
@@ -113,9 +110,8 @@ export default function EditProjectForm() {
     setSuccessMessage("");
 
     try {
-      if (!id) throw new Error("Project ID is missing.");
-      const projectId = Array.isArray(id) ? id[0] : id;
-      await updateProject(projectId, values);
+      if (!project?.id) throw new Error("Project ID is missing.");
+      await updateProject(project.id, values);
       setSuccessMessage("Project updated successfully!");
 
       setTimeout(() => {

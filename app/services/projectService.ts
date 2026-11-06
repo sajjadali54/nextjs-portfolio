@@ -6,6 +6,9 @@ export const fetchProjects = async () => projects;
 export const fetchProjectById = async (id: string) =>
   projects.find((project) => project.id === id);
 
+export const fetchProjectBySlug = async (slug: string) =>
+  projects.find((project) => project.slug === slug);
+
 export const createProject = async (_project: Project): Promise<boolean> => {
   void _project;
   throw new Error("Project creation is unavailable: no project API is configured.");

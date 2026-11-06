@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  FiArrowRight,
   FiBriefcase,
   FiExternalLink,
   FiGithub,
@@ -20,6 +21,7 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
   className = "",
 }) => {
   const hasLinks = Boolean(project.live || project.clone_url);
+  const detailHref = project.slug ? `/projects/${project.slug}` : null;
 
   return (
     <motion.div
@@ -52,7 +54,13 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
         <div className="portfolio-card-content">
           <Card.Body className="d-flex flex-column p-4">
             <h3 className="portfolio-card-title mb-2">
-              {project.title || "Untitled project"}
+              {detailHref ? (
+                <Link href={detailHref} className="text-decoration-none">
+                  {project.title || "Untitled project"}
+                </Link>
+              ) : (
+                project.title || "Untitled project"
+              )}
             </h3>
             <Card.Text className="portfolio-card-description text-muted mb-3">
               {project.description}
@@ -67,13 +75,17 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
 
           <Card.Footer className="portfolio-card-footer bg-transparent border-0 px-4 pb-4">
             <div className="project-card-actions">
-              {!hasLinks && (
-                <span className="project-card-note">
-                  <FiLock aria-hidden="true" />
-                  {project.isClientProject
-                    ? "Client project · code not public"
-                    : "No public demo or source"}
-                </span>
+              {detailHref && (
+                <Link
+                  href={detailHref}
+                  className="btn btn-gradient d-flex align-items-center gap-2"
+                  aria-label={`${
+                    project.hasCaseStudy ? "Read case study" : "View details"
+                  }: ${project.title}`}
+                >
+                  {project.hasCaseStudy ? "Read case study" : "View details"}
+                  <FiArrowRight aria-hidden="true" />
+                </Link>
               )}
 
               {project.live && (
@@ -81,7 +93,7 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-gradient d-flex align-items-center gap-2"
+                  className="btn btn-outline-secondary d-flex align-items-center gap-2"
                 >
                   <FiExternalLink aria-hidden="true" />
                   Live demo
@@ -96,8 +108,22 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
                   className="btn btn-outline-secondary d-flex align-items-center gap-2"
                 >
                   <FiGithub aria-hidden="true" />
-                  Source code
+                  Code
                 </Link>
+              )}
+
+              {project.isClientProject && (
+                <span className="project-card-note">
+                  <FiLock aria-hidden="true" />
+                  Confidential client work
+                </span>
+              )}
+
+              {!detailHref && !hasLinks && !project.isClientProject && (
+                <span className="project-card-note">
+                  <FiLock aria-hidden="true" />
+                  No public demo or source
+                </span>
               )}
             </div>
           </Card.Footer>

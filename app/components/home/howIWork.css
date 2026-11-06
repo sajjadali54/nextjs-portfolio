@@ -1,0 +1,57 @@
+.how-i-work {
+  margin-block: 1.5rem;
+}
+
+.how-i-work-intro {
+  max-width: 40rem;
+  margin-bottom: 1.75rem;
+}
+
+.how-i-work-title {
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.how-i-work-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.how-i-work-step {
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 0.75rem;
+}
+
+.how-i-work-number {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.how-i-work-step-title {
+  margin-bottom: 0.4rem;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.how-i-work-step-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}

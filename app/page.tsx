@@ -9,6 +9,7 @@ import { familiarTech, techItems } from "@data/tech-items";
 import projects from "./data/projects";
 
 import HeroSection from "./components/home/hero";
+import HowIWork from "./components/home/HowIWork";
 
 export default function Home() {
   const firstProjects = projects.slice(0, 4);
@@ -16,6 +17,8 @@ export default function Home() {
   return (
     <div className="page-surface">
       <HeroSection />
+
+      <HowIWork />
 
       <section className="py-4">
         <motion.div

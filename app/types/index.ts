@@ -2,6 +2,10 @@ import { IconType } from "react-icons";
 
 interface Project {
   id?: string;
+  /** URL segment for /projects/[slug]. Optional only for unsaved form drafts. */
+  slug?: string;
+  /** Markdown case study in content/projects/<slug>.md exists for this project. */
+  hasCaseStudy?: boolean;
   title?: string;
   description: string;
   language: string;

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -9,8 +8,6 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Alert from "react-bootstrap/Alert";
 import { FaUser, FaLock } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/app/redux/slices/admin";
 
 interface Error {
   email?: string;
@@ -25,10 +22,6 @@ export default function Login() {
   ] = useState({});
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const dispatch = useDispatch();
-
-  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -50,19 +43,10 @@ export default function Login() {
       return;
     }
 
-    const email = formData.email.trim();
-    const password = formData.password.trim();
-
-    setLoading(true);
-    setTimeout(() => {
-      if (email == "imsajjadali54@gmail.com" && password == "HelloWorld@786") {
-        dispatch(setUser({ email }));
-        router.push("/projects");
-      } else {
-        setErrorMessage("Invalid email or password.");
-        setLoading(false);
-      }
-    }, 1000);
+    // Credentials must never be checked in client code: anything here ships to every
+    // visitor's browser. Sign-in stays disabled until a server-side auth route exists.
+    setLoading(false);
+    setErrorMessage("Admin sign-in is not available on this deployment yet.");
   };
 
   return (

@@ -3,11 +3,13 @@
 export const projects = [
   {
     id: "20",
+    slug: "ifrs-17-cashflow-engine",
+    hasCaseStudy: true,
     title: "IFRS 17 Cashflow Engine",
     description:
-      "A Flask application, also shipped as a Windows desktop app, that validates insurers' Excel inputs and generates IFRS 17 LIC and LRC cashflow outputs.",
+      "A full-stack IFRS 17 cashflow and valuation engine for macro-enabled Excel inputs that cut run time from about a week to a day. Used by around 60 internal users.",
     language: "Python",
-    topics: ["Flask", "Pandas", "IFRS 17", "PyWebview", "PyInstaller"],
+    topics: ["Flask", "Pandas", "IFRS 17", "openpyxl", "PyWebview"],
     clone_url: "",
     live: "",
     image: "",
@@ -17,9 +19,11 @@ export const projects = [
   },
   {
     id: "24",
+    slug: "end-of-service-gratuity-valuation",
+    hasCaseStudy: true,
     title: "End-of-Service Gratuity Valuation Platform",
     description:
-      "Lead developer (v3, v4) of a gratuity valuation platform with 12 actuarial models, including IAS 19, previous-year and adjusted-prior, plus employee-data checks and Excel/PDF reporting.",
+      "Lead developer (v3, v4) of a gratuity valuation platform with 12 actuarial models, used for around 500 clients across Pakistan and the Middle East.",
     language: "Python",
     topics: ["IAS 19", "Pandas", "Plotly", "ReportLab", "Streamlit", "PyWebview"],
     clone_url: "",
@@ -31,11 +35,13 @@ export const projects = [
   },
   {
     id: "17",
-    title: "IFRS 17 Life Models: GMM and VFA",
+    slug: "ifrs-17-desktop-applications",
+    hasCaseStudy: true,
+    title: "IFRS 17 Desktop Applications: GMM, VFA and PAA",
     description:
-      "A PySide6 desktop application for IFRS 17 life insurance calculations under GMM and VFA, adapted from the non-life model with the actuarial team and integrated with Excel.",
+      "Four PySide6 desktop applications that drive macro-enabled Excel models for IFRS 17 measurement. I built the interface and integrated it with the model components.",
     language: "Python",
-    topics: ["PySide6", "xlwings", "IFRS 17", "GMM", "VFA"],
+    topics: ["PySide6", "xlwings", "IFRS 17", "PyInstaller", "Pandas"],
     clone_url: "",
     live: "",
     image: "",
@@ -45,11 +51,13 @@ export const projects = [
   },
   {
     id: "18",
-    title: "Insurance Benchmarking Tool",
+    slug: "insurance-benchmarking-platform",
+    hasCaseStudy: true,
+    title: "Insurance Benchmarking Platform",
     description:
-      "A FastAPI and React application for insurance companies, with business-mix analysis and tariff-rate comparisons presented through interactive charts.",
+      "Co-developed a FastAPI and React platform for insurance benchmarking, with chunked uploads of large datasets, pivot analysis, and business-mix and tariff charts.",
     language: "Python",
-    topics: ["FastAPI", "React", "Redux", "ApexCharts", "Plotly", "SCSS"],
+    topics: ["FastAPI", "React", "Redux", "Pandas", "ApexCharts", "Plotly"],
     clone_url: "",
     live: "",
     image: "",
@@ -59,11 +67,13 @@ export const projects = [
   },
   {
     id: "21",
-    title: "Medical Claims Auditing Tool",
+    slug: "medical-claims-auditing",
+    hasCaseStudy: true,
+    title: "Medical Claims Auditing Platform",
     description:
-      "A Flask and DuckDB tool for auditing medical claims and premium data: upload files, map columns to a standard schema, run SQL-based checks, and export results.",
+      "A Flask and DuckDB platform that maps claims and premium files to a standard schema and runs SQL-based reconciliation checks, cutting manual data preparation from days to minutes.",
     language: "Python",
-    topics: ["Flask", "DuckDB", "SQL", "Plotly", "Streamlit"],
+    topics: ["Flask", "DuckDB", "SQL", "Pandas", "Plotly"],
     clone_url: "",
     live: "",
     image: "",
@@ -73,6 +83,7 @@ export const projects = [
   },
   {
     id: "22",
+    slug: "internal-company-portal",
     title: "Internal Company Portal",
     description:
       "A MERN-stack internal portal with JWT authentication, document uploads and previews, scheduled email notifications, and real-time updates over Socket.IO.",
@@ -87,6 +98,7 @@ export const projects = [
   },
   {
     id: "23",
+    slug: "glm-pricing-desktop-app",
     title: "GLM Pricing Desktop App",
     description:
       "Packaged an R Shiny GLM pricing model as an Electron desktop installer with a portable R runtime and licence-based access control.",
@@ -101,6 +113,7 @@ export const projects = [
   },
   {
     id: "19",
+    slug: "portfolio-website",
     title: "Portfolio Website",
     description:
       "A personal portfolio built with Next.js to present selected projects, experience, education, and writing.",
@@ -124,6 +137,7 @@ export const projects = [
   },
   {
     id: "10",
+    slug: "mini-paypal",
     title: "Mini PayPal",
     description:
       "A Django payment app for sending, requesting, and receiving payments.",
@@ -138,6 +152,7 @@ export const projects = [
   },
   {
     id: "9",
+    slug: "qrcode-generator-api",
     title: "QRCode Generator API",
     description:
       "A Node.js and Express API for generating and managing QR codes.",
@@ -152,6 +167,7 @@ export const projects = [
   },
   {
     id: "16",
+    slug: "flash-driving-app",
     title: "Flash Driving App",
     description:
       "A Kotlin ride-hailing app with driver and customer interfaces, Google Maps integration, and Google Pay.",
@@ -166,6 +182,7 @@ export const projects = [
   },
   {
     id: "8",
+    slug: "country-charm",
     title: "Country Charm",
     description:
       "A React-powered review platform for food, hotels, and tourist destinations, built as a semester project.",
@@ -188,6 +205,7 @@ export const projects = [
   },
   {
     id: "5",
+    slug: "school-management-system",
     title: "School Management System",
     description:
       "A Java Swing desktop application for managing school operations, including student records, reporting, and data visualization.",

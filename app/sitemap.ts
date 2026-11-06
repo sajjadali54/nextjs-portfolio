@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@data/site";
 import { jobs } from "@data/jobs";
+import { projects } from "@data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
@@ -19,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority,
     })),
+    ...projects
+      .filter((project) => project.slug)
+      .map((project) => ({
+        url: `${siteUrl}/projects/${project.slug}`,
+        changeFrequency: "monthly" as const,
+        priority: project.hasCaseStudy ? 0.8 : 0.5,
+      })),
     ...jobs.map((_, index) => ({
       url: `${siteUrl}/experience/${index}`,
       changeFrequency: "yearly" as const,

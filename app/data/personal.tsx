@@ -12,6 +12,6 @@ export const personal = {
   highlights: [
     { label: "Domain", value: "IFRS 17, benchmarking, financial modelling" },
     { label: "Core stack", value: "Python, Node.js, React, Next.js" },
-    { label: "Collaboration", value: "Actuarial teams in five countries" },
+    { label: "Impact", value: "Gratuity valuations for around 500 clients" },
   ],
 };
