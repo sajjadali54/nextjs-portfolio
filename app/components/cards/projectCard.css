@@ -77,6 +77,34 @@
   font-size: 0.875rem;
 }
 
+/* Same height whether a card has buttons or only the note, so cards line up. */
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.4rem;
+}
+
+.project-card-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.project-card .portfolio-card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.project-card .portfolio-card-description {
+  min-height: calc(1.55em * 3);
+}
+
 .project-card .tag-button,
 .project-card .badge {
   font-size: 0.75rem;

@@ -21,10 +21,10 @@
 ## Visual and content standards
 
 - The intended visual direction is professional and editorial: warm neutral surfaces, charcoal text, restrained forest-teal accents, and an optional matching dark theme. The tokens in `app/globals.css` are the source of truth.
-- The confirmed portfolio positioning is senior software development for data-intensive financial and business workflows. Current public role facts are Senior Software Developer at Badri Solutions, Karachi, Pakistan; do not silently change these without Sajjad's confirmation.
+- The confirmed portfolio positioning is full-stack development (Python, Node.js, React, Next.js) for actuarial and financial software. Sajjad implements models and formulas supplied by actuaries; do not present him as an actuarial or modelling expert. Lead the tech stack with tools used professionally and present mobile/other tools only as secondary familiarity. Current public role facts are Senior Software Developer at Badri Solutions, Karachi, Pakistan; do not silently change these without Sajjad's confirmation.
 - Keep personal interests secondary to professional evidence. Add resume claims, especially numerical outcomes or employer-specific project details, only when they are accurate and appropriate to publish.
 - Resume files belong outside `public/` unless Sajjad explicitly selects a version for public download. The local `private-resumes/` directory is gitignored and must remain untracked.
-- The contact form uses Formspree only when `NEXT_FORMSPREE_ENDPOINT` is configured. Do not report messages as sent if the endpoint is absent or the request fails.
+- The client-side contact form uses Formspree only when `NEXT_PUBLIC_FORMSPREE_ENDPOINT` is configured. This is a public form endpoint, not a secret. Do not report messages as sent if the endpoint is absent or the request fails.
 - Avoid decorative purple/neon gradients, glassmorphism, oversized glow effects, excessive animation, and center-aligning long-form text. Prefer clear hierarchy, comfortable line lengths, concise copy, and consistent spacing.
 - Use the theme variables (`--background`, `--surface`, `--foreground`, `--muted`, `--border`, and `--primary`) instead of hard-coded colors.
 - Cards should prioritize readable titles and concise descriptions. Keep repeated cards landscape-oriented on wider screens and stack media/content naturally on small screens; avoid fixed-width layouts that cause horizontal scrolling.

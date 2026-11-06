@@ -48,10 +48,11 @@ export default function AboutPage() {
             </h1>
             <p className="about-intro mb-4">{personal.description}</p>
             <p className="text-muted mb-4">
-              At {personal.company}, my work spans actuarial applications,
-              backend services, data processing, and dashboards. I enjoy
-              connecting technical implementation with the needs of the teams
-              who rely on these tools.
+              At {personal.company}, actuaries define the models and formulas,
+              and I build the software around them: backend services, data
+              processing, React and Next.js interfaces, and desktop tools. I
+              enjoy connecting technical implementation with the needs of the
+              teams who rely on these tools.
             </p>
             <div className="d-flex flex-wrap gap-3">
               <Link href="/projects" className="btn btn-primary px-4 py-2">

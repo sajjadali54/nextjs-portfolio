@@ -3,20 +3,14 @@
 import { GoPackage, GoStack } from "react-icons/go";
 import { motion } from "framer-motion";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
 import TechStack from "@components/stack/TechStack";
 import ProjectCard from "./components/cards/ProjectCard";
-import { techItems } from "@data/tech-items";
+import { familiarTech, techItems } from "@data/tech-items";
 import projects from "./data/projects";
-
-import { useMediaQuery } from "./hooks";
 
 import HeroSection from "./components/home/hero";
 
 export default function Home() {
-  const isMobile = useMediaQuery();
   const firstThreeProjects = projects.slice(0, 3);
 
   return (
@@ -40,13 +34,11 @@ export default function Home() {
               data-intensive workflows.
             </p>
 
-            <Row className="g-4 justify-content-center">
+            <div className="grid-layout text-start">
               {firstThreeProjects.map((project, index) => (
-                <Col key={project.id || index} className="mb-3">
-                  <ProjectCard project={project} />
-                </Col>
+                <ProjectCard key={project.id || index} project={project} />
               ))}
-            </Row>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -58,16 +50,16 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <div className="section-panel tech-stack-section text-center mb-4">
-            <div className="d-flex align-items-center justify-content-center gap-3 mb-4">
+            <div className="d-flex align-items-center justify-content-center gap-3 mb-2">
               <GoStack className="tech-stack-icon" />
               <h2 className="text-gradient mb-0">Tools I use</h2>
             </div>
+            <p className="text-muted mb-4">
+              What I reach for day to day when building actuarial and financial
+              software.
+            </p>
 
-            <Row className="g-4 align-items-center">
-              <Col>
-                <TechStack techItems={techItems} isMobile={isMobile} />
-              </Col>
-            </Row>
+            <TechStack techItems={techItems} familiar={familiarTech} />
           </div>
         </motion.div>
       </section>

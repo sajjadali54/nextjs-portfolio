@@ -25,6 +25,7 @@ export const projects = [
   {
     id: "18",
     title: "Benchmarking Tool",
+    isClientProject: true,
     description:
       "A benchmarking tool for insurance companies, with business-mix analysis and tariff-rate comparisons.",
     language: "Python",
@@ -47,6 +48,7 @@ export const projects = [
   {
     id: "17",
     title: "IFRS 17 Models: GMM and VFA",
+    isClientProject: true,
     description:
       "A Python desktop application for IFRS 17 GMM and VFA calculations, built with PySide6 and Excel Wings for large datasets.",
     language: "Python",

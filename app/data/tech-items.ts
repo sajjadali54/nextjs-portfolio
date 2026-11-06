@@ -1,47 +1,47 @@
-import {
-  // FaPython,
-  FaHtml5,
-  FaDatabase,
-  FaMobileAlt,
-  FaCogs,
-  FaDesktop,
-} from "react-icons/fa"; // Icons for each tech category
+import { IconType } from "react-icons";
+import { FiDatabase, FiLayout, FiMonitor, FiServer } from "react-icons/fi";
 
-export const techItems = [
-  // {
-  //   category: "Languages",
-  //   items: "Python, JavaScript, Java, Dart, Kotlin",
-  //   icon: FaPython, // Store the reference, NOT JSX
-  //   color: "#306998", // Python Color
-  // },
+export interface TechGroup {
+  category: string;
+  summary: string;
+  items: string[];
+  icon: IconType;
+}
+
+// Core tools used in professional work (see app/data/jobs.ts).
+export const techItems: TechGroup[] = [
   {
-    category: "Data Science",
-    items: "Pandas, Polars, NumPy, Matplotlib, Seaborn",
-    icon: FaCogs,
-    color: "#f5b842", // Data Science Yellow
+    category: "Backend and APIs",
+    summary: "Services that run calculations and serve results.",
+    items: ["Python", "FastAPI", "Flask", "Node.js", "NestJS"],
+    icon: FiServer,
   },
   {
-    category: "Frontend Development",
-    items: "HTML, CSS, JS, React, Next.js, and SolidJS",
-    icon: FaHtml5,
-    color: "#E34F26", // HTML5 Color
+    category: "Frontend and dashboards",
+    summary: "Interfaces for exploring inputs and outputs.",
+    items: ["React", "Next.js", "TypeScript", "ApexCharts", "Plotly"],
+    icon: FiLayout,
   },
   {
-    category: "Backend Development",
-    items: "Node.js, Django, FastAPI, MySQL, MongoDB",
-    icon: FaDatabase,
-    color: "#68A063", // Node.js Color
+    category: "Data processing",
+    summary: "Preparing and validating large financial datasets.",
+    items: ["Pandas", "Polars", "NumPy", "Excel automation"],
+    icon: FiDatabase,
   },
   {
-    category: "Desktop App Development",
-    items: "PyQt, PySide, Dotnet, Java Swing",
-    icon: FaDesktop,
-    color: "#1E1E1E", // Desktop Color
+    category: "Desktop delivery",
+    summary: "Packaging web and Python tools for offline use.",
+    items: ["PySide", "PyInstaller", "PyWebview", "Electron"],
+    icon: FiMonitor,
   },
-  {
-    category: "Mobile App Development",
-    items: "Flutter, React Native, Android Studio",
-    icon: FaMobileAlt,
-    color: "#2196F3", // Mobile Color
-  },
+];
+
+// Tools used in earlier roles or personal projects, shown without claiming depth.
+export const familiarTech = [
+  "Django",
+  "MongoDB",
+  "MySQL",
+  "Flutter",
+  "Kotlin (Android)",
+  "Java Swing",
 ];

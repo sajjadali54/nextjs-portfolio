@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiLock } from "react-icons/fi";
 import Card from "react-bootstrap/Card";
 import Tags from "@components/Tags";
 import Link from "next/link";
@@ -14,12 +14,14 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
   project,
   className = "",
 }) => {
+  const hasLinks = Boolean(project.live || project.clone_url);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-      className={className}
+      className={`h-100 ${className}`}
     >
       <Card className="glass-card portfolio-card project-card h-100 border-0 overflow-hidden">
         <div className="image-container position-relative">
@@ -50,7 +52,16 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
           </Card.Body>
 
           <Card.Footer className="portfolio-card-footer bg-transparent border-0 px-4 pb-4">
-            <div className="d-flex flex-wrap gap-2">
+            <div className="project-card-actions">
+              {!hasLinks && (
+                <span className="project-card-note">
+                  <FiLock aria-hidden="true" />
+                  {project.isClientProject
+                    ? "Client project · code not public"
+                    : "No public demo or source"}
+                </span>
+              )}
+
               {project.live && (
                 <Link
                   href={project.live}

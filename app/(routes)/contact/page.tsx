@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Container } from "react-bootstrap";
 import { FaEnvelope, FaPaperPlane, FaRegUser } from "react-icons/fa";
 
-const formEndpoint = process.env.NEXT_FORMSPREE_ENDPOINT;
+const formEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
 const validationSchema = Yup.object({
   name: Yup.string().trim().required("Name is required").max(100),
