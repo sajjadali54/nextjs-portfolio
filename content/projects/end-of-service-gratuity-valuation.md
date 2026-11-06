@@ -2,7 +2,7 @@
 
 A valuation platform that calculates end-of-service (gratuity) liabilities for employers. Actuaries upload employee data and disclosure workbooks, review data-quality checks, run a suite of valuation models, and produce the Excel results and PDF reports that go to clients.
 
-The platform is used for around **500 clients** across Pakistan, Saudi Arabia, the UAE, Qatar, Kuwait, Oman, Lebanon, and other markets.
+The platform is used for valuations across Pakistan and the Middle East.
 
 ## The problem
 
@@ -14,9 +14,9 @@ I joined the project at version 2 and became the lead developer for version 3 an
 
 ## How it works
 
-1. **Sign in and upload.** Each user session gets its own isolated workspace and result folder.
+1. **Upload** the employee data and disclosure workbooks.
 2. **Data checks.** The app validates structure, missing values, employee-data quality, staff movements, and assumptions before any model runs, which is where most data problems are caught.
-3. **Models.** **12 valuation models** run on the validated data, including the main model, assumption models, an IAS 19 valuation, a previous-year model, and an adjusted-prior model.
+3. **Models.** **12 valuation models**, including an IAS 19 valuation, run on the validated data.
 4. **Results and analysis.** Tabular and visual summaries, descriptive analysis, and salary and movement analysis.
 5. **Disclosures and reports.** Generated Excel results and PDF valuation reports.
 
@@ -31,6 +31,6 @@ I joined the project at version 2 and became the lead developer for version 3 an
 
 ## Outcome
 
-A repeatable valuation workflow that the actuarial team runs for hundreds of clients across the region, with data checks, model runs, and reports handled in one application.
+A repeatable valuation workflow that the actuarial team runs across the region, with data checks, model runs, and reports handled in one application.
 
 > Client data, actuarial assumptions, and the model formulas are confidential and are not shown here.

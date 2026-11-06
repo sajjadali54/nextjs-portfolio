@@ -70,7 +70,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           {"context" in project && project.context
             ? project.context
             : isClient
-              ? "Client project · Badri Solutions"
+              ? "Client project"
               : "Personal project"}
         </p>
         <h1 className="project-detail-title">{project.title}</h1>

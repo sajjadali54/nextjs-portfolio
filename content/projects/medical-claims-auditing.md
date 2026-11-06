@@ -13,7 +13,7 @@ I was responsible for the frontend and backend, including integrating the calcul
 ## How it works
 
 1. **Upload** claims and premium files (CSV, Excel, and TSV).
-2. **Map:** the platform detects each file's schema and suggests mappings to standard fields from reference glossaries; users review and save them, and saved mappings are reused next time.
+2. **Map:** the platform detects each file's schema and suggests mappings to standard fields; users review and save them, and saved mappings are reused next time.
 3. **Standardise:** data is type-converted and loaded into an in-memory analytics database.
 4. **Audit and reconcile:** generated SQL combines tables and historical data, applies data-quality checks and exclusions, and produces reconciliation summaries.
 5. **Export** the final master data views.
@@ -21,7 +21,7 @@ I was responsible for the frontend and backend, including integrating the calcul
 ## Engineering highlights
 
 - **DuckDB for in-memory analytics,** fast enough to work interactively with large files.
-- **Glossary-driven schema mapping** with reusable saved mappings.
+- **Assisted schema mapping** with reusable saved mappings.
 - **Background processing** for uploads and mapping, so the interface stays responsive.
 - **SQL workspace:** run queries against the in-memory data and preview tables inside the app.
 - **Desktop-style packaging** for offline use.

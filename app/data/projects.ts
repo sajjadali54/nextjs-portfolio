@@ -7,7 +7,7 @@ export const projects = [
     hasCaseStudy: true,
     title: "IFRS 17 Cashflow Engine",
     description:
-      "A full-stack IFRS 17 cashflow and valuation engine for macro-enabled Excel inputs that cut run time from about a week to a day. Used by around 60 internal users.",
+      "A full-stack IFRS 17 cashflow and valuation engine for macro-enabled Excel inputs that cut run time from about a week to a day.",
     language: "Python",
     topics: ["Flask", "Pandas", "IFRS 17", "openpyxl", "PyWebview"],
     clone_url: "",
@@ -23,7 +23,7 @@ export const projects = [
     hasCaseStudy: true,
     title: "End-of-Service Gratuity Valuation Platform",
     description:
-      "Lead developer (v3, v4) of a gratuity valuation platform with 12 actuarial models, used for around 500 clients across Pakistan and the Middle East.",
+      "Lead developer (v3, v4) of a gratuity valuation platform with 12 actuarial models, used for valuations across Pakistan and the Middle East.",
     language: "Python",
     topics: ["IAS 19", "Pandas", "Plotly", "ReportLab", "Streamlit", "PyWebview"],
     clone_url: "",
@@ -39,7 +39,7 @@ export const projects = [
     hasCaseStudy: true,
     title: "IFRS 17 Desktop Applications: GMM, VFA and PAA",
     description:
-      "Four PySide6 desktop applications that drive macro-enabled Excel models for IFRS 17 measurement. I built the interface and integrated it with the model components.",
+      "Three PySide6 desktop applications (PAA, GMM, and VFA) that drive macro-enabled Excel models for IFRS 17. I built the interface and integrated it with the model components.",
     language: "Python",
     topics: ["PySide6", "xlwings", "IFRS 17", "PyInstaller", "Pandas"],
     clone_url: "",
@@ -86,7 +86,7 @@ export const projects = [
     slug: "internal-company-portal",
     title: "Internal Company Portal",
     description:
-      "A MERN-stack internal portal with JWT authentication, document uploads and previews, scheduled email notifications, and real-time updates over Socket.IO.",
+      "A MERN-stack internal portal with document uploads, in-browser document previews, and real-time updates over Socket.IO.",
     language: "JavaScript",
     topics: ["React", "Redux", "Node.js", "Express", "MongoDB", "Socket.IO"],
     clone_url: "",
@@ -101,7 +101,7 @@ export const projects = [
     slug: "glm-pricing-desktop-app",
     title: "GLM Pricing Desktop App",
     description:
-      "Packaged an R Shiny GLM pricing model as an Electron desktop installer with a portable R runtime and licence-based access control.",
+      "Packaged an R Shiny GLM pricing model as an Electron desktop installer that bundles a portable R runtime.",
     language: "JavaScript",
     topics: ["Electron", "Node.js", "R Shiny", "Desktop packaging"],
     clone_url: "",
@@ -130,6 +130,23 @@ export const projects = [
     updatedAt: "1739041876304",
   },
   {
+    id: "5",
+    slug: "school-management-system",
+    hasCaseStudy: true,
+    context: "Course project · Object-Oriented Programming, Sukkur IBA",
+    title: "School Management System",
+    description:
+      "A Java Swing desktop app for student and staff records, reports, and charts, built as a second-semester OOP project and still used by a primary school.",
+    language: "Java",
+    topics: ["Java", "Java Swing", "OOP", "File handling", "Data visualization"],
+    clone_url: "https://github.com/SajjadAli54/school-management-system",
+    live: "",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbt9YeIo-mje-yme1GJN81fSZUJI6gy2biaw&s",
+    createdAt: "1739037606465",
+    updatedAt: "1739037606465",
+  },
+  {
     id: "19",
     slug: "portfolio-website",
     title: "Portfolio Website",
@@ -142,6 +159,23 @@ export const projects = [
     topics: ["Next.js", "React", "TypeScript", "Bootstrap", "Framer Motion"],
     createdAt: "1739044060727",
     updatedAt: "1739044060727",
+  },
+  {
+    id: "16",
+    slug: "flash-driving-app",
+    hasCaseStudy: true,
+    context: "Client project and Android course project",
+    title: "Flash Driving App",
+    description:
+      "A Kotlin ride-hailing app for a client, with driver and passenger interfaces, live location tracking, Firebase, and Google Pay.",
+    language: "Kotlin",
+    topics: ["Kotlin", "Android", "Firebase", "Cloud Firestore", "Google Maps"],
+    clone_url: "https://github.com/SajjadAli54/flash-app",
+    live: "",
+    image:
+      "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1562254725/autoexpress/istock_000026948885medium.jpg",
+    createdAt: "1739043216514",
+    updatedAt: "1739043216514",
   },
   {
     id: "9",
@@ -157,21 +191,6 @@ export const projects = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgmlMz54DYigrchHRR8d8rJ5gkEB1_yrvd8w&s",
     createdAt: "1739041761964",
     updatedAt: "1739041761964",
-  },
-  {
-    id: "16",
-    slug: "flash-driving-app",
-    title: "Flash Driving App",
-    description:
-      "A Kotlin ride-hailing app with driver and customer interfaces, Google Maps integration, and Google Pay.",
-    language: "Kotlin",
-    topics: ["Android", "Android Studio", "EDrive", "Firebase", "Google Maps"],
-    clone_url: "https://github.com/SajjadAli54/flash-app",
-    live: "",
-    image:
-      "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1562254725/autoexpress/istock_000026948885medium.jpg",
-    createdAt: "1739043216514",
-    updatedAt: "1739043216514",
   },
   {
     id: "8",
@@ -195,29 +214,6 @@ export const projects = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-HLuo6T3OsMCMOTovQy8Q8cccLTEuikxekcXiaxCJ&s",
     createdAt: "1739040692699",
     updatedAt: "1739040692699",
-  },
-  {
-    id: "5",
-    slug: "school-management-system",
-    title: "School Management System",
-    description:
-      "A Java Swing desktop application for managing school operations, including student records, reporting, and data visualization.",
-    language: "Java",
-    topics: [
-      "Java Swing",
-      "Java",
-      "School Management",
-      "Data Visualization",
-      "Charts",
-      "Education",
-      "Filing",
-    ],
-    clone_url: "https://github.com/SajjadAli54/school-management-system",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbt9YeIo-mje-yme1GJN81fSZUJI6gy2biaw&s",
-    createdAt: "1739037606465",
-    updatedAt: "1739037606465",
   },
 ];
 
