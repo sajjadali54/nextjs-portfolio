@@ -1,7 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub, FiLock } from "react-icons/fi";
+import {
+  FiBriefcase,
+  FiExternalLink,
+  FiGithub,
+  FiLock,
+} from "react-icons/fi";
 import Card from "react-bootstrap/Card";
 import Tags from "@components/Tags";
 import Link from "next/link";
@@ -25,14 +30,23 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
     >
       <Card className="glass-card portfolio-card project-card h-100 border-0 overflow-hidden">
         <div className="image-container position-relative">
-          <Card.Img
-            src={project.image || "/placeholder.png"}
-            alt={project.title || "Project"}
-            className="project-image"
-            onError={(e) => {
-              e.currentTarget.src = "/logo.png";
-            }}
-          />
+          {project.image ? (
+            <Card.Img
+              src={project.image}
+              alt={project.title || "Project"}
+              className="project-image"
+              onError={(e) => {
+                e.currentTarget.src = "/logo.png";
+              }}
+            />
+          ) : (
+            <div className="project-image-fallback" aria-hidden="true">
+              <FiBriefcase />
+              <span>
+                {project.isClientProject ? "Client work" : project.language}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="portfolio-card-content">

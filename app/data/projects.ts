@@ -1,4 +1,104 @@
+// Client projects (isClientProject) are Badri Solutions work. Use generic names and
+// describe functionality and stack only; no client names, product names, or screenshots.
 export const projects = [
+  {
+    id: "20",
+    title: "IFRS 17 Cashflow Engine",
+    description:
+      "A Flask application, also shipped as a Windows desktop app, that validates insurers' Excel inputs and generates IFRS 17 LIC and LRC cashflow outputs.",
+    language: "Python",
+    topics: ["Flask", "Pandas", "IFRS 17", "PyWebview", "PyInstaller"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
+  {
+    id: "24",
+    title: "End-of-Service Gratuity Valuation Platform",
+    description:
+      "Lead developer (v3, v4) of a gratuity valuation platform with 12 actuarial models, including IAS 19, previous-year and adjusted-prior, plus employee-data checks and Excel/PDF reporting.",
+    language: "Python",
+    topics: ["IAS 19", "Pandas", "Plotly", "ReportLab", "Streamlit", "PyWebview"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
+  {
+    id: "17",
+    title: "IFRS 17 Life Models: GMM and VFA",
+    description:
+      "A PySide6 desktop application for IFRS 17 life insurance calculations under GMM and VFA, adapted from the non-life model with the actuarial team and integrated with Excel.",
+    language: "Python",
+    topics: ["PySide6", "xlwings", "IFRS 17", "GMM", "VFA"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
+  {
+    id: "18",
+    title: "Insurance Benchmarking Tool",
+    description:
+      "A FastAPI and React application for insurance companies, with business-mix analysis and tariff-rate comparisons presented through interactive charts.",
+    language: "Python",
+    topics: ["FastAPI", "React", "Redux", "ApexCharts", "Plotly", "SCSS"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
+  {
+    id: "21",
+    title: "Medical Claims Auditing Tool",
+    description:
+      "A Flask and DuckDB tool for auditing medical claims and premium data: upload files, map columns to a standard schema, run SQL-based checks, and export results.",
+    language: "Python",
+    topics: ["Flask", "DuckDB", "SQL", "Plotly", "Streamlit"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
+  {
+    id: "22",
+    title: "Internal Company Portal",
+    description:
+      "A MERN-stack internal portal with JWT authentication, document uploads and previews, scheduled email notifications, and real-time updates over Socket.IO.",
+    language: "JavaScript",
+    topics: ["React", "Redux", "Node.js", "Express", "MongoDB", "Socket.IO"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
+  {
+    id: "23",
+    title: "GLM Pricing Desktop App",
+    description:
+      "Packaged an R Shiny GLM pricing model as an Electron desktop installer with a portable R runtime and licence-based access control.",
+    language: "JavaScript",
+    topics: ["Electron", "Node.js", "R Shiny", "Desktop packaging"],
+    clone_url: "",
+    live: "",
+    image: "",
+    isClientProject: true,
+    createdAt: "1739042993891",
+    updatedAt: "1739042993891",
+  },
   {
     id: "19",
     title: "Portfolio Website",
@@ -21,146 +121,6 @@ export const projects = [
     ],
     createdAt: "1739044060727",
     updatedAt: "1739044060727",
-  },
-  {
-    id: "18",
-    title: "Benchmarking Tool",
-    isClientProject: true,
-    description:
-      "A benchmarking tool for insurance companies, with business-mix analysis and tariff-rate comparisons.",
-    language: "Python",
-    topics: [
-      "Fast API",
-      "React",
-      "JavaScript",
-      "SCSS",
-      "Apexcharts",
-      "Plotly",
-      "Reduc",
-    ],
-    clone_url: "",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmzm4UD2mhTmfAH9PcRepcL0yp-5d_XWeyAA&s",
-    createdAt: "1739042993891",
-    updatedAt: "1739042993891",
-  },
-  {
-    id: "17",
-    title: "IFRS 17 Models: GMM and VFA",
-    isClientProject: true,
-    description:
-      "A Python desktop application for IFRS 17 GMM and VFA calculations, built with PySide6 and Excel Wings for large datasets.",
-    language: "Python",
-    topics: ["PyQt", "PyQt Designer", "IFRS 17", "GMM", "VFA", "Excel Wings"],
-    clone_url: "",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmzm4UD2mhTmfAH9PcRepcL0yp-5d_XWeyAA&s",
-    createdAt: "1739042993891",
-    updatedAt: "1739042993891",
-  },
-  {
-    id: "16",
-    title: "Flash Driving App",
-    description:
-      "A Kotlin ride-hailing app with driver and customer interfaces, Google Maps integration, and Google Pay.",
-    language: "Kotlin",
-    topics: ["Android", "Android Studio", "EDrive", "Firebase", "Google Maps"],
-    clone_url: "https://github.com/SajjadAli54/flash-app",
-    live: "",
-    image:
-      "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1562254725/autoexpress/istock_000026948885medium.jpg",
-    createdAt: "1739043216514",
-    updatedAt: "1739043216514",
-  },
-  {
-    id: "15",
-    title: "Email Sender",
-    description:
-      "A PyQt desktop email client that sends messages through SMTP.",
-    language: "Python",
-    topics: ["PyQt", "PyQT Designer", "SMTP", "Python GUI", "CSS"],
-    clone_url:
-      "https://github.com/SajjadAli54/python/tree/master/pyqt/emailsender",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoIyOkOCffK33c6roEhFWKJrgBQZCee6d5Tw&s",
-    createdAt: "1739043103086",
-    updatedAt: "1739043103086",
-  },
-  {
-    id: "14",
-    title: "Currency Converter",
-    description:
-      "A Python and PyQt desktop app for currency conversion using an exchange-rates API.",
-    language: "Python",
-    topics: ["PyQT", "PyQt Designer", "Currency Exchange"],
-    clone_url:
-      "https://github.com/SajjadAli54/python/tree/master/pyqt/currency",
-    live: "",
-    image:
-      "https://cdn.britannica.com/87/191987-131-6D09155D/currency-exchange-rate-background-LED-display-board.jpg",
-    createdAt: "1739042993891",
-    updatedAt: "1739042993891",
-  },
-  {
-    id: "13",
-    title: "Android Weather App",
-    description:
-      "A Flutter weather app for Android that retrieves current conditions from the OpenWeather API.",
-    language: "Dart",
-    topics: [
-      "Flutter",
-      "Openweather API",
-      "HTTP",
-      "JSON",
-      "State Management",
-      "GETX",
-    ],
-    clone_url: "https://github.com/SajjadAli54/flutter_weather_app",
-    live: "",
-    image:
-      "https://www.figma.com/community/resource/ccd60066-86ea-45f6-810b-9a4734419528/thumbnail",
-    createdAt: "1739042896128",
-    updatedAt: "1739042896128",
-  },
-  {
-    id: "12",
-    title: "Android Chatbot",
-    description:
-      "A Kotlin Android chatbot that connects to the BrainShop API.",
-    language: "Kotlin",
-    topics: ["Android", "Android Studio", "Brainshop API", "AI Chatbot"],
-    clone_url: "https://github.com/SajjadAli54/chatbot",
-    live: "",
-    image:
-      "https://user-images.githubusercontent.com/58862894/217343322-00c79f21-f562-48b9-b7a7-3d1897682b49.png",
-    createdAt: "1739042134506",
-    updatedAt: "1739042134506",
-  },
-  {
-    id: "11",
-    title: "Issue Tracker",
-    description:
-      "A Next.js issue tracker backed by MySQL and Prisma.",
-    language: "JavaScript",
-    topics: [
-      "nextjs",
-      "react",
-      "prisma",
-      "MySQL",
-      "Chakra UI",
-      "tailwind",
-      "Typescript",
-      "Bug Reporting",
-    ],
-    clone_url: "https://github.com/SajjadAli54/issue-tracker",
-    live: "",
-    image:
-      "https://codewithmosh.com/_next/image?url=https%3A%2F%2Fcdn.filestackcontent.com%2F8MbtJ4hTAaOk3KPcptqZ&w=3840&q=75",
-    createdAt: "1739042001211",
-    updatedAt: "1739042001211",
   },
   {
     id: "10",
@@ -191,10 +151,24 @@ export const projects = [
     updatedAt: "1739041761964",
   },
   {
+    id: "16",
+    title: "Flash Driving App",
+    description:
+      "A Kotlin ride-hailing app with driver and customer interfaces, Google Maps integration, and Google Pay.",
+    language: "Kotlin",
+    topics: ["Android", "Android Studio", "EDrive", "Firebase", "Google Maps"],
+    clone_url: "https://github.com/SajjadAli54/flash-app",
+    live: "",
+    image:
+      "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1562254725/autoexpress/istock_000026948885medium.jpg",
+    createdAt: "1739043216514",
+    updatedAt: "1739043216514",
+  },
+  {
     id: "8",
     title: "Country Charm",
     description:
-      "A React-powered review platform for food, hotels, and tourist destinations, built as a semester project",
+      "A React-powered review platform for food, hotels, and tourist destinations, built as a semester project.",
     language: "JavaScript",
     topics: [
       "react",
@@ -213,44 +187,10 @@ export const projects = [
     updatedAt: "1739040692699",
   },
   {
-    id: "7",
-    title: "Robo Friends",
-    description:
-      "A fun React app displaying robot profiles using the RoboHash API, featuring a search filter",
-    language: "JavaScript",
-    topics: ["react", "bootstrap", "RoboHash API", "State Management"],
-    clone_url: "https://github.com/SajjadAli54/robofriends",
-    live: "https://sajjadali54.github.io/robofriends/",
-    image: "https://robohash.org/2?200x200",
-    createdAt: "1739037938634",
-    updatedAt: "1739041413946",
-  },
-  {
-    id: "6",
-    title: "Vidly",
-    description:
-      "A React-based movie listing application showcasing state management and dynamic components",
-    language: "JavaScript",
-    topics: [
-      "react",
-      "Movie Listings",
-      "Dynamic UI",
-      "bootstrap",
-      "State Management",
-      "Pagination",
-    ],
-    clone_url: "https://github.com/SajjadAli54/vidly",
-    live: "https://sajjadali54.github.io/vidly/",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpLGbzwK8xGCsUQvhfEby57Qm5gULxckCI2Q&s",
-    createdAt: "1739037777525",
-    updatedAt: "1739037777525",
-  },
-  {
     id: "5",
     title: "School Management System",
     description:
-      "A Java Swing desktop application for managing school operations, including student records, reporting, and data visualization",
+      "A Java Swing desktop application for managing school operations, including student records, reporting, and data visualization.",
     language: "Java",
     topics: [
       "Java Swing",

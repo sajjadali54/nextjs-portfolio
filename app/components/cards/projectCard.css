@@ -33,6 +33,29 @@
   transition: transform 0.3s ease;
 }
 
+.project-image-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--primary);
+  background:
+    linear-gradient(135deg, var(--primary-soft), transparent 70%),
+    var(--surface-soft);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-image-fallback svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
 .project-card:hover .project-image {
   transform: scale(1.025);
 }
