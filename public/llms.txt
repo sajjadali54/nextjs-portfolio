@@ -1,0 +1,28 @@
+# Sajjad Ali
+
+> Senior Software Developer at Badri Solutions in Karachi, Pakistan. Full-stack developer (Python, Node.js, React, Next.js) who turns actuarial models and formulas, supplied by actuaries, into production software for insurance and financial teams.
+
+## Focus
+
+- Actuarial and financial software: IFRS 17 cashflow and life models (GMM, VFA), end-of-service gratuity valuation (including IAS 19), insurance benchmarking, and medical claims auditing.
+- Backend services and APIs with Python (FastAPI, Flask) and Node.js (Express, NestJS).
+- Frontends and dashboards with React, Next.js, TypeScript, ApexCharts, and Plotly.
+- Data processing with Pandas, Polars, and NumPy; desktop delivery with PySide, PyInstaller, PyWebview, and Electron.
+- Previously: MERN stack developer at Solspro, and research fellow in machine learning at NTNU.
+
+Client project code and data are confidential; project pages describe functionality and technology only.
+
+## Pages
+
+- [Home](https://imsajjadali.vercel.app/): overview and selected projects
+- [Projects](https://imsajjadali.vercel.app/projects): client and personal projects
+- [Experience](https://imsajjadali.vercel.app/experience): roles and responsibilities
+- [About](https://imsajjadali.vercel.app/about): background and focus areas
+- [Education](https://imsajjadali.vercel.app/education): degrees and certifications
+- [Contact](https://imsajjadali.vercel.app/contact)
+
+## Profiles
+
+- [GitHub](https://github.com/sajjadali54/)
+- [LinkedIn](https://www.linkedin.com/in/sajjadali54/)
+- [DEV](https://dev.to/sajjadali)

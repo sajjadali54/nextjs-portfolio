@@ -104,7 +104,7 @@ export const projects = [
     title: "Portfolio Website",
     description:
       "A personal portfolio built with Next.js to present selected projects, experience, education, and writing.",
-    live: "https://imsajjadali.netlify.app/",
+    live: "https://imsajjadali.vercel.app/",
     clone_url: "https://github.com/SajjadAli54/sajjadali",
     image: "https://sajjadali.netlify.app/assets/logo-D6i5nxaC.png",
     language: "JavaScript",
