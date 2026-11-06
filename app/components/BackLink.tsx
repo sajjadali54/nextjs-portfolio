@@ -1,23 +1,14 @@
-import React from "react";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa";
+import { FiArrowLeft } from "react-icons/fi";
+import "./detail/detail.css";
 
+// Shared back link for every detail page (projects, experience, education, blogs).
+// Sits at the top left so it is visible immediately; no delayed animation.
 function BackLink({ link, page }: { link: string; page: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.4 }}
-    >
-      <div className="text-center mt-5">
-        <Link href={link} className="btn btn-gradient px-4 py-2">
-          <FaArrowLeft className="me-2" aria-hidden="true" />
-          Back to {page}
-        </Link>
-      </div>
-    </motion.div>
+    <Link href={link} className="detail-back">
+      <FiArrowLeft aria-hidden="true" /> Back to {page}
+    </Link>
   );
 }
 

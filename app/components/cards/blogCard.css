@@ -1,9 +1,14 @@
+/* Compact blog card: shorter than project cards because articles need less context. */
+.blog-card.portfolio-card {
+  min-height: 0;
+}
+
 .blog-card-media {
   position: relative;
   display: block;
-  flex: 0 0 34%;
-  max-width: 34%;
-  min-height: 15rem;
+  flex: 0 0 30%;
+  max-width: 30%;
+  min-height: 11rem;
   overflow: hidden;
   background: var(--surface-soft);
 }
@@ -21,28 +26,79 @@
   transform: scale(1.025);
 }
 
-.blog-author-image {
-  flex: 0 0 auto;
-  width: 2.8rem;
-  height: 2.8rem;
-  object-fit: cover;
+.blog-card .card-body {
+  padding: 1rem 1.25rem 0.75rem !important;
 }
 
-.blog-card .card-body > .d-flex:first-child > div {
-  min-width: 0;
-}
-
-.blog-card .card-body > .d-flex:first-child .text-muted {
+.blog-card-meta {
+  display: flex;
   flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
-.blog-card .tag-button,
+.blog-card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 1.05rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.blog-card-description {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.blog-card .tag-label,
 .blog-card .badge {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
 }
 
-.blog-card .portfolio-card-footer > .d-flex {
+.blog-card .portfolio-card-footer {
+  padding: 0 1.25rem 1rem !important;
+}
+
+.blog-card-footer {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.blog-card-read {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.blog-card-read:hover {
+  color: var(--primary-strong);
+  text-decoration: underline;
+}
+
+.blog-card-stats {
+  display: inline-flex;
+  gap: 0.85rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.blog-card-stats > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 @media (max-width: 767.98px) {
@@ -50,12 +106,7 @@
     flex: 0 0 auto;
     width: 100%;
     max-width: none;
-    height: clamp(10rem, 52vw, 15rem);
+    height: clamp(9rem, 45vw, 12rem);
     min-height: 0;
-  }
-
-  .blog-image {
-    position: static;
-    height: 100%;
   }
 }

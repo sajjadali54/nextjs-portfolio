@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-
-interface DevArticle {
-  title?: string;
-  description?: string;
-  canonical_url?: string;
-  cover_image?: string | null;
-  published_at?: string;
-}
+import { fetchDevArticle } from "@/app/services/devArticles";
+import { personal } from "@data/personal";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -14,34 +8,24 @@ type Props = { params: Promise<{ id: string }> };
 // to avoid duplicate-content issues. Falls back to generic metadata if DEV is unreachable.
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
+  const result = await fetchDevArticle(id);
+  if (result.status !== "ok") return { title: "Blog article" };
 
-  try {
-    const response = await fetch(
-      `https://dev.to/api/articles/${encodeURIComponent(id)}`,
-      { next: { revalidate: 86400 } }
-    );
-    if (!response.ok) throw new Error(`DEV API returned ${response.status}`);
-
-    const article = (await response.json()) as DevArticle;
-    if (!article.title) throw new Error("Article has no title");
-
-    return {
+  const { article } = result;
+  return {
+    title: { absolute: `${article.title} | ${personal.name}` },
+    description: article.description,
+    alternates: article.canonical_url
+      ? { canonical: article.canonical_url }
+      : undefined,
+    openGraph: {
+      type: "article",
       title: article.title,
       description: article.description,
-      alternates: article.canonical_url
-        ? { canonical: article.canonical_url }
-        : undefined,
-      openGraph: {
-        type: "article",
-        title: article.title,
-        description: article.description,
-        publishedTime: article.published_at,
-        images: article.cover_image ? [article.cover_image] : undefined,
-      },
-    };
-  } catch {
-    return { title: "Blog article" };
-  }
+      publishedTime: article.published_at,
+      images: article.cover_image ? [article.cover_image] : undefined,
+    },
+  };
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {

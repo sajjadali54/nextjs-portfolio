@@ -1,0 +1,253 @@
+.detail {
+  max-width: 50rem;
+}
+
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.detail-back:hover {
+  color: var(--primary);
+}
+
+.detail-header {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-title {
+  margin-bottom: 1rem;
+  color: var(--foreground);
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.detail-lead {
+  margin-bottom: 1.25rem;
+  color: var(--foreground-soft);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-tags li {
+  padding: 0.2rem 0.65rem;
+  color: var(--foreground-soft);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.detail-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.detail-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Long-form case-study typography */
+.detail-body {
+  color: var(--foreground-soft);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.detail-body h2 {
+  margin: 2.5rem 0 0.9rem;
+  color: var(--foreground);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.detail-body h2:first-child {
+  margin-top: 0;
+}
+
+.detail-body p,
+.detail-body ul,
+.detail-body ol {
+  margin-bottom: 1.1rem;
+}
+
+.detail-body li {
+  margin-bottom: 0.4rem;
+}
+
+.detail-body strong {
+  color: var(--foreground);
+}
+
+.detail-body blockquote {
+  margin: 2rem 0 0;
+  padding: 0.9rem 1.1rem;
+  color: var(--muted);
+  background: var(--surface-soft);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.detail-body blockquote p {
+  margin: 0;
+}
+
+.detail-footer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+}
+
+/* Optional organisation logo + meta line (experience, education) */
+.detail-org {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail-org-logo {
+  flex: 0 0 auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.detail-org-name {
+  display: block;
+  color: var(--foreground);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a.detail-org-name:hover {
+  color: var(--primary);
+}
+
+.detail-org-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.detail-body ul.detail-list {
+  padding-left: 1.2rem;
+}
+
+.detail-body ul.detail-list li::marker {
+  color: var(--primary);
+}
+
+.detail-avatar {
+  border-radius: 50%;
+}
+
+.detail-org-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.detail-cover {
+  display: block;
+  width: 100%;
+  max-height: 24rem;
+  margin-bottom: 2rem;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+}
+
+/* Extra long-form elements used by blog articles */
+.detail-body h3,
+.detail-body h4 {
+  margin: 2rem 0 0.75rem;
+  color: var(--foreground);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.detail-body a {
+  color: var(--primary);
+  text-underline-offset: 0.15em;
+}
+
+.detail-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 0.6rem;
+}
+
+.detail-body :not(pre) > code {
+  padding: 0.1rem 0.35rem;
+  color: var(--foreground);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  font-size: 0.9em;
+}
+
+.detail-body .detail-code {
+  margin: 1.25rem 0 !important;
+  border-radius: 0.6rem !important;
+  font-size: 0.9rem !important;
+}
+
+.detail-body table {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.detail-body th,
+.detail-body td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+}

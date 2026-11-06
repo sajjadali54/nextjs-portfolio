@@ -14,5 +14,6 @@ export const navLinks = [
   { href: routes.experience, label: "Experience" }, // Shows real-world skills next
   { href: routes.education, label: "Education" }, // Then background/academics
   { href: routes.projects, label: "Projects" }, // Proof of work
-  { href: routes.blogs, label: "Blogs" }, // Insightful writings last
+  { href: routes.blogs, label: "Blogs" }, // Insightful writings
+  { href: routes.contact, label: "Contact" }, // Always reachable from the nav
 ];

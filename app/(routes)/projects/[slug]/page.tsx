@@ -5,11 +5,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { FiArrowLeft, FiExternalLink, FiGithub, FiLock } from "react-icons/fi";
+import { FiExternalLink, FiGithub, FiLock } from "react-icons/fi";
 
 import { personal } from "@data/personal";
 import { projects } from "@data/projects";
-import "./projectDetail.css";
+import BackLink from "@components/BackLink";
+import "@components/detail/detail.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -60,12 +61,10 @@ export default async function ProjectDetailPage({ params }: Props) {
   const isClient = "isClientProject" in project && project.isClientProject;
 
   return (
-    <article className="project-detail container py-4 py-lg-5">
-      <Link href="/projects" className="project-detail-back">
-        <FiArrowLeft aria-hidden="true" /> All projects
-      </Link>
+    <article className="detail container py-4 py-lg-5">
+      <BackLink link="/projects" page="Projects" />
 
-      <header className="project-detail-header">
+      <header className="detail-header">
         <p className="about-eyebrow mb-2">
           {"context" in project && project.context
             ? project.context
@@ -73,16 +72,16 @@ export default async function ProjectDetailPage({ params }: Props) {
               ? "Client project"
               : "Personal project"}
         </p>
-        <h1 className="project-detail-title">{project.title}</h1>
-        <p className="project-detail-lead">{project.description}</p>
+        <h1 className="detail-title">{project.title}</h1>
+        <p className="detail-lead">{project.description}</p>
 
-        <ul className="project-detail-tags" aria-label="Technologies">
+        <ul className="detail-tags" aria-label="Technologies">
           {project.topics.map((topic) => (
             <li key={topic}>{topic}</li>
           ))}
         </ul>
 
-        <div className="project-detail-actions">
+        <div className="detail-actions">
           {project.live && (
             <a
               href={project.live}
@@ -104,7 +103,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </a>
           )}
           {isClient && (
-            <span className="project-detail-note">
+            <span className="detail-note">
               <FiLock aria-hidden="true" /> Confidential client work: no public
               demo or source code
             </span>
@@ -113,16 +112,16 @@ export default async function ProjectDetailPage({ params }: Props) {
       </header>
 
       {caseStudy ? (
-        <div className="project-detail-body">
+        <div className="detail-body">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{caseStudy}</ReactMarkdown>
         </div>
       ) : (
-        <p className="project-detail-body text-muted">
+        <p className="detail-body text-muted">
           A detailed write-up for this project isn&apos;t available yet.
         </p>
       )}
 
-      <footer className="project-detail-footer">
+      <footer className="detail-footer">
         <p className="mb-2 fw-semibold">Working on something similar?</p>
         <Link href="/contact" className="btn btn-gradient">
           Get in touch

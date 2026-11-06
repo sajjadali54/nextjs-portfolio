@@ -1,217 +1,110 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { FiCalendar, FiExternalLink } from "react-icons/fi";
 
-import { education } from "@/app/data/education";
-import { useParams } from "next/navigation";
-import { Container, Row, Col, Image } from "react-bootstrap";
-import { FaCalendarAlt, FaUniversity, FaRocket } from "react-icons/fa";
-import { motion, useAnimate } from "framer-motion";
-import Tags from "@/app/components/Tags";
-import BackLink from "@/app/components/BackLink";
+import BackLink from "@components/BackLink";
+import { education } from "@data/education";
+import { personal } from "@data/personal";
+import "@components/detail/detail.css";
 
-import React from "react";
+type Props = { params: Promise<{ id: string }> };
 
-export default EducationPage;
+const findRecord = (id: string) =>
+  /^\d+$/.test(id) ? education[Number(id)] : undefined;
 
-function EducationPage() {
-  const params = useParams();
-  const edu = education[Number(params.id)];
-  const scope = useAnimate()[0];
+export const dynamicParams = false;
 
-  if (!edu) {
-    return (
-      <Container className="py-5 text-center">
-        <h3 className="text-danger">Education record not found</h3>
-        <BackLink link="/education" page="Education" />
-      </Container>
-    );
-  }
+export function generateStaticParams() {
+  return education.map((_, index) => ({ id: String(index) }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const record = findRecord(id);
+  if (!record) return { title: "Education record not found" };
+
+  return {
+    title: {
+      absolute: `${record.degree}, ${record.institution} | ${personal.name}`,
+    },
+    description: record.description,
+    alternates: { canonical: `/education/${id}` },
+  };
+}
+
+export default async function EducationPage({ params }: Props) {
+  const { id } = await params;
+  const record = findRecord(id);
+  if (!record) notFound();
 
   return (
-    <div className="gradient-background">
-      <Container className="py-5 position-relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Row className="mb-4 align-items-center">
-            <Col xs={12} md={3} className="text-center mb-3 mb-md-0">
-              <div className="image-wrapper position-relative">
-                <Image
-                  src={edu.image || "/placeholder.png"}
-                  roundedCircle
-                  fluid
-                  alt={edu.degree}
-                  className="company-logo"
-                  style={{
-                    width: "150px",
-                    height: "150px",
-                    objectFit: "cover",
-                    border: "3px solid var(--surface-strong)",
-                    boxShadow: "0 4px 15px var(--shadow)",
-                  }}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/placeholder.png";
-                  }}
-                />
-                <div className="gradient-border"></div>
-              </div>
-            </Col>
-            <Col>
-              <h2 className="fw-bold mb-3 text-gradient">{edu.degree}</h2>
-              <p className="text-muted mb-1">
-                <FaUniversity className="me-2 text-primary" />
-                <a
-                  href={edu.institutionUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-decoration-none company-link"
-                >
-                  {edu.institution}
-                </a>
-              </p>
-              <p className="text-muted">
-                <FaCalendarAlt className="me-2 text-primary" />
-                <span className="date-text">
-                  {edu.startDate} — {edu.endDate || "Present"}
-                </span>
-              </p>
-            </Col>
-          </Row>
-        </motion.div>
+    <article className="detail container py-4 py-lg-5">
+      <BackLink link="/education" page="Education" />
 
-        {/* Role Overview */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-        >
-          <div className="glass-card p-4 mb-4">
-            <h5 className="fw-semibold mb-3 section-title">
-              <FaRocket className="me-2 text-primary" />
-              Overview
-            </h5>
-            <p className="text-secondary mb-0 role-description">
-              {edu.description}
-            </p>
+      <header className="detail-header">
+        <div className="detail-org">
+          {record.image && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={record.image} alt="" className="detail-org-logo" />
+          )}
+          <div>
+            <a
+              href={record.institutionUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="detail-org-name"
+            >
+              {record.institution}
+            </a>
+            <span className="detail-org-meta">
+              <FiCalendar aria-hidden="true" /> {record.startDate} –{" "}
+              {record.endDate}
+            </span>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Key Contributions */}
-        <motion.div
-          ref={scope}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <div className="glass-card p-4 mb-4">
-            <h5 className="fw-semibold mb-3 section-title">
-              Academic Highlights
-            </h5>
-            <ul className="contribution-list">
-              {edu.achievements.map((achievement, idx) => (
-                <motion.li
-                  key={idx}
-                  className="mb-3"
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.8 + idx * 0.1 }}
-                >
-                  <div className="d-flex align-items-start">
-                    <span className="bullet-icon me-3">
-                      <div className="bullet-gradient"></div>
-                    </span>
-                    <span className="duty-text">{achievement}</span>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
+        <p className="about-eyebrow mb-2">Education</p>
+        <h1 className="detail-title">{record.degree}</h1>
+        <p className="detail-lead">{record.description}</p>
 
-        {/* Tech Stack */}
-        {edu.tags?.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            <div className="glass-card p-4 mb-4">
-              <h5 className="fw-semibold mb-3 section-title">Areas of Study</h5>
-              <Tags tags={edu.tags} />
-            </div>
-          </motion.div>
+        {record.tags?.length > 0 && (
+          <ul className="detail-tags" aria-label="Highlights">
+            {record.tags.map((tag) => (
+              <li key={tag}>{tag}</li>
+            ))}
+          </ul>
         )}
 
-        {/* Back Button */}
-        <BackLink link="/education" page="Education" />
-      </Container>
+        <div className="detail-actions">
+          <a
+            href={record.institutionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-secondary"
+          >
+            <FiExternalLink aria-hidden="true" /> Visit institution
+          </a>
+        </div>
+      </header>
 
-      <style jsx global>{`
-        .gradient-background {
-          background: transparent;
-        }
+      {record.achievements?.length > 0 && (
+        <div className="detail-body">
+          <h2>Highlights</h2>
+          <ul className="detail-list">
+            {record.achievements.map((achievement) => (
+              <li key={achievement}>{achievement}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-        .text-gradient {
-          color: var(--primary);
-        }
-
-        .company-link {
-          color: var(--primary) !important;
-          font-weight: 500;
-        }
-
-        .company-link:hover {
-          color: var(--primary-strong) !important;
-          text-decoration: underline;
-        }
-
-        .section-title {
-          color: var(--foreground);
-          font-size: 1.25rem;
-          letter-spacing: -0.02em;
-        }
-
-        .contribution-list .bullet-gradient {
-          width: 24px;
-          height: 24px;
-          background: var(--primary);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .contribution-list .bullet-icon::after {
-          content: "";
-          position: absolute;
-          width: 28px;
-          height: 28px;
-          background: var(--primary-soft);
-          border-radius: 50%;
-        }
-
-        .duty-text {
-          color: var(--foreground-soft);
-          line-height: 1.6;
-        }
-
-        .image-wrapper {
-          display: inline-block;
-          position: relative;
-        }
-
-        .gradient-border {
-          position: absolute;
-          top: -3px;
-          left: -3px;
-          right: -3px;
-          bottom: -3px;
-          background: var(--primary);
-          border-radius: 50%;
-          z-index: -1;
-        }
-      `}</style>
-    </div>
+      <footer className="detail-footer">
+        <p className="mb-2 fw-semibold">See how this background shows up in my work</p>
+        <Link href="/projects" className="btn btn-gradient">
+          View projects
+        </Link>
+      </footer>
+    </article>
   );
 }
