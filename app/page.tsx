@@ -11,7 +11,7 @@ import projects from "./data/projects";
 import HeroSection from "./components/home/hero";
 
 export default function Home() {
-  const firstThreeProjects = projects.slice(0, 3);
+  const firstProjects = projects.slice(0, 4);
 
   return (
     <div className="page-surface">
@@ -35,7 +35,7 @@ export default function Home() {
             </p>
 
             <div className="grid-layout text-start">
-              {firstThreeProjects.map((project, index) => (
+              {firstProjects.map((project, index) => (
                 <ProjectCard key={project.id || index} project={project} />
               ))}
             </div>

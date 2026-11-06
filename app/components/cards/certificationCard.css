@@ -33,7 +33,7 @@
   object-fit: contain;
 }
 
-.certification-pdf-preview {
+.certification-fallback-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,9 +41,21 @@
   color: var(--primary);
   font-size: 0.9rem;
   font-weight: 600;
+  text-align: center;
 }
 
-.certification-pdf-preview svg {
+.credential-date {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.credential-note {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.certification-fallback-preview svg {
   width: 2.5rem;
   height: 2.5rem;
 }

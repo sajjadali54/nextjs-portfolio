@@ -53,7 +53,7 @@ export const Certifications = () => {
         <Row className="g-3 g-lg-4">
           {certifications.map((cert) => (
             <Col
-              key={cert.url}
+              key={cert.alt}
               xl={4}
               lg={4}
               md={6}
