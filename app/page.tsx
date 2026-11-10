@@ -10,6 +10,7 @@ import projects from "./data/projects";
 
 import HeroSection from "./components/home/hero";
 import HowIWork from "./components/home/HowIWork";
+import Testimonials from "./components/home/Testimonials";
 
 export default function Home() {
   const firstProjects = projects.slice(0, 4);
@@ -19,6 +20,8 @@ export default function Home() {
       <HeroSection />
 
       <HowIWork />
+
+      <Testimonials />
 
       <section className="py-4">
         <motion.div

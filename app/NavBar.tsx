@@ -59,19 +59,20 @@ const NavBar = () => {
     >
       <Navbar expand="lg">
         <Container>
-          <Link href={routes.home} passHref legacyBehavior>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Navbar.Brand className="d-flex align-items-center logo-container">
-                <Image
-                  src="/logo.png"
-                  alt="Profile"
-                  width={50}
-                  height={50}
-                  className="logo-img"
-                />
-              </Navbar.Brand>
-            </motion.div>
-          </Link>
+          <Navbar.Brand
+            as={Link}
+            href={routes.home}
+            className="d-flex align-items-center logo-container"
+            aria-label="Sajjad Ali, home"
+          >
+            <Image
+              src="/logo.png"
+              alt=""
+              width={50}
+              height={50}
+              className="logo-img"
+            />
+          </Navbar.Brand>
 
           <div className="d-flex align-items-center gap-3">
             <Button
@@ -104,16 +105,16 @@ const NavBar = () => {
                   whileTap="tap"
                   variants={linkVariants}
                 >
-                  <Link href={href} passHref legacyBehavior>
-                    <Nav.Link
-                      className="nav-link"
-                      active={pathname === href}
-                      aria-current={pathname === href ? "page" : undefined}
-                      onClick={onClick}
-                    >
-                      {label}
-                    </Nav.Link>
-                  </Link>
+                  <Nav.Link
+                    as={Link}
+                    href={href}
+                    className="nav-link"
+                    active={pathname === href}
+                    aria-current={pathname === href ? "page" : undefined}
+                    onClick={onClick}
+                  >
+                    {label}
+                  </Nav.Link>
                 </motion.div>
               ))}
             </Nav>
@@ -149,19 +150,19 @@ const NavBar = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link href={href} passHref legacyBehavior>
-                  <Nav.Link
-                    className="nav-link"
-                    active={pathname === href}
-                    aria-current={pathname === href ? "page" : undefined}
-                    onClick={() => {
-                      setShowDrawer(false);
-                      if (onClick) onClick();
-                    }}
-                  >
-                    {label}
-                  </Nav.Link>
-                </Link>
+                <Nav.Link
+                  as={Link}
+                  href={href}
+                  className="nav-link"
+                  active={pathname === href}
+                  aria-current={pathname === href ? "page" : undefined}
+                  onClick={() => {
+                    setShowDrawer(false);
+                    if (onClick) onClick();
+                  }}
+                >
+                  {label}
+                </Nav.Link>
               </motion.div>
             ))}
             <Button

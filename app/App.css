@@ -27,14 +27,14 @@ body {
   left: 0.5rem;
   z-index: 2000;
   padding: 0.5rem 0.75rem;
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary-strong);
   border-radius: 0.35rem;
   transform: translateY(-160%);
 }
 
 .skip-link:focus {
-  color: #fff;
+  color: var(--on-primary);
   transform: translateY(0);
 }
 

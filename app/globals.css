@@ -1,26 +1,30 @@
 :root {
   color-scheme: light;
-  --background: #f5f4ef;
-  --background-strong: #eeede6;
-  --surface: #fbfaf7;
+  /* Oxford Navy & Brass: light theme */
+  --background: #f6f7f9;
+  --background-strong: #edf0f4;
+  --surface: #fafbfc;
   --surface-strong: #ffffff;
-  --surface-soft: #f1f1eb;
-  --foreground: #202925;
-  --foreground-soft: #394640;
-  --muted: #64716a;
-  --border: #dedfd8;
-  --shadow: rgba(32, 41, 37, 0.08);
-  --primary: #286b5a;
-  --primary-strong: #205849;
-  --primary-soft: rgba(40, 107, 90, 0.1);
-  --accent: #b87952;
+  --surface-soft: #f0f2f5;
+  --foreground: #14202e;
+  --foreground-soft: #334255;
+  --muted: #5d6b7c;
+  --border: #dfe3e9;
+  --shadow: rgba(20, 32, 46, 0.08);
+  --primary: #1f3a5f;
+  --primary-strong: #162b47;
+  --primary-soft: rgba(31, 58, 95, 0.08);
+  /* Text/icons placed on a --primary background */
+  --on-primary: #ffffff;
+  /* Brass: small details only (rules, step numbers); AA-compliant on light surfaces */
+  --accent: #8c6b2c;
   --card: #ffffff;
   --card-elevated: #ffffff;
   --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(40, 107, 90, 0.1), rgba(184, 121, 82, 0.08));
-  --focus-ring: 0 0 0 3px rgba(40, 107, 90, 0.24);
-  --bs-primary: #286b5a;
-  --bs-primary-rgb: 40, 107, 90;
+  --gradient-soft: linear-gradient(135deg, rgba(31, 58, 95, 0.08), rgba(140, 107, 44, 0.06));
+  --focus-ring: 0 0 0 3px rgba(31, 58, 95, 0.28);
+  --bs-primary: #1f3a5f;
+  --bs-primary-rgb: 31, 58, 95;
   --bs-body-color: var(--foreground);
   --bs-body-bg: var(--background);
   --bs-secondary-color: var(--muted);
@@ -31,27 +35,30 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --background: #171d1a;
-  --background-strong: #1d2521;
-  --surface: #202925;
-  --surface-strong: #252f2a;
-  --surface-soft: #222b26;
-  --foreground: #edf1ec;
-  --foreground-soft: #d3ddd6;
-  --muted: #a4b0a8;
-  --border: #35423a;
-  --shadow: rgba(0, 0, 0, 0.22);
-  --primary: #83b9a2;
-  --primary-strong: #a0cdb8;
-  --primary-soft: rgba(131, 185, 162, 0.14);
-  --accent: #d29a73;
-  --card: #202925;
-  --card-elevated: #252f2a;
+  /* Oxford Navy & Brass: dark theme */
+  --background: #0c121b;
+  --background-strong: #101824;
+  --surface: #131b26;
+  --surface-strong: #182231;
+  --surface-soft: #161f2b;
+  --foreground: #e7ecf2;
+  --foreground-soft: #c9d3df;
+  --muted: #96a3b4;
+  --border: #243041;
+  --shadow: rgba(0, 0, 0, 0.32);
+  --primary: #8db2e0;
+  --primary-strong: #b0cbec;
+  --primary-soft: rgba(141, 178, 224, 0.14);
+  /* Primary is light in dark mode, so text on it must be dark */
+  --on-primary: #0c121b;
+  --accent: #d6b56e;
+  --card: #131b26;
+  --card-elevated: #182231;
   --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
-  --gradient-soft: linear-gradient(135deg, rgba(131, 185, 162, 0.14), rgba(210, 154, 115, 0.1));
-  --focus-ring: 0 0 0 3px rgba(131, 185, 162, 0.3);
-  --bs-primary: #83b9a2;
-  --bs-primary-rgb: 131, 185, 162;
+  --gradient-soft: linear-gradient(135deg, rgba(141, 178, 224, 0.14), rgba(214, 181, 110, 0.1));
+  --focus-ring: 0 0 0 3px rgba(141, 178, 224, 0.35);
+  --bs-primary: #8db2e0;
+  --bs-primary-rgb: 141, 178, 224;
   --bs-body-color: var(--foreground);
   --bs-body-bg: var(--background);
   --bs-secondary-color: var(--muted);
@@ -95,10 +102,10 @@ a:hover {
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
+  --bs-btn-color: var(--on-primary);
   --bs-btn-bg: var(--primary);
   --bs-btn-border-color: var(--primary);
-  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-color: var(--on-primary);
   --bs-btn-hover-bg: var(--primary-strong);
   --bs-btn-hover-border-color: var(--primary-strong);
   --bs-btn-active-bg: var(--primary-strong);
@@ -108,7 +115,7 @@ a:hover {
 .btn-outline-primary {
   --bs-btn-color: var(--primary);
   --bs-btn-border-color: var(--primary);
-  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-color: var(--on-primary);
   --bs-btn-hover-bg: var(--primary);
   --bs-btn-hover-border-color: var(--primary);
   --bs-btn-active-bg: var(--primary-strong);
@@ -166,7 +173,7 @@ select {
 
 ::selection {
   color: var(--foreground);
-  background: rgba(40, 107, 90, 0.2);
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
 }
 
 .text-gradient {
@@ -217,14 +224,14 @@ select {
 }
 
 .btn-gradient {
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
   border: 1px solid var(--primary);
   font-weight: 600;
 }
 
 .btn-gradient:hover {
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary-strong);
   border-color: var(--primary-strong);
 }
@@ -374,14 +381,14 @@ select {
 }
 
 .cta-button {
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
   border: 1px solid var(--primary);
   font-weight: 600;
 }
 
 .cta-button:hover {
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary-strong);
   border-color: var(--primary-strong);
 }
@@ -394,7 +401,7 @@ select {
 }
 
 .cta-outline:hover {
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
   border-color: var(--primary);
 }
@@ -416,7 +423,7 @@ select {
 }
 
 .social-icon:hover {
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
 }
 

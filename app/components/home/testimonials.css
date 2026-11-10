@@ -1,0 +1,72 @@
+.testimonials {
+  margin-block: 1.5rem;
+}
+
+.testimonials-title {
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.testimonials-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+  gap: 1rem;
+}
+
+.testimonial {
+  position: relative;
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.25rem 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0.75rem;
+}
+
+.testimonial-quote {
+  margin: 0 0 1.1rem;
+}
+
+.testimonial-quote p {
+  margin: 0;
+  /* Hang the opening quote mark so the text lines up on its left edge. */
+  text-indent: -0.4em;
+  max-width: 46rem;
+  color: var(--foreground);
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.testimonial-name {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.testimonial-role {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.testimonial-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.testimonial-source:hover {
+  text-decoration: underline;
+}

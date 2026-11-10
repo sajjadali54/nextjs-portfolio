@@ -7,11 +7,11 @@ export const contentType = "image/png";
 
 // Colors mirror the light theme tokens in globals.css (CSS variables are unavailable here).
 const colors = {
-  background: "#f5f4ef",
-  foreground: "#202925",
-  muted: "#64716a",
-  primary: "#286b5a",
-  accent: "#b87952",
+  background: "#f6f7f9",
+  foreground: "#14202e",
+  muted: "#5d6b7c",
+  primary: "#1f3a5f",
+  accent: "#8c6b2c",
 };
 
 export default function OpengraphImage() {

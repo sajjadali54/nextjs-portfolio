@@ -89,7 +89,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: #141816;
+  background: #0c121b;
   border-radius: 1.25rem;
   box-shadow: 0 18px 40px var(--shadow);
 }
