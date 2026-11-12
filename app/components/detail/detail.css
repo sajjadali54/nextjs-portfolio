@@ -251,3 +251,59 @@ a.detail-org-name:hover {
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--border);
 }
+
+/* Role progression on an experience page, most recent first. */
+.detail-roles {
+  position: relative;
+  margin: 0 0 1.25rem;
+  padding: 0 0 0 1.2rem;
+  list-style: none;
+}
+
+.detail-roles::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.32rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.detail-roles li {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+}
+
+.detail-roles li + li {
+  margin-top: 0.45rem;
+}
+
+.detail-roles li::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: -1.15rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--surface-strong);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+}
+
+.detail-roles li:first-child::before {
+  background: var(--primary);
+}
+
+.detail-role-title {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.detail-role-dates {
+  color: var(--muted);
+  font-size: 0.9rem;
+}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "react-bootstrap";
 import { motion } from "framer-motion";
 import Tags from "@components/Tags";
-import { jobs } from "@data/jobs";
+import { jobs, roleHistory, tenureStart } from "@data/jobs";
 import styles from "./Experience.module.css";
 
 const formatDate = (date: string) =>
@@ -55,7 +55,9 @@ export default function Experience() {
                   )}
                 </div>
                 <p className={styles.date}>
-                  <time dateTime={job.startDate}>{formatDate(job.startDate)}</time>
+                  <time dateTime={tenureStart(job)}>
+                    {formatDate(tenureStart(job))}
+                  </time>
                   {" — "}
                   {job.endDate ? (
                     <time dateTime={job.endDate}>{formatDate(job.endDate)}</time>
@@ -65,13 +67,19 @@ export default function Experience() {
                 </p>
               </header>
 
-              {"previousRoles" in job &&
-                job.previousRoles?.map((role) => (
-                  <p key={role.title} className={styles.promotion}>
-                    Promoted from {role.title} ({formatDate(role.startDate)} –{" "}
-                    {formatDate(role.endDate)})
-                  </p>
-                ))}
+              {roleHistory(job).length > 1 && (
+                <ol className={styles.roles} aria-label={`Roles at ${job.companyName}`}>
+                  {roleHistory(job).map((role) => (
+                    <li key={role.title} className={styles.role}>
+                      <span className={styles.roleTitle}>{role.title}</span>
+                      <span className={styles.roleDates}>
+                        {formatDate(role.startDate)} –{" "}
+                        {role.endDate ? formatDate(role.endDate) : "Present"}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              )}
 
               <p className="text-muted mt-3 mb-3">{job.subtitle}</p>
               <ul className={styles.contributions}>

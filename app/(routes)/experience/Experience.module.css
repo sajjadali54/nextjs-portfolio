@@ -106,14 +106,59 @@
   }
 }
 
-.promotion {
-  display: inline-flex;
-  align-items: center;
-  margin: 0.75rem 0 0;
-  padding: 0.2rem 0.65rem;
-  color: var(--primary);
-  background: var(--primary-soft);
-  border-radius: 999px;
-  font-size: 0.82rem;
+
+/* Role progression within one company, most recent first, joined by a rule. */
+.roles {
+  position: relative;
+  margin: 1rem 0 0;
+  padding: 0 0 0 1.1rem;
+  list-style: none;
+}
+
+.roles::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  bottom: 0.45rem;
+  left: 0.3rem;
+  width: 2px;
+  background: var(--border);
+}
+
+.role {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+}
+
+.role + .role {
+  margin-top: 0.4rem;
+}
+
+.role::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: -1.08rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--surface-strong);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+}
+
+.role:first-child::before {
+  background: var(--primary);
+}
+
+.roleTitle {
+  color: var(--foreground);
   font-weight: 600;
+}
+
+.roleDates {
+  color: var(--muted);
+  font-size: 0.88rem;
 }

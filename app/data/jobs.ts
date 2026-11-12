@@ -70,3 +70,25 @@ export const jobs = [
     tags: ["Computer Vision", "Self-Supervised Learning", "Machine Learning"],
   },
 ];
+
+export type Job = (typeof jobs)[number];
+
+export interface RoleSpan {
+  title: string;
+  startDate: string;
+  endDate?: string;
+}
+
+/** Every role held at a company, most recent first (current title, then previousRoles). */
+export function roleHistory(job: Job): RoleSpan[] {
+  return [
+    { title: job.title, startDate: job.startDate, endDate: job.endDate },
+    ...(job.previousRoles ?? []),
+  ];
+}
+
+/** When Sajjad joined the company: the start of the earliest role there. */
+export function tenureStart(job: Job): string {
+  const roles = roleHistory(job);
+  return roles[roles.length - 1].startDate;
+}

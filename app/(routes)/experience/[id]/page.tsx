@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { FiCalendar, FiExternalLink } from "react-icons/fi";
 
 import BackLink from "@components/BackLink";
-import { jobs } from "@data/jobs";
+import { jobs, roleHistory, tenureStart } from "@data/jobs";
 import { personal } from "@data/personal";
 import "@components/detail/detail.css";
 
@@ -44,7 +44,8 @@ export default async function JobPage({ params }: Props) {
   const job = findJob(id);
   if (!job) notFound();
 
-  const period = `${formatDate(job.startDate)} – ${
+  const roles = roleHistory(job);
+  const period = `${formatDate(tenureStart(job))} – ${
     job.endDate ? formatDate(job.endDate) : "Present"
   }`;
 
@@ -79,13 +80,19 @@ export default async function JobPage({ params }: Props) {
 
         <p className="about-eyebrow mb-2">Experience</p>
         <h1 className="detail-title">{job.title}</h1>
-        {"previousRoles" in job &&
-          job.previousRoles?.map((role) => (
-            <p key={role.title} className="detail-note mb-3">
-              Promoted from {role.title} ({formatDate(role.startDate)} –{" "}
-              {formatDate(role.endDate)})
-            </p>
-          ))}
+        {roles.length > 1 && (
+          <ol className="detail-roles" aria-label={`Roles at ${job.companyName}`}>
+            {roles.map((role) => (
+              <li key={role.title}>
+                <span className="detail-role-title">{role.title}</span>
+                <span className="detail-role-dates">
+                  {formatDate(role.startDate)} –{" "}
+                  {role.endDate ? formatDate(role.endDate) : "Present"}
+                </span>
+              </li>
+            ))}
+          </ol>
+        )}
         <p className="detail-lead">{job.subtitle}</p>
 
         {job.tags?.length > 0 && (
