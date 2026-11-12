@@ -101,11 +101,13 @@ export const projects = [
   {
     id: "22",
     slug: "internal-company-portal",
-    title: "Internal Company Portal",
+    hasCaseStudy: true,
+    context: "Internal tool · team of three",
+    title: "Internal Model and Regulation Portal",
     description:
-      "A MERN-stack internal portal with document uploads, in-browser document previews, and real-time updates over Socket.IO.",
+      "A role-based portal for managing the company's models and regulations, with approval workflows and in-browser previews of PDF, Word, and Excel documents.",
     language: "JavaScript",
-    topics: ["React", "Redux", "Node.js", "Express", "MongoDB", "Socket.IO"],
+    topics: ["React", "Redux Toolkit", "React Router", "Formik", "Vite"],
     clone_url: "",
     live: "",
     image: "",
