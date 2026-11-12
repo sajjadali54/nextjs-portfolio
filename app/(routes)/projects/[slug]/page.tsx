@@ -104,7 +104,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           )}
           {isClient && (
             <span className="detail-note">
-              <FiLock aria-hidden="true" /> Confidential client work: no public
+              <FiLock aria-hidden="true" /> Confidential work: no public
               demo or source code
             </span>
           )}

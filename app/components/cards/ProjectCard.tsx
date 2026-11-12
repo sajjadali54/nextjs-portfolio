@@ -115,7 +115,7 @@ const ProjectCard: React.FC<{ project: Project; className?: string }> = ({
               {project.isClientProject && (
                 <span className="project-card-note">
                   <FiLock aria-hidden="true" />
-                  Confidential client work
+                  Confidential work
                 </span>
               )}
 

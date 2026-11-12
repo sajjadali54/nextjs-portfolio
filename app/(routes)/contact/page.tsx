@@ -74,7 +74,7 @@ export default function ContactPage() {
       </header>
 
       <div
-        className="card section-panel border-0 mx-auto p-3 p-md-4"
+        className="card section-panel border-0 p-3 p-md-4"
         style={{ maxWidth: "44rem" }}
       >
         {formEndpoint ? (

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { FiSearch } from "react-icons/fi";
-import { Row, Col } from "react-bootstrap";
 
 import "./SearchBox.css";
 
@@ -12,29 +11,27 @@ interface Props {
 
 const SearchBox = ({ searchField, searchChange, placeholder }: Props) => {
   return (
-    <Row className="justify-content-center mb-5">
-      <Col xl={6} lg={8} md={10}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="search-container position-relative"
-        >
-          <label className="visually-hidden" htmlFor="portfolio-search">
-            {placeholder}
-          </label>
-          <FiSearch className="search-icon" aria-hidden="true" />
-          <input
-            id="portfolio-search"
-            className="search-input"
-            type="search"
-            placeholder={placeholder}
-            value={searchField}
-            onChange={searchChange}
-          />
-          <div className="input-highlight" aria-hidden="true"></div>
-        </motion.div>
-      </Col>
-    </Row>
+    <div className="search-row">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="search-container position-relative"
+      >
+        <label className="visually-hidden" htmlFor="portfolio-search">
+          {placeholder}
+        </label>
+        <FiSearch className="search-icon" aria-hidden="true" />
+        <input
+          id="portfolio-search"
+          className="search-input"
+          type="search"
+          placeholder={placeholder}
+          value={searchField}
+          onChange={searchChange}
+        />
+        <div className="input-highlight" aria-hidden="true"></div>
+      </motion.div>
+    </div>
   );
 };
 

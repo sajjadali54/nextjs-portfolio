@@ -115,7 +115,7 @@ const Projects = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="glass-container section-panel p-4 rounded-4"
+      className="projects-page"
     >
       <header className="page-heading mb-4">
         <h1 className="h2 mb-2">Selected projects</h1>

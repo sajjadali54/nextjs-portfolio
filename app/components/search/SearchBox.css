@@ -49,3 +49,9 @@
 .input-highlight {
   display: none;
 }
+
+/* Left-aligned with the page heading; capped so it doesn't stretch across wide screens. */
+.search-row {
+  max-width: 36rem;
+  margin-bottom: 1.25rem;
+}
