@@ -16,8 +16,7 @@ body {
   padding: clamp(1.25rem, 3vw, 2.75rem) clamp(1rem, 3vw, 2rem);
 }
 
-.navbar .container,
-.glass-footer .container {
+.navbar .container {
   width: min(100%, 1280px);
 }
 

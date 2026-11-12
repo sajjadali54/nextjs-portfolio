@@ -1,81 +1,69 @@
-"use client";
+import Link from "next/link";
+import { FiArrowUp, FiMail } from "react-icons/fi";
 
-import { motion } from "framer-motion";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import { IconType } from "react-icons";
-
+import { personal } from "@data/personal";
+import { routes } from "@data/routes";
+import { socialLinks } from "@data/socials";
 import "./footer.css";
 
-interface BadgeProps {
-  href: string;
-  icon: IconType;
-  className: string;
-  label: string;
-}
+const footerLinks = [
+  { href: routes.projects, label: "Projects" },
+  { href: routes.experience, label: "Experience" },
+  { href: routes.about, label: "About" },
+  { href: routes.education, label: "Education" },
+  { href: routes.blogs, label: "Blogs" },
+];
 
-const MyFooter = ({ badges }: { badges: BadgeProps[] }) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.3 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-  };
-
+export default function Footer() {
   return (
-    <motion.footer
-      initial="hidden"
-      whileInView="visible"
-      variants={containerVariants}
-      viewport={{ once: true }}
-      className="glass-footer py-5"
-    >
-      <Container>
-        <Row className="align-items-center text-center g-3">
-          <Col>
-            <motion.div variants={itemVariants}>
-              <h2 className="h5 mb-4">Let&apos;s connect</h2>
-              <div className="d-flex justify-content-center gap-3">
-                {badges.map((badge) => (
-                  <motion.a
-                    key={badge.href}
-                    href={badge.href}
-                    target={
-                      badge.href.startsWith("mailto:") ? undefined : "_blank"
-                    }
-                    rel={
-                      badge.href.startsWith("mailto:")
-                        ? undefined
-                        : "noopener noreferrer"
-                    }
-                    className="social-icon"
-                    aria-label={badge.label}
-                    title={badge.label}
-                    whileHover={{ y: -5 }}
-                    whileTap={{ scale: 0.9 }}
-                    variants={itemVariants}
-                  >
-                    <badge.icon size={22} aria-hidden="true" />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-          </Col>
-        </Row>
+    <footer className="site-footer">
+      <div className="site-footer-inner">
+        <div className="site-footer-grid">
+          <div>
+            <p className="site-footer-name">{personal.name}</p>
+            <p className="site-footer-tagline">{personal.headline}</p>
+            <p className="site-footer-meta">
+              {personal.title} · {personal.location}
+            </p>
+          </div>
 
-        <div className="text-center text-muted small mt-4">
-          © {new Date().getFullYear()} Sajjad Ali
+          <nav aria-label="Footer">
+            <p className="site-footer-heading">Explore</p>
+            <ul className="site-footer-links">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div>
+            <p className="site-footer-heading">Connect</p>
+            <ul className="site-footer-links">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <li key={href}>
+                  <a href={href} target="_blank" rel="noopener noreferrer">
+                    <Icon aria-hidden="true" /> {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <Link href={routes.contact} className="btn btn-gradient site-footer-cta">
+              <FiMail aria-hidden="true" /> Send a message
+            </Link>
+          </div>
         </div>
-      </Container>
-    </motion.footer>
-  );
-};
 
-export default MyFooter;
+        <div className="site-footer-bottom">
+          <p className="mb-0">
+            © {new Date().getFullYear()} {personal.name}
+          </p>
+          <a href="#main-content" className="site-footer-top">
+            Back to top <FiArrowUp aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}

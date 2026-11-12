@@ -2,9 +2,10 @@
   text-align: left;
 }
 
+/* Fixed columns so five groups read as 3 + 2 on desktop, never 4 + 1. */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -87,4 +88,16 @@
 .tech-familiar-label {
   color: var(--foreground-soft);
   font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .tech-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

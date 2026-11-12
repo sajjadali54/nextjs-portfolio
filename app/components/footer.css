@@ -1,5 +1,113 @@
-.quote-box {
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 20px var(--shadow);
+.site-footer {
+  margin-top: 3rem;
+  color: var(--foreground-soft);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.site-footer-inner {
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  padding: 2.5rem clamp(1rem, 3vw, 2rem) 1.5rem;
+}
+
+.site-footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.site-footer-name {
+  margin-bottom: 0.35rem;
+  color: var(--foreground);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.site-footer-tagline {
+  max-width: 24rem;
+  margin-bottom: 0.5rem;
+  color: var(--foreground-soft);
+  line-height: 1.5;
+}
+
+.site-footer-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.site-footer-heading {
+  margin-bottom: 0.75rem;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-footer-links {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--foreground-soft);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.site-footer-links a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.site-footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.site-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.site-footer-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-footer-top:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 767.98px) {
+  .site-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer-grid > :first-child {
+    grid-column: 1 / -1;
+  }
 }

@@ -75,9 +75,8 @@ export default function AboutPage() {
         >
           <Image
             src="/picofme.png"
-            roundedCircle
-            width={190}
-            height={190}
+            width={1248}
+            height={832}
             className="about-portrait"
             alt={personal.name}
           />
@@ -154,7 +153,10 @@ export default function AboutPage() {
         <h2 id="recognition-heading" className="h4 fw-bold mb-3">
           Awards and scholarships
         </h2>
-        <HonorsList items={awards.filter((award) => award.featured)} />
+        <HonorsList
+          items={awards.filter((award) => award.featured)}
+          showImages
+        />
         <Link href="/education#honors" className="about-text-link mt-3">
           All honors and awards <FiArrowUpRight aria-hidden="true" />
         </Link>

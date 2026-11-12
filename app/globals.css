@@ -406,27 +406,6 @@ select {
   border-color: var(--primary);
 }
 
-.glass-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-}
-
-.social-icon {
-  width: 2.75rem;
-  height: 2.75rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.65rem;
-  color: var(--primary);
-  background: var(--primary-soft);
-}
-
-.social-icon:hover {
-  color: var(--on-primary);
-  background: var(--primary);
-}
-
 @media (max-width: 767.98px) {
   .hero-shell {
     min-height: 0;

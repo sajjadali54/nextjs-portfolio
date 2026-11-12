@@ -8,7 +8,6 @@ import "./App.css";
 import NavBar from "./NavBar";
 import Footer from "@components/Footer";
 
-import { badges } from "@data/badges";
 import { personal } from "@data/personal";
 import {
   knowsAbout,
@@ -109,7 +108,7 @@ export default function RootLayout({
           <main id="main-content" className="page-shell">
             {children}
           </main>
-          <Footer badges={badges} />
+          <Footer />
         </Providers>
       </body>
     </html>

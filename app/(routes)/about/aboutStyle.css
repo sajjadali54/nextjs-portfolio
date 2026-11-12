@@ -26,9 +26,16 @@
   line-height: 1.6;
 }
 
+/* Portrait-shaped frame sized to fill its column, not a small circle. */
 .about-portrait {
-  border: 5px solid var(--surface-strong);
+  width: min(18rem, 72vw);
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: 50% 20%;
+  background: #0c121b;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
   box-shadow: 0 16px 36px var(--shadow);
 }
 
