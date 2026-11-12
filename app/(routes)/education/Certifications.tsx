@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import CertificationCard from "@/app/components/cards/CertificationCard";
-import { certifications } from "@data/certifications";
+import {
+  certificationCategories,
+  certifications,
+} from "@data/certifications";
 import { Row, Col } from "react-bootstrap";
 import "./certifications.css";
+
+// Groups keep the order of certificationCategories; empty groups are skipped.
+const groups = certificationCategories
+  .map((category) => ({
+    ...category,
+    items: certifications.filter((cert) => cert.category === category.id),
+  }))
+  .filter((group) => group.items.length > 0);
 
 export const Certifications = () => {
   const containerVariants = {
@@ -44,28 +55,53 @@ export const Certifications = () => {
         </p>
       </motion.header>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-      >
-        <Row className="g-3 g-lg-4">
-          {certifications.map((cert) => (
-            <Col
-              key={cert.alt}
-              xl={4}
-              lg={4}
-              md={6}
-              className="d-flex align-items-stretch"
-            >
-              <motion.div variants={itemVariants} className="w-100">
-                <CertificationCard certification={cert} className="h-100" />
-              </motion.div>
-            </Col>
-          ))}
-        </Row>
-      </motion.div>
+      <nav className="cert-jump" aria-label="Certification groups">
+        {groups.map((group) => (
+          <a key={group.id} href={`#certs-${group.id}`} className="cert-jump-link">
+            {group.title}
+            <span className="cert-jump-count">{group.items.length}</span>
+          </a>
+        ))}
+      </nav>
+
+      {groups.map((group) => (
+        <section
+          key={group.id}
+          id={`certs-${group.id}`}
+          className="cert-group"
+          aria-labelledby={`certs-${group.id}-heading`}
+        >
+          <div className="cert-group-header">
+            <h3 id={`certs-${group.id}-heading`} className="cert-group-title">
+              {group.title}
+            </h3>
+            <p className="cert-group-description">{group.description}</p>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          >
+            <Row className="g-3 g-lg-4">
+              {group.items.map((cert) => (
+                <Col
+                  key={cert.alt}
+                  xl={4}
+                  lg={4}
+                  md={6}
+                  className="d-flex align-items-stretch"
+                >
+                  <motion.div variants={itemVariants} className="w-100">
+                    <CertificationCard certification={cert} className="h-100" />
+                  </motion.div>
+                </Col>
+              ))}
+            </Row>
+          </motion.div>
+        </section>
+      ))}
     </motion.section>
   );
 };

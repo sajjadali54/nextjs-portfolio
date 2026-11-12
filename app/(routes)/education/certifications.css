@@ -5,3 +5,67 @@
 .certifications-container .row {
   align-items: stretch;
 }
+
+/* Jump links to each certification group */
+.cert-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.cert-jump-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--foreground-soft);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cert-jump-link:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.cert-jump-count {
+  min-width: 1.4rem;
+  padding: 0.05rem 0.4rem;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.cert-group {
+  scroll-margin-top: 6rem;
+}
+
+.cert-group + .cert-group {
+  margin-top: 2.75rem;
+}
+
+.cert-group-header {
+  margin-bottom: 1rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--accent);
+}
+
+.cert-group-title {
+  margin: 0 0 0.2rem;
+  color: var(--foreground);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.cert-group-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}

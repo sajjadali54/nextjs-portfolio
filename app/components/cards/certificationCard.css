@@ -89,3 +89,36 @@
     transition: none;
   }
 }
+
+/* Collapsible list of courses inside a learning path */
+.credential-includes {
+  width: 100%;
+  margin-top: -0.75rem;
+  font-size: 0.88rem;
+}
+
+.credential-includes summary {
+  width: fit-content;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.credential-includes summary:hover {
+  text-decoration: underline;
+}
+
+.credential-includes ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--foreground-soft);
+  line-height: 1.5;
+}
+
+.credential-includes li + li {
+  margin-top: 0.25rem;
+}
+
+.credential-includes li::marker {
+  color: var(--accent);
+}

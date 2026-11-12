@@ -43,6 +43,18 @@ const CertificationCard: React.FC<{
         <h3 className="certification-title h5 fw-bold mt-3 mb-4">
           {certification.alt}
         </h3>
+        {certification.includes && certification.includes.length > 0 && (
+          <details className="credential-includes mb-4">
+            <summary>
+              Includes {certification.includes.length} courses
+            </summary>
+            <ul>
+              {certification.includes.map((course) => (
+                <li key={course}>{course}</li>
+              ))}
+            </ul>
+          </details>
+        )}
         {certification.url ? (
           <a
             href={certification.url}
