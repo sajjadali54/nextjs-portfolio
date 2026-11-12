@@ -1,0 +1,66 @@
+.honors {
+  margin-top: 2.5rem;
+}
+
+.honors-title {
+  margin-bottom: 1rem;
+  padding-left: 0.85rem;
+  color: var(--foreground);
+  border-left: 3px solid var(--accent);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.honors-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.honors-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.honors-icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--accent);
+  background: var(--surface-soft);
+  border-radius: 0.5rem;
+}
+
+.honors-name {
+  margin: 0;
+  color: var(--foreground);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.honors-meta {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.honors-description {
+  margin: 0.35rem 0 0;
+  color: var(--foreground-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#honors {
+  scroll-margin-top: 6rem;
+}

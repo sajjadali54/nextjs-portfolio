@@ -8,7 +8,7 @@ export const siteUrl = (
 export const siteTitle = `${personal.name} | Full-Stack Developer for Actuarial and Financial Software`;
 
 export const siteDescription =
-  "Sajjad Ali is a Senior Software Developer in Karachi, Pakistan, building full-stack actuarial and financial software with Python, Node.js, React, and Next.js: IFRS 17, gratuity valuation, and insurance analytics tools.";
+  "Sajjad Ali is a Senior Software Engineer in Karachi, Pakistan, building full-stack actuarial and financial software with Python, Node.js, React, and Next.js: IFRS 17, gratuity valuation, and insurance analytics tools.";
 
 export const profiles = {
   github: "https://github.com/sajjadali54/",

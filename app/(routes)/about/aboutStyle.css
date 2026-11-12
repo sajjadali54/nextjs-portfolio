@@ -274,3 +274,33 @@
     letter-spacing: -0.035em;
   }
 }
+
+/* Languages list */
+.about-languages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-languages li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+}
+
+.about-language-name {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.about-language-level {
+  color: var(--muted);
+  font-size: 0.85rem;
+}

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Tags from "@components/Tags";
 import { education } from "@data/education";
+import HonorsList from "@components/honors/HonorsList";
+import { awards } from "@data/awards";
 import styles from "./Education.module.css";
 
 export const Education = () => (
@@ -51,5 +53,12 @@ export const Education = () => (
         </motion.article>
       ))}
     </div>
+
+    <section id="honors" className="honors" aria-labelledby="honors-heading">
+      <h3 id="honors-heading" className="honors-title">
+        Honors and awards
+      </h3>
+      <HonorsList items={awards} />
+    </section>
   </section>
 );

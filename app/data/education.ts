@@ -9,10 +9,10 @@ export const education = [
       "Completed a NORPART CONNECT-funded exchange focused on machine learning and imaging research.",
     achievements: [
       "Conducted imaging research on facial emotion recognition.",
-      "Worked with diffusion models and transfer-learning methods.",
+      "Designed and ran experiments with diffusion and transfer-learning models in PyTorch.",
       "Collaborated with an international research team.",
     ],
-    tags: ["Funded exchange", "Imaging research", "Machine learning"],
+    tags: ["Funded exchange", "Imaging research", "Machine learning", "PyTorch"],
     image:
       "https://www.ntnu.edu/documents/1265708073/1266886158/bygg-5.jpg/0acaaba8-2ac1-4231-af69-85c32e726b3a?t=1501754425569",
   },

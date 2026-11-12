@@ -1,5 +1,11 @@
 import { IconType } from "react-icons";
-import { FiDatabase, FiLayout, FiMonitor, FiServer } from "react-icons/fi";
+import {
+  FiCloud,
+  FiDatabase,
+  FiLayout,
+  FiMonitor,
+  FiServer,
+} from "react-icons/fi";
 
 export interface TechGroup {
   category: string;
@@ -34,12 +40,18 @@ export const techItems: TechGroup[] = [
     items: ["PySide", "PyInstaller", "PyWebview", "Electron"],
     icon: FiMonitor,
   },
+  {
+    // From résumé and LinkedIn top skills.
+    category: "Databases, cloud, and DevOps",
+    summary: "Storing data and shipping applications reliably.",
+    items: ["PostgreSQL", "MongoDB", "Redis", "Docker", "GitHub Actions", "AWS"],
+    icon: FiCloud,
+  },
 ];
 
 // Tools used in earlier roles or personal projects, shown without claiming depth.
 export const familiarTech = [
   "Django",
-  "MongoDB",
   "MySQL",
   "Flutter",
   "Kotlin (Android)",

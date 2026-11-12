@@ -1,9 +1,17 @@
 export const personal = {
   name: "Sajjad Ali",
-  title: "Senior Software Developer",
+  title: "Senior Software Engineer",
   company: "Badri Solutions",
   location: "Karachi, Pakistan",
   companyUrl: "https://badriconsultancy.com/",
+  // From LinkedIn and résumé (German A2 per résumé).
+  languages: [
+    { name: "English", level: "Professional working" },
+    { name: "Urdu", level: "Native" },
+    { name: "Sindhi", level: "Native" },
+    { name: "German", level: "Elementary (A2)" },
+    { name: "Arabic", level: "Elementary" },
+  ],
   headline: "Full-stack software for actuarial and financial teams.",
   summary:
     "Actuaries bring the models and formulas. I turn them into dependable software: Python and Node.js services, React and Next.js interfaces, and desktop tools that handle large datasets.",

@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Col, Container, Image, Row } from "react-bootstrap";
 import { FiArrowUpRight, FiCode, FiDatabase, FiTrendingUp } from "react-icons/fi";
 import { personal } from "@data/personal";
+import { awards } from "@data/awards";
+import HonorsList from "@components/honors/HonorsList";
 import ContactSection from "./ContactSection";
 import "./aboutStyle.css";
 
@@ -115,16 +117,17 @@ export default function AboutPage() {
       <Row className="g-4 mb-5">
         <Col lg={7}>
           <section className="section-panel h-100" aria-labelledby="research-heading">
-            <p className="about-eyebrow mb-2">Research experience</p>
+            <p className="about-eyebrow mb-2">Machine learning background</p>
             <h2 id="research-heading" className="h4 fw-bold mb-3">
               A research perspective on applied machine learning
             </h2>
             <p className="text-muted mb-0">
-              During a funded exchange at the Norwegian University of Science
-              and Technology, I worked on machine-learning and imaging
-              research. That experience complements my software engineering
-              work with a practical understanding of experimentation and
-              data-focused problems.
+              During a funded research exchange at the Norwegian University of
+              Science and Technology, I worked on machine-learning and imaging
+              research. In the same period, an eight-week AI/ML internship at
+              Syzen Technologies gave me hands-on computer vision work. Both
+              complement my software engineering with a practical understanding
+              of experimentation and data-focused problems.
             </p>
             <Link href="/education" className="about-text-link mt-3">
               Education and research <FiArrowUpRight aria-hidden="true" />
@@ -145,6 +148,32 @@ export default function AboutPage() {
           </section>
         </Col>
       </Row>
+
+      <section className="section-panel mb-5" aria-labelledby="recognition-heading">
+        <p className="about-eyebrow mb-2">Recognition</p>
+        <h2 id="recognition-heading" className="h4 fw-bold mb-3">
+          Awards and scholarships
+        </h2>
+        <HonorsList items={awards.filter((award) => award.featured)} />
+        <Link href="/education#honors" className="about-text-link mt-3">
+          All honors and awards <FiArrowUpRight aria-hidden="true" />
+        </Link>
+      </section>
+
+      <section className="section-panel mb-5" aria-labelledby="languages-heading">
+        <p className="about-eyebrow mb-2">Languages</p>
+        <h2 id="languages-heading" className="h4 fw-bold mb-3">
+          Languages I speak
+        </h2>
+        <ul className="about-languages">
+          {personal.languages.map((language) => (
+            <li key={language.name}>
+              <span className="about-language-name">{language.name}</span>
+              <span className="about-language-level">{language.level}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <motion.div
         initial={{ opacity: 0 }}

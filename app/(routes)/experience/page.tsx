@@ -19,10 +19,9 @@ export default function Experience() {
     <Container className="py-4 py-lg-5">
       <header className="page-heading mb-5">
         <p className="about-eyebrow mb-2">Experience</p>
-        <h1 className="display-5 fw-bold mb-3">Work and research</h1>
+        <h1 className="display-5 fw-bold mb-3">Work experience</h1>
         <p className="lead text-muted mb-0">
-          A chronological overview of the teams, products, and research I have
-          contributed to.
+          The teams and products I have worked on, most recent first.
         </p>
       </header>
 
@@ -65,6 +64,14 @@ export default function Experience() {
                   )}
                 </p>
               </header>
+
+              {"previousRoles" in job &&
+                job.previousRoles?.map((role) => (
+                  <p key={role.title} className={styles.promotion}>
+                    Promoted from {role.title} ({formatDate(role.startDate)} –{" "}
+                    {formatDate(role.endDate)})
+                  </p>
+                ))}
 
               <p className="text-muted mt-3 mb-3">{job.subtitle}</p>
               <ul className={styles.contributions}>

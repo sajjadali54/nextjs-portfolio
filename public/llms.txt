@@ -1,6 +1,6 @@
 # Sajjad Ali
 
-> Senior Software Developer at Badri Solutions in Karachi, Pakistan. Full-stack developer (Python, Node.js, React, Next.js) who turns actuarial models and formulas, supplied by actuaries, into production software for insurance and financial teams.
+> Senior Software Engineer at Badri Solutions in Karachi, Pakistan. Full-stack developer (Python, Node.js, React, Next.js) who turns actuarial models and formulas, supplied by actuaries, into production software for insurance and financial teams.
 
 ## Focus
 
@@ -8,7 +8,8 @@
 - Backend services and APIs with Python (FastAPI, Flask) and Node.js (Express, NestJS).
 - Frontends and dashboards with React, Next.js, TypeScript, ApexCharts, and Plotly.
 - Data processing with Pandas, Polars, and NumPy; desktop delivery with PySide, PyInstaller, PyWebview, and Electron.
-- Previously: MERN stack developer at Solspro, and research fellow in machine learning at NTNU.
+- Previously: MERN stack developer at Solspro, and an AI/ML intern (computer vision) at Syzen Technologies.
+- Education: BS Computer Science (Silver Medalist), Sukkur IBA University, and a NORPART-funded machine-learning research exchange at NTNU, Norway.
 
 Client project code and data are confidential; project pages describe functionality and technology only.
 

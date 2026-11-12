@@ -59,14 +59,18 @@ export default async function JobPage({ params }: Props) {
             <img src={job.image} alt="" className="detail-org-logo" />
           )}
           <div>
-            <a
-              href={job.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="detail-org-name"
-            >
-              {job.companyName}
-            </a>
+            {job.companyUrl ? (
+              <a
+                href={job.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="detail-org-name"
+              >
+                {job.companyName}
+              </a>
+            ) : (
+              <span className="detail-org-name">{job.companyName}</span>
+            )}
             <span className="detail-org-meta">
               <FiCalendar aria-hidden="true" /> {period}
             </span>
@@ -75,6 +79,13 @@ export default async function JobPage({ params }: Props) {
 
         <p className="about-eyebrow mb-2">Experience</p>
         <h1 className="detail-title">{job.title}</h1>
+        {"previousRoles" in job &&
+          job.previousRoles?.map((role) => (
+            <p key={role.title} className="detail-note mb-3">
+              Promoted from {role.title} ({formatDate(role.startDate)} –{" "}
+              {formatDate(role.endDate)})
+            </p>
+          ))}
         <p className="detail-lead">{job.subtitle}</p>
 
         {job.tags?.length > 0 && (
@@ -85,16 +96,18 @@ export default async function JobPage({ params }: Props) {
           </ul>
         )}
 
-        <div className="detail-actions">
-          <a
-            href={job.companyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline-secondary"
-          >
-            <FiExternalLink aria-hidden="true" /> Visit {job.companyName}
-          </a>
-        </div>
+        {job.companyUrl && (
+          <div className="detail-actions">
+            <a
+              href={job.companyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline-secondary"
+            >
+              <FiExternalLink aria-hidden="true" /> Visit {job.companyName}
+            </a>
+          </div>
+        )}
       </header>
 
       <div className="detail-body">

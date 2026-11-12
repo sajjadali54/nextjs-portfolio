@@ -105,3 +105,15 @@
     white-space: normal;
   }
 }
+
+.promotion {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.75rem 0 0;
+  padding: 0.2rem 0.65rem;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}

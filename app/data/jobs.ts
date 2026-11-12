@@ -1,16 +1,25 @@
 export const jobs = [
   {
-    title: "Senior Software Developer",
+    title: "Senior Software Engineer",
     image: "/badri.jpg",
     companyName: "Badri Solutions",
     companyUrl: "https://badriconsultancy.com/",
-    startDate: "2024-11-04",
+    startDate: "2026-07-01",
+    // Earlier roles at the same company, shown as a promotion line.
+    previousRoles: [
+      {
+        title: "Software Developer",
+        startDate: "2024-11-04",
+        endDate: "2026-06-30",
+      },
+    ],
     subtitle: "Building financial and actuarial software for clients.",
     duties: [
       "Design, develop, and enhance actuarial software tools for financial modelling, IFRS 17 reporting, and benchmarking analysis using modern Python and JavaScript frameworks.",
       "Build scalable data-processing and visualisation systems that automate actuarial workflows and enable interactive analysis through intuitive dashboards and desktop-ready interfaces.",
       "Create executable desktop versions of internal and client-facing web applications (R Shiny, Streamlit, Flask) using PyInstaller, PyWebview, and Electron for seamless offline distribution.",
       "Collaborate with international actuarial teams across Pakistan, Egypt, Qatar, India, and the UAE to troubleshoot issues in application workflows, Excel-based input files, and model execution processes.",
+      "Mentor junior engineers and support reliable delivery through Docker, GitHub Actions, and CI/CD workflows.",
     ],
 
     tags: [
@@ -45,28 +54,19 @@ export const jobs = [
     tags: ["MERN", "Flutter", "Web3", "REST APIs", "Django"],
     image: "/solspro.png",
   },
+  // Source: Syzen Technologies internship letter (private-resumes/), 8 weeks from 14 Aug 2023.
+  // The NTNU research exchange is listed under Education only, not as employment.
   {
-    title: "Research Fellow",
-    companyName: "Norwegian University of Science and Technology (NTNU)",
-    companyUrl: "https://www.ntnu.edu/",
-    startDate: "2023-08-08",
-    endDate: "2024-02-26",
+    title: "AI/ML Intern",
+    companyName: "Syzen Technologies",
+    startDate: "2023-08-14",
+    endDate: "2023-10-09",
     subtitle:
-      "Researching machine-learning methods and imaging technologies at NTNU.",
+      "Eight-week internship in AI and machine learning, focused on computer vision and self-supervised learning.",
     duties: [
-      "Collaborated with global experts on AI-driven educational research, focusing on imaging technologies.",
-      "Designed and conducted experiments to improve diffusion and transfer learning models.",
-      "Implemented state-of-the-art machine learning models using advanced techniques like self-supervised learning and transformers.",
+      "Worked on multiple computer vision projects under the guidance of a Computer Vision Engineer.",
+      "Applied self-supervised learning techniques to computer vision problems.",
     ],
-    tags: [
-      "Python",
-      "PyTorch",
-      "Deep Learning",
-      "Machine Learning",
-      "Diffusion Models",
-      "Transfer Learning",
-    ],
-    image:
-      "https://www.ntnu.edu/documents/1265708073/1266886158/bygg-5.jpg/0acaaba8-2ac1-4231-af69-85c32e726b3a?t=1501754425569",
+    tags: ["Computer Vision", "Self-Supervised Learning", "Machine Learning"],
   },
 ];
