@@ -13,7 +13,7 @@ export const Education = () => (
     <div className="page-heading mb-4">
       <p className="about-eyebrow mb-2">Academic background</p>
       <h2 id="education-heading" className="h3 fw-bold mb-2">
-        Education and research
+        Degrees and international exchange
       </h2>
       <p className="text-muted mb-0">
         Computer science foundations, complemented by a funded research
@@ -45,6 +45,14 @@ export const Education = () => (
               {item.institution}
             </a>
             <p className="text-muted mt-3 mb-3">{item.description}</p>
+            {item.finalProject && (
+              <p className={styles.finalProject}>
+                <span className={styles.finalProjectLabel}>
+                  Final year project
+                </span>{" "}
+                {item.finalProject.name}: {item.finalProject.tagline}
+              </p>
+            )}
             <Tags tags={item.tags.slice(0, 4)} />
             <Link href={`/education/${index}`} className={styles.detailsLink}>
               Academic details <span aria-hidden="true">→</span>

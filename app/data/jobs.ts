@@ -49,7 +49,7 @@ export const jobs = [
       "Integrated web3 wallets (MetaMask and Solana Phantom) into Reactjs service app, increasing customer base by 30%.",
       "Implemented and secured REST APIS using JWT token authentication mechanism.",
       "Boosted shopping store traffic by 15% through deep links and QR codes using Flutter.",
-      "Developed a mini PayPal system using Django and a SQLite database.",
+      "Built a Django payment-simulation app for sending, requesting, and receiving money between users, with a SQLite database.",
     ],
     tags: ["MERN", "Flutter", "Web3", "REST APIs", "Django"],
     image: "/solspro.png",

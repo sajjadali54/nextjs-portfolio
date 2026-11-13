@@ -98,23 +98,23 @@ export const projects = [
     createdAt: "1739042993891",
     updatedAt: "1739042993891",
   },
-  {
-    id: "22",
-    slug: "internal-company-portal",
-    hasCaseStudy: true,
-    context: "Internal tool · team of three",
-    title: "Internal Model and Regulation Portal",
-    description:
-      "A role-based portal for managing the company's models and regulations, with approval workflows and in-browser previews of PDF, Word, and Excel documents.",
-    language: "JavaScript",
-    topics: ["React", "Redux Toolkit", "React Router", "Formik", "Vite"],
-    clone_url: "",
-    live: "",
-    image: "",
-    isClientProject: true,
-    createdAt: "1739042993891",
-    updatedAt: "1739042993891",
-  },
+  // {
+  //   id: "22",
+  //   slug: "internal-company-portal",
+  //   hasCaseStudy: true,
+  //   context: "Internal tool · team of three",
+  //   title: "Internal Model and Regulation Portal",
+  //   description:
+  //     "A role-based portal for managing the company's models and regulations, with approval workflows and in-browser previews of PDF, Word, and Excel documents.",
+  //   language: "JavaScript",
+  //   topics: ["React", "Redux Toolkit", "React Router", "Formik", "Vite"],
+  //   clone_url: "",
+  //   live: "",
+  //   image: "",
+  //   isClientProject: true,
+  //   createdAt: "1739042993891",
+  //   updatedAt: "1739042993891",
+  // },
   {
     id: "23",
     slug: "glm-pricing-desktop-app",
@@ -131,23 +131,23 @@ export const projects = [
     updatedAt: "1739042993891",
   },
   // Non-Badri projects follow, strongest first.
-  {
-    id: "10",
-    slug: "mini-paypal",
-    hasCaseStudy: true,
-    context: "Client project · Solspro",
-    title: "Mini PayPal",
-    description:
-      "A Django payments app with peer-to-peer transfers, payment requests, multi-currency conversion, and atomic transactions to keep balances consistent.",
-    language: "Python",
-    topics: ["Django", "Python", "SQLite", "Django ORM", "Bootstrap"],
-    clone_url: "https://github.com/SajjadAli54/django-mini-paypal",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTraHE6feWakSRBgEvKMpWEPnh6xAOfd3pYRQ&s",
-    createdAt: "1739041876304",
-    updatedAt: "1739041876304",
-  },
+  // {
+  //   id: "10",
+  //   slug: "mini-paypal",
+  //   hasCaseStudy: true,
+  //   context: "Client project · Solspro",
+  //   title: "Mini PayPal",
+  //   description:
+  //     "A Django payments app with peer-to-peer transfers, payment requests, multi-currency conversion, and atomic transactions to keep balances consistent.",
+  //   language: "Python",
+  //   topics: ["Django", "Python", "SQLite", "Django ORM", "Bootstrap"],
+  //   clone_url: "https://github.com/SajjadAli54/django-mini-paypal",
+  //   live: "",
+  //   image:
+  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTraHE6feWakSRBgEvKMpWEPnh6xAOfd3pYRQ&s",
+  //   createdAt: "1739041876304",
+  //   updatedAt: "1739041876304",
+  // },
   {
     id: "5",
     slug: "school-management-system",
@@ -198,44 +198,44 @@ export const projects = [
     createdAt: "1739043216514",
     updatedAt: "1739043216514",
   },
-  {
-    id: "9",
-    slug: "qrcode-generator-api",
-    title: "QRCode Generator API",
-    description:
-      "A Node.js and Express API for generating and managing QR codes.",
-    language: "JavaScript",
-    topics: ["NodeJs", "qrcode", "express", "RESTFul API"],
-    clone_url: "https://github.com/SajjadAli54/QRCode",
-    live: "",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgmlMz54DYigrchHRR8d8rJ5gkEB1_yrvd8w&s",
-    createdAt: "1739041761964",
-    updatedAt: "1739041761964",
-  },
-  {
-    id: "8",
-    slug: "country-charm",
-    title: "Country Charm",
-    description:
-      "A React-powered review platform for food, hotels, and tourist destinations, built as a semester project.",
-    language: "JavaScript",
-    topics: [
-      "react",
-      "State Management",
-      "bootstrap",
-      "Placeholder API",
-      "Tourism",
-      "hotel",
-      "restaurants",
-    ],
-    clone_url: "https://github.com/SajjadAli54/countrycharm",
-    live: "https://sajjadali54.github.io/countrycharm/",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-HLuo6T3OsMCMOTovQy8Q8cccLTEuikxekcXiaxCJ&s",
-    createdAt: "1739040692699",
-    updatedAt: "1739040692699",
-  },
+  // {
+  //   id: "9",
+  //   slug: "qrcode-generator-api",
+  //   title: "QRCode Generator API",
+  //   description:
+  //     "A Node.js and Express API for generating and managing QR codes.",
+  //   language: "JavaScript",
+  //   topics: ["NodeJs", "qrcode", "express", "RESTFul API"],
+  //   clone_url: "https://github.com/SajjadAli54/QRCode",
+  //   live: "",
+  //   image:
+  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgmlMz54DYigrchHRR8d8rJ5gkEB1_yrvd8w&s",
+  //   createdAt: "1739041761964",
+  //   updatedAt: "1739041761964",
+  // },
+  // {
+  //   id: "8",
+  //   slug: "country-charm",
+  //   title: "Country Charm",
+  //   description:
+  //     "A React-powered review platform for food, hotels, and tourist destinations, built as a semester project.",
+  //   language: "JavaScript",
+  //   topics: [
+  //     "react",
+  //     "State Management",
+  //     "bootstrap",
+  //     "Placeholder API",
+  //     "Tourism",
+  //     "hotel",
+  //     "restaurants",
+  //   ],
+  //   clone_url: "https://github.com/SajjadAli54/countrycharm",
+  //   live: "https://sajjadali54.github.io/countrycharm/",
+  //   image:
+  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-HLuo6T3OsMCMOTovQy8Q8cccLTEuikxekcXiaxCJ&s",
+  //   createdAt: "1739040692699",
+  //   updatedAt: "1739040692699",
+  // },
 ];
 
 export default projects;

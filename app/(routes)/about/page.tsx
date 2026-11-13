@@ -118,18 +118,18 @@ export default function AboutPage() {
           <section className="section-panel h-100" aria-labelledby="research-heading">
             <p className="about-eyebrow mb-2">Machine learning background</p>
             <h2 id="research-heading" className="h4 fw-bold mb-3">
-              A research perspective on applied machine learning
+              Hands-on experience with applied deep learning
             </h2>
             <p className="text-muted mb-0">
-              During a funded research exchange at the Norwegian University of
-              Science and Technology, I worked on machine-learning and imaging
-              research. In the same period, an eight-week AI/ML internship at
-              Syzen Technologies gave me hands-on computer vision work. Both
-              complement my software engineering with a practical understanding
-              of experimentation and data-focused problems.
+              During a funded exchange at the Norwegian University of Science
+              and Technology, I trained and compared deep learning models for
+              facial emotion recognition and learned to evaluate them properly.
+              In the same period, an eight-week AI/ML internship at Syzen
+              Technologies gave me practical computer vision work. Both inform
+              how I approach data-heavy problems as a software engineer.
             </p>
             <Link href="/education" className="about-text-link mt-3">
-              Education and research <FiArrowUpRight aria-hidden="true" />
+              Education and exchange <FiArrowUpRight aria-hidden="true" />
             </Link>
           </section>
         </Col>

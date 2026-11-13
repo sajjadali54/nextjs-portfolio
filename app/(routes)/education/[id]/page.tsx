@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { FiCalendar, FiExternalLink } from "react-icons/fi";
+import { FiCalendar, FiExternalLink, FiGithub } from "react-icons/fi";
 
 import BackLink from "@components/BackLink";
 import { education } from "@data/education";
@@ -97,6 +97,29 @@ export default async function EducationPage({ params }: Props) {
             ))}
           </ul>
         </div>
+      )}
+
+      {record.finalProject && (
+        <section className="detail-body" aria-labelledby="final-project-heading">
+          <h2 id="final-project-heading">
+            Final year project: {record.finalProject.name}
+          </h2>
+          <p>{record.finalProject.summary}</p>
+          <p>{record.finalProject.role}</p>
+          <ul className="detail-tags" aria-label="Technologies">
+            {record.finalProject.tech.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
+          <a
+            href={record.finalProject.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline-secondary"
+          >
+            <FiGithub aria-hidden="true" /> View source on GitHub
+          </a>
+        </section>
       )}
 
       <footer className="detail-footer">
