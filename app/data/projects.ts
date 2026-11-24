@@ -23,9 +23,9 @@ export const projects = [
     hasCaseStudy: true,
     title: "End-of-Service Gratuity Valuation Platform",
     description:
-      "Lead developer (v3, v4) of a gratuity valuation platform with 12 actuarial models, used for valuations across Pakistan and the Middle East.",
+      "Lead developer of an IAS 19 gratuity valuation platform with nine actuarial models, now leading its Flask rewrite that cuts the largest runs from hours to minutes.",
     language: "Python",
-    topics: ["IAS 19", "Pandas", "Plotly", "ReportLab", "Streamlit", "PyWebview"],
+    topics: ["IAS 19", "Flask", "HTMX", "Pandas", "pytest"],
     clone_url: "",
     live: "",
     image: "",
