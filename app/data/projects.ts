@@ -40,7 +40,7 @@ export const projects = [
     context: "Internal tool",
     title: "Excel Comparison Tool for Model Validation",
     description:
-      "Sole developer of a desktop tool that compares Excel workbooks cell by cell, by key, or in aggregate, with per-column rules, review sign-off, and Excel and PDF reports.",
+      "Sole developer of a desktop and web tool that compares Excel and CSV files of up to a million rows, cell by cell, by key, or in aggregate, with review sign-off and reports.",
     language: "Python",
     topics: ["Flask", "Pandas", "NumPy", "openpyxl", "PyWebview"],
     clone_url: "",

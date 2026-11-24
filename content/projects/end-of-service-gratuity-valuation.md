@@ -10,7 +10,7 @@ Gratuity valuations repeat the same steps for every client: clean the employee d
 
 ## My role
 
-I joined the project at version 2 and became the lead developer for version 3 and version 4. I am responsible for the calculation logic, the frontend, and the backend, and I am now leading a full rewrite of the application on Flask. The actuarial team defines the requirements, formulas, and validation; I turn their specifications into working, tested software.
+I joined the project at version 2 and became the lead developer for version 3 and version 4. I am responsible for the calculation logic, the frontend, and the backend, and I am now leading a full rewrite of the application on Flask. The actuarial team explains what they need and supplies the formulas and validation; I turn those requirements into complete, working solutions, from the data handling and calculations to the screens and reports.
 
 ## How it works
 
